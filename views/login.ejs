@@ -1,0 +1,664 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+  integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+  integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<% if (messages.error) { %>
+  <%= messages.error %>
+    <% } %>
+      <!-- Navbar -->
+      <div class="nav">
+        <input type="checkbox" id="nav-check" />
+        <div class="nav-header">
+          <div class="nav-title">
+            <p style="padding: 5px">Nutrition Bee</p>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label>
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/register">Register</a>
+          <a href="/login">Login</a>
+          <a href="/payments">Payments</a>
+        </div>
+      </div>
+
+      <!-- Login Form  -->
+      <div class="container formContainer row">
+        <div class="col-sm">
+          <div class="d-flex justify-content-center">
+            <img
+              src="data:image/png;base64,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">
+          </div>
+        </div>
+        <div class="col-sm d-flex justify-content-center">
+          <form action="/login" method="POST">
+            <div class="input-block">
+              <input type="email" name="email" id="email" required>
+              <span class="placeholder">
+                Email
+              </span>
+            </div>
+            <br>
+            <div class="input-block">
+              <input type="password" name="password" id="password" required>
+              <span class="placeholder">
+                Password
+              </span>
+            </div>
+            <br>
+            <button type="submit" class="btnLogin">Login</button>
+            <br>
+            <br>
+            <p>Do not have an account? <a href="/register">Sign Up</a></p>
+          </form>
+        </div>
+      </div>
+
+
+
+
+      <!-- Footer  -->
+      <footer id="site-footer">
+        <section class="horizontal-footer-section" id="footer-top-section">
+          <div id="footer-logo">
+            <picture>
+              <img src="https://raw.githubusercontent.com/taviskaron/t-div-headers/main/img/logo3.png" alt="footer logo"
+                role="presentation">
+            </picture>
+          </div>
+          <div id="footer-top-menu-container" role="menubar">
+            <ul id="footer-top-menu" role="menu">
+              <li class="footer-top-menu-item" role="menuitem">
+                <a href="#" class="footer-top-menu-link">IT Services</a>
+              </li>
+              <li class="footer-top-menu-item footer-top-menu-item-active" role="menuitem">
+                <a href="#" class="footer-top-menu-link">Web development</a>
+              </li>
+              <li class="footer-top-menu-item" role="menuitem">
+                <a href="#" class="footer-top-menu-link">SEO</a>
+              </li>
+              <li class="footer-top-menu-item" role="menuitem">
+                <a href="#" class="footer-top-menu-link">UI/UX</a>
+              </li>
+            </ul>
+          </div>
+          <div id="footer-buttons-container">
+            <a href="#" class="footer-button" role="button">View our Projects</a>
+          </div>
+        </section>
+
+        <section class="horizontal-footer-section" id="footer-middle-section">
+          <div id="footer-about" class="footer-columns footer-columns-large">
+            <h1>Our Address</h1>
+            <address>
+              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png">30/20, Verkhy street, Moscow, Russia
+              </p>
+              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png">7 (800) 555–35–35</p>
+              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png">noreply@reply.io</p>
+              <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png">8:00 AM – 8:00 PM</p>
+            </address>
+            <h1> Our Newsletter</h1>
+            <a href="#" class="footer-button" role="button">Subscribe</a>
+          </div>
+          <div class="footer-columns">
+            <h1>Overview</h1>
+            <ul class="footer-column-menu" role="menu">
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Services </a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Pricing</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Portfolio</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">News</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-columns">
+            <h1>Resources</h1>
+            <ul class="footer-column-menu" role="menu">
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">FAQ</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Media</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Guides</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Free Resources</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Testimonials</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-columns">
+            <h1>Information</h1>
+            <ul class="footer-column-menu" role="menu">
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">About Us</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+              </li>
+              <li class="footer-column-menu-item">
+                <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Message Us</a>
+              </li>
+              <li class="footer-column-menu-item" role="menuitem">
+                <a href="#" class="footer-column-menu-item-link">Leave a Feedback</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="horizontal-footer-section" id="footer-bottom-section">
+          <div id="footer-copyright-info">
+            &copy; Reimu Inc. 2022. All rights reserved.
+          </div>
+          <div id="footer-social-buttons">
+            <img src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png" />
+            <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png" />
+            <img src="https://img.icons8.com/ios-filled/25/999999/pinterest--v1.png" />
+            <img src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png" />
+          </div>
+        </section>
+
+      </footer>
+
+
+
+
+      <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        .btnLogin {
+          padding: 0;
+          border: none;
+          background: none;
+          padding: 10px;
+          border-radius: 10px;
+          background-color: rgb(238, 155, 0);
+          /* color: white; */
+        }
+
+        .formContainer {
+          display: flex;
+          margin-top: 100px;
+          margin-bottom: 100px;
+        }
+
+        /* input form  */
+        div.input-block {
+          position: relative;
+        }
+
+        div.input-block input {
+          font-weight: 500;
+          font-size: 1rem;
+          color: #495055;
+          width: 300px;
+          padding: 15px 15px;
+          border-radius: 1rem;
+          border: 2px solid #D9D9D9;
+          outline: none;
+        }
+
+        div.input-block span.placeholder {
+          position: absolute;
+          margin: 17px 0;
+          padding: 0 4px;
+          font-family: Roboto, sans-serif;
+
+          color: #6c757d;
+
+          display: flex;
+          align-items: center;
+
+          font-size: 1rem;
+
+          top: 0;
+          left: 17px;
+
+          transition: all 0.2s;
+          transform-origin: 0% 0%;
+          background: none;
+          pointer-events: none;
+        }
+
+        div.input-block input:valid+span.placeholder,
+        div.input-block input:focus+span.placeholder {
+          transform: scale(0.8) translateY(-30px);
+          background: #fff;
+        }
+
+        div.input-block input:focus {
+          color: #284B63;
+          border-color: #284B63;
+        }
+
+        div.input-block input:focus+span.placeholder {
+          color: #284B63;
+        }
+
+        /* navigation  */
+        .nav {
+          height: 8%;
+          width: 100%;
+          background-color: #131313 !important;
+          position: relative;
+        }
+
+        .nav>.nav-header {
+          display: inline;
+        }
+
+        .nav>.nav-header>.nav-title {
+          display: inline-block;
+          font-size: 22px;
+          color: #fff;
+          /* padding: 10px 10px 10px 10px; */
+        }
+
+        .nav>.nav-btn {
+          display: none;
+        }
+
+        .nav>.nav-links {
+          margin-left: 50%;
+          display: inline;
+          float: right;
+          font-size: 18px;
+        }
+
+        .nav>.nav-links>a {
+          display: inline-block;
+          padding: 13px 10px 13px 10px;
+          text-decoration: none;
+          color: #efefef;
+        }
+
+        .nav>.nav-links>a:hover {
+          background-color: grey;
+        }
+
+        .nav>#nav-check {
+          display: none;
+        }
+
+        @media (max-width:600px) {
+          .nav>.nav-btn {
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+
+          .nav>.nav-btn>label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 13px;
+          }
+
+          .nav>.nav-btn>label:hover,
+          .nav #nav-check:checked~.nav-btn>label {
+            background-color: grey;
+          }
+
+          .nav>.nav-btn>label>span {
+            display: block;
+            width: 25px;
+            height: 10px;
+            border-top: 2px solid #eee;
+            z-index: 10000;
+          }
+
+          .nav>.nav-links {
+            position: absolute;
+            display: block;
+            float: right;
+            width: 100%;
+            background-color: #151414;
+            height: 0px;
+            transition: all 0.3s ease-in;
+            overflow-y: hidden;
+            top: 50px;
+            left: 0px;
+            z-index: 10000;
+
+          }
+
+          .nav>.nav-links>a {
+            display: block;
+            width: 100%;
+            z-index: 10000;
+
+          }
+
+          .nav>#nav-check:not(:checked)~.nav-links {
+            height: 0px;
+          }
+
+          .nav>#nav-check:checked~.nav-links {
+            height: calc(100vh - 50px);
+            overflow-y: auto;
+          }
+        }
+
+
+
+        /* Footer  */
+
+
+        footer#site-footer {
+          margin: 0 auto;
+          width: 100%;
+          background: #1e3138;
+          padding: 1rem;
+          color: #a8a8a8;
+        }
+
+        footer#site-footer a {
+          color: #a8a8a8;
+        }
+
+        footer#site-footer a:hover {
+          color: #00c3ce;
+        }
+
+        footer#site-footer h1 {
+          color: #cecece;
+        }
+
+        footer#site-footer section.horizontal-footer-section {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          align-items: center;
+          padding: 2.38rem 2rem;
+        }
+
+        footer#site-footer section.horizontal-footer-section#footer-top-section {
+          justify-content: center;
+        }
+
+        footer#site-footer #footer-logo {
+          margin-right: auto;
+          flex-shrink: 0;
+        }
+
+        footer#site-footer #footer-logo img {
+          height: 2.28rem;
+        }
+
+        footer#site-footer ul#footer-top-menu {
+          padding: 0;
+          margin: 0;
+        }
+
+        footer#site-footer ul#footer-top-menu li {
+          display: inline;
+          list-style-type: none;
+          margin-right: 1.32rem;
+          font-weight: bold;
+        }
+
+        footer#site-footer ul#footer-top-menu li a {
+          text-decoration: none;
+        }
+
+        footer#site-footer .footer-top-menu-item-active {
+          position: relative;
+        }
+
+        footer#site-footer .footer-top-menu-item-active a {
+          color: #007ba6;
+        }
+
+        footer#site-footer .footer-top-menu-item-active a:hover {
+          color: #00c3ce;
+        }
+
+        footer#site-footer .footer-top-menu-item-active::before {
+          content: "";
+          background: #007ba6;
+          padding: 0.15rem 0;
+          width: 100%;
+          position: absolute;
+          top: 1.68em;
+        }
+
+        footer#site-footer .footer-top-menu-item-active:hover::before {
+          background: #00c3ce;
+          transition-duration: 0.6s;
+        }
+
+        footer#site-footer #footer-buttons-container {
+          margin-left: auto;
+          flex-shrink: 0;
+        }
+
+        footer#site-footer a.footer-button {
+          background: transparent;
+          border: 0.15rem solid #a8a8a8;
+          border-radius: 1.38rem;
+          padding: 0.5rem 1rem;
+          font-weight: bold;
+          text-decoration: none;
+          display: inline-block;
+        }
+
+        footer#site-footer a.footer-button:hover {
+          border-color: #00c3ce;
+        }
+
+        footer#site-footer section.horizontal-footer-section#footer-middle-section {
+          align-items: flex-start;
+        }
+
+        footer#site-footer .footer-columns {
+          flex-basis: 18%;
+          padding-right: 1rem;
+        }
+
+        footer#site-footer .footer-columns-large {
+          flex-basis: 46%;
+          padding-right: 2rem;
+        }
+
+        footer#site-footer .footer-columns h1 {
+          font-size: 1rem;
+          margin-top: 0;
+          margin-bottom: 1rem;
+          font-weight: 800;
+        }
+
+        footer#site-footer .footer-columns.footer-columns-large h1 {
+          font-size: 1.28rem;
+          margin-top: 3rem;
+          margin-bottom: 1.32rem;
+        }
+
+        footer#site-footer .footer-columns.footer-columns-large h1:first-child {
+          margin-top: 0;
+        }
+
+        footer#site-footer ul.footer-column-menu {
+          margin: 0;
+          padding: 0;
+        }
+
+        footer#site-footer ul.footer-column-menu li {
+          list-style-type: none;
+          margin-bottom: 0.68rem;
+          font-size: 0.88rem;
+        }
+
+        footer#site-footer #footer-about address {
+          font-style: normal;
+          font-weight: bold;
+        }
+
+        footer#site-footer #footer-about address p img {
+          margin-right: 0.68rem;
+        }
+
+        footer#site-footer #footer-about a.footer-button {
+          margin-top: 0.32rem;
+        }
+
+        footer#site-footer section.horizontal-footer-section#footer-bottom-section {
+          padding: 1.32rem 0;
+          margin: 2rem 2rem 1.32rem 2rem;
+          border-top: 0.05rem solid #666666;
+        }
+
+        footer#site-footer #footer-social-buttons {
+          justify-self: flex-end;
+          margin-left: auto;
+        }
+
+        footer#site-footer #footer-social-buttons img {
+          margin-left: 0.68rem;
+        }
+
+        footer#site-footer #footer-social-buttons img:hover {
+          cursor: pointer;
+        }
+
+
+
+
+
+
+        @media screen and (max-width: 959px) {
+
+          footer#site-footer {
+            width: 100%;
+          }
+
+          footer#site-footer section.horizontal-footer-section {
+            flex-direction: column;
+            flex-wrap: wrap;
+          }
+
+          footer#site-footer section.horizontal-footer-section div {
+            flex-basis: 100%;
+            width: 100%;
+          }
+
+          footer#site-footer ul li {
+            display: block !important;
+            padding: 1em !important;
+            border-top: 1px solid #555555;
+            border-bottom: none;
+            border-left: none;
+            border-right: none;
+            font-size: 1.15rem !important;
+          }
+
+          footer#site-footer ul li:first-child {
+            border-top: none;
+          }
+
+          footer#site-footer a.footer-button {
+            display: block;
+            text-align: center;
+            max-width: 350px;
+            margin: 0.32rem auto;
+          }
+
+          footer#site-footer section.horizontal-footer-section#footer-top-section div {
+            margin-top: 0;
+            margin-bottom: 1.68rem;
+          }
+
+          footer#site-footer #footer-logo {
+            margin-right: 0;
+          }
+
+          footer#site-footer #footer-buttons-container {
+            margin-left: 0;
+          }
+
+          footer#site-footer ul#footer-top-menu {
+            width: 100%;
+            margin: 2rem 0 0 0;
+          }
+
+          footer#site-footer .footer-top-menu-item-active::before {
+            display: none;
+          }
+
+          footer#site-footer #footer-about {
+            margin-bottom: 3rem;
+          }
+
+          footer#site-footer .footer-columns-large,
+          footer#site-footer .footer-columns {
+            padding-right: 0;
+          }
+
+          footer#site-footer .footer-columns {
+            margin-top: 0;
+            margin-bottom: 4rem;
+          }
+
+          footer#site-footer .footer-columns:last-child {
+            margin-bottom: 0;
+          }
+
+          footer#site-footer .footer-columns h1 {
+            text-align: center;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+          }
+
+          footer#site-footer ul.footer-column-menu li {
+            margin-bottom: 0;
+            display: block;
+            text-align: center;
+          }
+
+          footer#site-footer section#footer-bottom-section div {
+            text-align: center;
+          }
+
+          footer#site-footer section.horizontal-footer-section#footer-bottom-section {
+            margin: 1.32rem 0;
+            padding: 0;
+            border-top: 0;
+          }
+
+          footer#site-footer section#footer-bottom-section #footer-social-buttons {
+            margin-top: 1.32rem;
+          }
+        }
+      </style>
