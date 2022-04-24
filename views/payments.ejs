@@ -34,6 +34,27 @@
 
 <div class="container">
   <h1>আপনি বিকাশ অথবা নগদ এ পেমেন্ট করতে পারেন। </h1>
+  <form>
+    <p>How would you like to be contacted?</p>
+
+    
+    <input class="rb-email" name="contact-preference" id="rb-email" type="radio" checked="checked" />
+    <label class="label" for="rb-email">Email</label>
+    <br>
+
+    <input class="rb-phone" name="contact-preference" id="rb-phone" type="radio" />
+    <label class="label" for="rb-phone">Phone</label>
+    <br>
+    <br>
+
+    <label class="label email" for="email">Email:</label>
+    <div class="rb-email" name="contact-preference" id="rb-email" >Show Bkash</div>
+    <input class="email" id="email" type="email" placeholder="email" />
+
+    <label class="label phone" for="phone">Phone:</label>
+    <input class="phone" id="phone" type="text" placeholder="phone" />
+
+  </form>
   <h3>বিকাশ</h3>
   <ol>
     <li>Dial *247#</li>
@@ -53,7 +74,8 @@
     <li>Enter Reference: Your Full Name</li>
     <li>Enter Menu PIN to Confirm</li>
   </ol>
-  <p>পেমেন্ট করা কমপ্লিট হলে <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে জমা দিবেন ।</b> ২৪ থাকে সর্বোচ্চ ৭২ ঘন্টার মধ্যে আপনাকে কোর্স এ অ্যাড করা
+  <p>পেমেন্ট করা কমপ্লিট হলে <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে জমা দিবেন ।</b> ২৪ থাকে সর্বোচ্চ ৭২ ঘন্টার
+    মধ্যে আপনাকে কোর্স এ অ্যাড করা
     হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
     <br>
     <br>
@@ -189,6 +211,34 @@
 
 
 <style>
+
+input {
+  font-size:1em;
+  height: 15px;
+  margin: 0;
+  padding: 5px;
+  border: 0;
+  color:#333;
+}
+
+ul{
+  list-style:none;
+}
+
+.email,
+.phone {
+  display:none;
+}
+
+.rb-email:checked ~ .email {
+  display:inline;
+}
+
+.rb-phone:checked ~ .phone {
+  display:inline;
+}
+
+
   * {
     box-sizing: border-box;
     margin: 0;
