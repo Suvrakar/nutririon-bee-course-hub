@@ -40,10 +40,10 @@ app.get('/', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/profile', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name })
+  res.render('index.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone  })
 })
 app.get('/profile2', checkAuthenticated, (req, res) => {
-  res.render('index2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name })
+  res.render('index2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
@@ -66,15 +66,17 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    // const hashedPassword = await bcrypt.hash(req.body.password, 10)
     users.push({
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
-      password: hashedPassword,
+      phone: req.body.phone,
+      unvname: req.body.unvname,
+      password: req.body.password,
       paymentStatus: true
     })
-    res.redirect('/login')
+    res.redirect('/profile')
   } catch {
     res.redirect('/register')
   }
