@@ -10,7 +10,7 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 const path = require('path');
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -102,4 +102,6 @@ function checkNotAuthenticated(req, res, next) {
   next()
 }
 
-app.listen(PORT)
+app.listen(PORT, ()=>{
+  console.log("Running app");
+})
