@@ -10,6 +10,7 @@ function initialize(passport, getUserByEmail, getUserById) {
 
     try {
       if (password===user.password) {
+        console.log(password, user)
         return done(null, user)
       } else {
         return done(null, false, { message: 'Password incorrect' })

@@ -35,7 +35,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/profile">My Profile</a></li>
-                <li><a class="dropdown-item" href="/profile">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
                 <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
                 <li>
                     <form action="/logout?_method=DELETE" method="POST">
@@ -52,25 +52,30 @@
 <div class="container">
     <div class="mt-5 d-flex justify-content-around">
         <div>
-            <h5 class="test">স্বাগতম, <%= name %> 
+            <h5 class="test">স্বাগতম, <%= name %>
             </h5>
         </div>
         <div>
-            <h6 class="test"> পেমেন্ট স্টেটাস : <%= paymentStatus %>
+            <h6 class="test"> পেমেন্ট স্টেটাস : <%= paymentStatus==="true"? "Done" : "Due" %>
             </h6>
             <h6 class="test">ইউনিভার্সিটির নাম : <%= unvname %>
             </h6>
             <h6 class="test"> ফোন নম্বর : <%= phone %>
+            </h6>
+
             </h6>
         </div>
     </div>
 
     <div class="mt-5">
         <h5>আপনার এনরোলকৃত কোর্সসমূহ : </h5>
-        <% if(paymentStatus===true){ %>
+        <h1>
+            <% %>
+        </h1>
+        <% if(paymentStatus==="true"){ %>
             <div class="pb-5 pt-2">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://www.medicahospitals.in/wp-content/uploads/2020/01/nutrition.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="./poster.jpeg" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">বেসিক ডায়েট প্লান</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
@@ -237,14 +242,6 @@
         padding: 0;
     }
 
-    .a{
-        padding: 12px!important;
-    }
-
-    .bttn {
-        padding: 11px;
-    }
-
     .nav {
         height: 8%;
         width: 100%;
@@ -268,7 +265,7 @@
     }
 
     .nav>.nav-links {
-        margin-left: 75%;
+        margin-left: 50%;
         display: inline;
         float: right;
         font-size: 18px;
@@ -289,7 +286,7 @@
         display: none;
     }
 
-    @media (max-width:600px) {
+    @media (max-width:800px) {
         .nav>.nav-btn {
             display: inline-block;
             position: absolute;
