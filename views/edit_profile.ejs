@@ -54,42 +54,40 @@
     </div>
   </div>
   <div class="col-sm d-flex justify-content-center">
-    <form action="/register" method="POST">
+    <form action="/edit" method="PUT">
       <div class="input-block">
         <input type="text" name="name" id="name" value=<%=name %> required>
         <span class="placeholder">
           Name
         </span>
       </div>
-      <br>
-      <div class="input-block">
-        <input type="text" name="email" id="email" value=<%=email %>  required>
+      <!-- <div class="input-block">
+        <input type="email" name="email" id="email" value=<%=email %>  required>
         <span class="placeholder">
           Email
         </span>
-      </div>
+      </div> -->
       <br>
       <div class="input-block">
-        <input type="text" name="unvname" id="phone" value=<%=unvname %> required>
+        <input type="text" name="unvname" id="unvname" value=<%=unvname %> required>
         <span class="placeholder">
           University Name
         </span>
       </div>
       <br>
       <div class="input-block">
-        <input type="text" name="phone" id="phone" value=<%=phone %> required>
+        <input type="number" name="phone" id="phone" value=<%=phone %> required>
         <span class="placeholder">
           Phone Number
         </span>
       </div>
       <br>
-      <div class="input-block">
+      <!-- <div class="input-block">
         <input type="password" name="password" id="password"  value=<%=password %> required>
         <span class="placeholder">
           Old Password
         </span>
-      </div>
-      <br>
+      </div> -->
       <div class="input-block">
         <input type="password" name="password" id="password"  required>
         <span class="placeholder">

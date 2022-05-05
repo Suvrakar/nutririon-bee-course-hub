@@ -4,6 +4,11 @@
   integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,60 +38,151 @@
 </div>
 
 <div class="container">
-  <h1>আপনি বিকাশ অথবা নগদ এ পেমেন্ট করতে পারেন। </h1>
-  <form>
-    <p>How would you like to be contacted?</p>
+  <ul class="parentClass my-5">
+    <h5>আপনি কিভাবে পেমেন্ট করতে চান? </h5>
+    <li>
+      <label class="p-3">
+        <img src="./Bkash-logo.png" width="60px"><input type="radio" value="" name="anything" class="radioCls" id="yes">
+      </label>
+      <label>
+        <img src="./Nagad-logo.png" width="60px"><input type="radio" value="" name="anything" class="radioCls" id="no">
+      </label>
+    </li>
+  </ul>
+  <div class="someData" id="first">
+    <h3><img src="./Bkash-logo.png" width="100px"></h3>
+    <ol>
+      <li>ডায়াল *247#</li>
+      <li>সিলেক্ট সেন্ড মানি অপশনঃ 1 </li>
+      <li>রিসিভার বিকাশ নম্বর দিনঃ <b>01521429803</b></li>
+      <li>টাকার পরিমান দিন</li>
+      <li>রেফারেন্সে নিজের নাম উল্লেখ করুন</li>
+      <li>পিন নম্বর দিয়ে নিশ্চিত করুন</li>
+      <li>Transaction Id- টি নোট করে রাখুন </li>
+      <br>
+      <p>অথবা বিকাশ এপ থেকে সেন্ড মানি (পার্সোনাল) অপশন ব্যবহার করে পাঠাতে পারেন। </p>
+
+      <p>পেমেন্ট করা কমপ্লিট হলে পেমেন্ট টি কন্ফার্ম করার জন্য <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে জমা দিবেন
+          ।</b> ২৪ থাকে সর্বোচ্চ ৭২
+        ঘন্টার
+        মধ্যে আপনাকে কোর্স এ অ্যাড করা
+        হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
+        <br>
+        <br>
+        <b>Call here: 01521429803</b>
+      <div style="background-color: #00c3ce;">
+        <form action="/" method="POST">
+          <div>
+            <div class="input-block">
+              <input type="text" name="name" id="name" required>
+              <span class="placeholder">
+                নাম
+              </span>
+            </div>
+          </div>
+        
+          <br>
+          <div class="input-block">
+            <input type="number" name="bkash" id="bkash" required>
+            <span class="placeholder">
+              যেই নম্বর থেকে পেমেন্ট করেছেন
+            </span>
+          </div>
+          <br>
+          <div class="input-block">
+            <input type="number" name="amount" id="amount" required>
+            <span class="placeholder">
+              টাকার পরিমান
+            </span>
+          </div>
+          <br>
+          <div class="input-block">
+            <input type="number" name="amount" id="amount" required>
+            <span class="placeholder">
+              ট্রানসাকশান Id
+            </span>
+          </div>
+          <br>
 
 
-    <input class="rb-email" name="contact-preference" id="rb-email" type="radio" checked="checked" />
-    <label class="label" for="rb-email">Email</label>
-    <br>
+          <br>
+          <button type="submit" class="btnLogin">Submit</button>
+          <br>
 
-    <input class="rb-phone" name="contact-preference" id="rb-phone" type="radio" />
-    <label class="label" for="rb-phone">Phone</label>
-    <br>
-    <br>
+        </form>
+      </div>
+      </p>
 
-    <label class="label email" for="email">Email:</label>
-    <div class="rb-email" name="contact-preference" id="rb-email">Show Bkash</div>
-    <input class="email" id="email" type="email" placeholder="email" />
 
-    <label class="label phone" for="phone">Phone:</label>
-    <input class="phone" id="phone" type="text" placeholder="phone" />
+    </ol>
 
-  </form>
-  <h3>বিকাশ</h3>
-  <ol>
-    <li>Dial *247#</li>
-    <li>Select Send Money Option: 1</li>
-    <li>Enter Receiver Bkash Account Number: <b>01521429803</b></li>
-    <li>Enter Amount</li>
-    <li>Enter Reference: Your Full Name</li>
-    <li>Enter Menu PIN to Confirm</li>
-  </ol>
 
-  <h3>নগদ</h3>
-  <ol>
-    <li>Dial *167#</li>
-    <li>Select Send Money Option: 2</li>
-    <li>Enter Receiver Bkash Account Number: <b>01521429803</b></li>
-    <li>Enter Amount</li>
-    <li>Enter Reference: Your Full Name</li>
-    <li>Enter Menu PIN to Confirm</li>
-  </ol>
-  <p>পেমেন্ট করা কমপ্লিট হলে <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে জমা দিবেন ।</b> ২৪ থাকে সর্বোচ্চ ৭২ ঘন্টার
-    মধ্যে আপনাকে কোর্স এ অ্যাড করা
-    হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
+  </div>
+  <div class="someData " id="second">
+    <h3><img src="./Nagad-logo.png" width="100px"></h3>
+    <ol>
+      <li>ডায়াল *167#</li>
+      <li>সিলেক্ট সেন্ড মানি অপশনঃ 2 </li>
+      <li>রিসিভার নগদ নম্বর দিনঃ <b>01521429803</b></li>
+      <li>টাকার পরিমান দিন</li>
+      <li>রেফারেন্সে নিজের নাম উল্লেখ করুন</li>
+      <li>পিন নম্বর দিয়ে নিশ্চিত করুন</li>
+      <li>Transaction Id- টি নোট করে রাখুন </li>
+    </ol>
+
     <br>
-    <br>
-    <b><a
-        href="https://docs.google.com/forms/d/e/1FAIpQLScH04uCq8DCHPoxN2QB-eGsLCOJ460D6JjbO7dyFAmNIisCwQ/viewform">Click
-        Here For the Link</a></b>
-    <br>
-    <br>
-    <b>Call here: 01521429803</b>
-  </p>
+    <p>অথবা নগদ এপ থেকে সেন্ড মানি (পার্সোনাল) অপশন ব্যবহার করে পাঠাতে পারেন। </p>
+
+    <p>পেমেন্ট করা কমপ্লিট হলে পেমেন্ট টি কন্ফার্ম করার জন্য <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে জমা দিবেন
+        ।</b> ২৪ থাকে সর্বোচ্চ ৭২
+      ঘন্টার
+      মধ্যে আপনাকে কোর্স এ অ্যাড করা
+      হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
+      <br>
+      <br>
+      <b>Call here: 01521429803</b>
+    </p>
+
+    <form action="/" method="POST">
+      <div class="input-block">
+        <input type="text" name="name" id="name" required>
+        <span class="placeholder">
+          নাম
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="number" name="bkash" id="bkash" required>
+        <span class="placeholder">
+          যেই নম্বর থেকে পেমেন্ট করেছেন
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="number" name="amount" id="amount" required>
+        <span class="placeholder">
+          টাকার পরিমান
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="number" name="amount" id="amount" required>
+        <span class="placeholder">
+          ট্রানসাকশান Id
+        </span>
+      </div>
+      <br>
+
+
+      <br>
+      <button type="submit" class="btnLogin">Submit</button>
+      <br>
+
+    </form>
+
+  </div>
 </div>
+
 
 
 
@@ -184,13 +280,12 @@
       &copy; Nutrition Bee. 2022. All rights reserved.
     </div>
     <div id="footer-social-buttons">
-      <a
-       target="_blank" href="https://www.facebook.com/nutritionbee"><img
+      <a target="_blank" href="https://www.facebook.com/nutritionbee"><img
           src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png" /></a>
       <!-- <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png" />
       <img src="https://img.icons8.com/ios-filled/25/999999/pinterest--v1.png" /> -->
-      <a
-       target="_blank" href="https://www.instagram.com/nutritionbee00/?igshid=YmMyMTA2M2Y=&fbclid=IwAR3qfcUD9xFgCQ5oBdZJA-dp6H02_--nVXE2Ph4NDxFD6IA8xdDdws8LM9A"><img
+      <a target="_blank"
+        href="https://www.instagram.com/nutritionbee00/?igshid=YmMyMTA2M2Y=&fbclid=IwAR3qfcUD9xFgCQ5oBdZJA-dp6H02_--nVXE2Ph4NDxFD6IA8xdDdws8LM9A"><img
           src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png" /></a>
     </div>
   </section>
@@ -198,9 +293,121 @@
 </footer>
 
 
+<script>
+  $(document).ready(function () {
+    //after load will check the checkbox is checked or not
+    var check = $("#yes").prop("checked");
+    if (check) {
+      $("#first").addClass("activeTab");
+    }
+
+    //click on yes
+    $("#yes").on("click", function () {
+      check = $(this).prop("checked");
+      $("#second").removeClass("activeTab");
+      $("#first").addClass("activeTab");
+
+    })
+    //click on No
+    $("#no").on("click", function () {
+      check = $(this).prop("checked");
+      $("#first").removeClass("activeTab");
+      $("#second").addClass("activeTab");
+      console.log(check);
+    })
+  });
+</script>
+
 
 
 <style>
+  .btnLogin {
+    padding: 0;
+    border: none;
+    background: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(238, 155, 0);
+    /* color: white; */
+  }
+
+  .formContainer {
+    display: flex;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  div.input-block {
+    position: relative;
+  }
+
+  div.input-block input {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #495055;
+    width: 300px;
+    padding: 20px 20px;
+    border-radius: 1rem;
+    border: 2px solid #D9D9D9;
+    outline: none;
+  }
+
+  div.input-block span.placeholder {
+    position: absolute;
+    margin: 17px 0;
+    padding: 0 4px;
+    font-family: Roboto, sans-serif;
+
+    color: #6c757d;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 1rem;
+
+    top: 0;
+    left: 17px;
+
+    transition: all 0.2s;
+    transform-origin: 0% 0%;
+    background: none;
+    pointer-events: none;
+  }
+
+  div.input-block input:valid+span.placeholder,
+  div.input-block input:focus+span.placeholder {
+    transform: scale(0.8) translateY(-30px);
+    background: #fff;
+  }
+
+  div.input-block input:focus {
+    color: #284B63;
+    border-color: #284B63;
+  }
+
+  div.input-block input:focus+span.placeholder {
+    color: #284B63;
+  }
+
+
+
+
+  /* radio bttn  */
+  .someData {
+    max-width: 100vw;
+    max-height: 100%;
+    display: none;
+    padding: 1%;
+  }
+
+  #first {}
+
+  #second {}
+
+  .activeTab {
+    display: block;
+  }
+
   input {
     font-size: 1em;
     height: 15px;
