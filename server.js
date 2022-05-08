@@ -19,6 +19,9 @@ const multer = require('multer');
 const mongoose = require("mongoose")
 
 
+
+
+
 connect(); //db connection
 
 const initializePassport = require('./passport-config')
@@ -53,6 +56,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
+
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads')
@@ -70,8 +74,10 @@ app.get('/', checkNotAuthenticated, (req, res) => {
   res.render('home.ejs')
 })
 
-app.get('/profile', checkAuthenticated, (req, res) => {
-  res.render('index.ejs', { email: req.body.email, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+app.get('/profile', checkAuthenticated, async (req, res) => {
+  const user = await Users.find({ email: req.user.email })
+  const mail = user[0].email;
+  res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 
 app.get('/profile2', checkAuthenticated, (req, res) => {
@@ -82,12 +88,22 @@ app.get('/profile3', checkAuthenticated, (req, res) => {
   res.render('content1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
+app.get('/mycourses', checkAuthenticated, (req, res) => {
+  res.render('mycourses.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+
 app.get('/quiz1', checkAuthenticated, (req, res) => {
   res.render('quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
-app.get('/edit', checkAuthenticated, (req, res) => {
-  res.render('edit_profile.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+app.post('/quiz1', checkAuthenticated, (req, res) => {
+  res.render('quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+
+app.get('/edit', checkAuthenticated, async (req, res) => {
+  const user = await Users.find({ email: req.user.email })
+  const mail = user[0].email;
+  res.render('edit_profile.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
@@ -103,6 +119,8 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: true
 }))
+
+
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register.ejs')
@@ -134,35 +152,27 @@ app.post('/register', checkNotAuthenticated, upload.single('image'), async (req,
   }
 })
 
-app.put('/edit/:id', checkNotAuthenticated, async (req, res) => {
-  // try {
-  //   const newData = req.body;
-  //   console.log(newData)
+app.put('/edit', checkAuthenticated, async (req, res) => {
+  const user = await Users.find({ email: req.body.email })
+  console.log(user[0]._id.valueOf());
+  const mail = user[0].email;
+  const id=user[0]._id.valueOf().toString();
+  try {
 
-  //   res.redirect('/profile')
-  // } catch {
-  //   res.redirect('/register')
-  // }
-  // console.log(Users.updateOne({
-  //   phone: mongoose.Types.ObjectId(req.body.phone)
-  // }, {
-  //   $set: req.body
-  // }))
-  console.log(req.body.id);
-try {
-  let check = await Users.updateOne({
-    // _id: mongoose.Types.ObjectId("62716ab51b79cc655dc244b9")
-    // _id: mongoose.Types.ObjectId(req.body._id)
-    _id: mongoose.Types.ObjectId(req.params.id)
-  }, {
-    $set: req.body
-  });
-  if (check.modifiedCount !== 0) {
-    res.send("updated");
+    let check = await Users.updateOne({
+      // _id: mongoose.Types.ObjectId("62716ab51b79cc655dc244b9")
+      // _id: mongoose.Types.ObjectId(req.body._id)
+      _id: mongoose.Types.ObjectId(id)
+    }, {
+      $set: req.body
+    });
+    if (check.modifiedCount !== 0) {
+      // res.send("Success")
+      res.redirect("/profile")
+    }
+  } catch (error) {
+    res.send("error");
   }
-} catch (error) {
-  res.send(error);
-}
 })
 
 

@@ -8,6 +8,9 @@ const Users = model('Users', Schema({
     unvname: { type: String, required: true },
     paymentStatus: { type: String, required: false },
     password: { type: String, required: true },
+    quizmark1 : {
+        type: Array, required: false
+    }
     // img:
     // {
     //     data: Buffer,

@@ -69,10 +69,10 @@
                     <label for="c" id="c_text">Question</label>
                 </li>
 
-                <li>
+                <!-- <li>
                     <input type="radio" name="answer" id="d" class="answer">
                     <label for="d" id="d_text">Question</label>
-                </li>
+                </li> -->
             </ul>
         </div>
         <button id="submit">Submit</button>
@@ -191,37 +191,79 @@
 
 
 <script>
+
+    const scoreArr = [];
+    console.log(scoreArr);
+
     const quizData = [
         {
-            question: "Which language runs in a web browser?",
-            a: "Java",
-            b: "C",
-            c: "Python",
-            d: "JavaScript",
-            correct: "d",
+            question: "How much kcal do we get from 1 gram of protein?",
+            a: "2 kcal",
+            b: "4 kcal ",
+            c: "9 kcal",
+            correct: "c",
         },
         {
-            question: "What does CSS stand for?",
-            a: "Central Style Sheets",
-            b: "Cascading Style Sheets",
-            c: "Cascading Simple Sheets",
-            d: "Cars SUVs Sailboats",
-            correct: "b",
+            question: "1/2 cup cooked white rice = _?____ kcal",
+            a: "100",
+            b: "110",
+            c: "103",
+            correct: "c",
         },
         {
-            question: "What does HTML stand for?",
-            a: "Hypertext Markup Language",
-            b: "Hypertext Markdown Language",
-            c: "Hyperloop Machine Language",
-            d: "Helicopters Terminals Motorboats Lamborginis",
+            question: "Foods high in energy but low in nutritional value provide _____ calories",
+            a: "empty",
+            b: "high",
+            c: "moderate ",
             correct: "a",
         },
         {
-            question: "What year was JavaScript launched?",
-            a: "1996",
-            b: "1995",
-            c: "1994",
-            d: "none of the above",
+            question: "How much percentage of your plate should consist whole grains?",
+            a: "50%",
+            b: "25%",
+            c: "35%",
+            correct: "b",
+        },
+        {
+            question: "What is the BMI range for over weight?",
+            a: "25.0 - 29.9",
+            b: "24.5 - 27.9",
+            c: "27.0 - 29.9",
+            correct: "a",
+        },
+        {
+            question: "Who shouldn’t use the BMI calculator?",
+            a: "Teenage Girls ",
+            b: "Young Children ",
+            c: "Adult Women",
+            correct: "c",
+        },
+        {
+            question: "Which one is at risk waist hip ratio for females?",
+            a: "> 0.86",
+            b: "> 0.95",
+            c: "< 0.75",
+            correct: "a",
+        },
+        {
+            question: "BMI is a better indicator and accurate tool than WHR for predicting complications in trauma patients and death in women with Heart failure?",
+            a: "True",
+            b: "False",
+            c: "No answer",
+            correct: "b",
+        },
+        {
+            question: "How much essential fat is needed for men?",
+            a: "0 - 12 %",
+            b: " 2 - 12 %",
+            c: "2 - 4 %",
+            correct: "c",
+        },
+        {
+            question: "The percentage of essential body fat is higher for ___",
+            a: "Children ",
+            b: "Women",
+            c: "Men",
             correct: "b",
         },
     ];
@@ -234,6 +276,7 @@
     const c_text = document.getElementById('c_text')
     const d_text = document.getElementById('d_text')
     const submitBtn = document.getElementById('submit')
+
 
     let currentQuiz = 0
     let score = 0
@@ -249,7 +292,7 @@
         a_text.innerText = currentQuizData.a
         b_text.innerText = currentQuizData.b
         c_text.innerText = currentQuizData.c
-        d_text.innerText = currentQuizData.d
+        // d_text.innerText = currentQuizData.d
     }
 
     function deselectAnswers() {
@@ -268,13 +311,19 @@
         return answer
     }
 
+
     submitBtn.addEventListener('click', () => {
         const answer = getSelected()
 
         if (answer) {
             if (answer === quizData[currentQuiz].correct) {
                 score++
+                scoreArr.push(score);
+
             }
+
+            console.log(score);
+            console.log(scoreArr);
 
             currentQuiz++
 
@@ -292,6 +341,7 @@
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -360,6 +410,8 @@
 
     .bttn {
         padding: 14px;
+        background-color: #732d91;
+
     }
 
     .nav {
