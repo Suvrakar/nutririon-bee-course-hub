@@ -9,41 +9,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="html-form-enhancer.mjs" type="module"></script>
 
+
 <!-- Navbar -->
 <div class="nav">
-  <input type="checkbox" id="nav-check" />
+  <input type="checkbox" id="nav-check">
   <div class="nav-header">
-      <div class="nav-title">
-          <p>Nutrition Bee</p>
-      </div>
+    <div class="nav-title">
+      <p class="m-2">Nutrition Bee</p>
+    </div>
   </div>
   <div class="nav-btn">
-      <label>
-          <span></span>
-          <span></span>
-          <span></span>
-      </label>
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
   </div>
 
-  <div class="nav-links">
-      <div class="dropdown">
-          <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <%= name %>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="/profile">My Profile</a></li>
-              <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
-              <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
-              <li>
-                  <form action="/logout?_method=DELETE" method="POST">
-                      <button class="bttn" type="submit">Log Out</button>
-                  </form>
-              </li>
-          </ul>
-      </div>
-
-  </div>
+    <div class="nav-btn">
+        <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <%= name[0] %>
+        </button>
+    </div>
 </div>
 
 <!-- Register  -->
