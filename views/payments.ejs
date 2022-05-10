@@ -12,13 +12,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payments | Nutrition Bee Course Hub</title>
 
 <!-- Navbar -->
 <div class="nav">
   <input type="checkbox" id="nav-check">
   <div class="nav-header">
     <div class="nav-title">
-      Nutrition Bee
+      <img src="./whiteLogo.png" width="100px" style="">
     </div>
   </div>
   <div class="nav-btn">
@@ -80,7 +81,7 @@
               </span>
             </div>
           </div>
-        
+
           <br>
           <div class="input-block">
             <input type="number" name="bkash" id="bkash" required>
@@ -321,6 +322,8 @@
 
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
   .btnLogin {
     padding: 0;
     border: none;
@@ -435,16 +438,19 @@
   }
 
 
+  /* navigation  */
+
+
   * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
   }
 
   .nav {
-    height: 8%;
     width: 100%;
-    background-color: #131313 !important;
+    background: #1e3138 !important;
     position: relative;
   }
 
@@ -456,7 +462,7 @@
     display: inline-block;
     font-size: 22px;
     color: #fff;
-    /* padding: 10px 10px 10px 10px; */
+    padding: 10px 10px 10px 10px;
   }
 
   .nav>.nav-btn {
@@ -464,28 +470,30 @@
   }
 
   .nav>.nav-links {
-    margin-left: 50%;
+    position: absolute;
     display: inline;
-    float: right;
+    left: 55%;
     font-size: 18px;
+    /* padding-left: 50%; */
   }
 
   .nav>.nav-links>a {
     display: inline-block;
-    padding: 13px 10px 13px 10px;
+    padding: 15px 10px 15px 10px;
     text-decoration: none;
     color: #efefef;
+    font-size: 14px;
   }
 
   .nav>.nav-links>a:hover {
-    background-color: grey;
+    color: #a8a8a8;
   }
 
   .nav>#nav-check {
     display: none;
   }
 
-  @media (max-width:800px) {
+  @media (max-width:835px) {
     .nav>.nav-btn {
       display: inline-block;
       position: absolute;
@@ -544,8 +552,6 @@
       overflow-y: auto;
     }
   }
-
-
 
   /* Footer  */
 
