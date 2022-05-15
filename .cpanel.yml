@@ -3,4 +3,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/nutrvfys/public_html/
     - /bin/cp * $DEPLOYPATH
-  
+    - /bin/cp style.css $DEPLOYPATH
