@@ -9,33 +9,37 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz 1 | Nutrition Bee Course Hub</title>
+
 
 
 <!-- Navbar -->
-<div class="nav">
-    <input type="checkbox" id="nav-check" />
-    <div class="nav-header">
-        <div class="nav-title">
-            <p>Nutrition Bee</p>
+<div class="nava d-flex">
+    <input type="checkbox" id="nava-check">
+    <div class="nava-header">
+        <div class="nava-title">
+            <img src="./whiteLogo.png" width="100px">
         </div>
     </div>
-    <div class="nav-btn">
-        <label>
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+    <div class="nava-btn">
+
+        <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <%= name[0].toUpperCase(); %>
+
+        </button>
     </div>
 
-    <div class="nav-links">
+    <div class="nava-links">
         <div class="dropdown">
             <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <%= name %>
+                <%= name[0].toUpperCase(); %>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/profile">My Profile</a></li>
-                <li><a class="dropdown-item" href="/profile">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
                 <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
                 <li>
                     <form action="/logout?_method=DELETE" method="POST">
@@ -47,6 +51,7 @@
 
     </div>
 </div>
+
 
 <!-- quiz  -->
 <div class="d-flex  align-items-center justify-content-center my-5">
@@ -340,13 +345,172 @@
 </script>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        font-family: 'Montserrat', sans-serif;
     }
+
+    .a {
+        height: 98%;
+        width: 98%;
+        border-radius: 50%;
+        border: 2px solid rgb(245, 245, 242);
+    }
+
+    .bttn {
+        background-color: #8e44ad;
+        color: #fff;
+        border: none;
+        display: block;
+        width: 80%;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-family: inherit;
+        padding: 1.3rem;
+        margin: 15px;
+        border-radius: 7px;
+    }
+
+    button:hover {
+        background-color: #732d91;
+    }
+
+    button:focus {
+        outline: none;
+        background-color: #5e3370;
+    }
+
+    .a {
+        padding: 12 !important;
+    }
+
+    .bttn {
+        padding: 14px;
+        background-color: #732d91;
+
+    }
+
+    .nava {
+        width: 100%;
+        background: #1e3138 !important;
+        position: relative;
+    }
+
+    .nava>.nava-header {
+        display: inline;
+    }
+
+    .nava>.nava-header>.nava-title {
+        display: inline-block;
+        font-size: 22px;
+        color: #fff;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .nava>.nava-btn {
+        display: none;
+    }
+
+    .nava>.nava-links {
+        margin-left: 70%;
+        display: inline;
+        float: right;
+        font-size: 18px;
+    }
+
+    .nava>.nava-links>a {
+        display: inline-block;
+        padding: 13px 10px 13px 10px;
+        text-decoration: none;
+        color: #efefef;
+    }
+
+    .nava>.nava-links>a:hover {
+        background-color: grey;
+    }
+
+    .nava>#nava-check {
+        display: none;
+    }
+
+    @media (max-width:800px) {
+        .nava>.nava-links {
+            margin-left: 40%;
+            display: inline;
+            float: right;
+            font-size: 18px;
+        }
+
+        .nava>.nava-links>a {
+            display: inline-block;
+            padding: 13px 10px 13px 10px;
+            text-decoration: none;
+            color: #efefef;
+        }
+
+        /* .nav>.nav-btn {
+              display: inline-block;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+          }
+  
+          .nav>.nav-btn>label {
+              display: inline-block;
+              width: 50px;
+              height: 50px;
+              padding: 13px;
+          }
+  
+          .nav>.nav-btn>label:hover,
+          .nav #nav-check:checked~.nav-btn>label {
+              background-color: grey;
+          }
+  
+          .nav>.nav-btn>label>span {
+              display: block;
+              width: 25px;
+              height: 10px;
+              border-top: 2px solid #eee;
+              z-index: 10000;
+          }
+  
+          .nav>.nav-links {
+              position: absolute;
+              display: block;
+              float: right;
+              width: 100%;
+              background-color: #151414;
+              height: 0px;
+              transition: all 0.3s ease-in;
+              overflow-y: hidden;
+              top: 50px;
+              left: 0px;
+              z-index: 10000;
+  
+          }
+  
+          .nav>.nav-links>a {
+              display: block;
+              width: 100%;
+              z-index: 10000;
+  
+          }
+  
+          .nav>#nav-check:not(:checked)~.nav-links {
+              height: 0px;
+          }
+  
+          .nav>#nav-check:checked~.nav-links {
+              height: calc(100vh - 50px);
+              overflow-y: auto;
+          } */
+    }
+
 
 
     .quiz-container {

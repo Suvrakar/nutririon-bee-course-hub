@@ -13,10 +13,12 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Courses | Nutrition Bee Course Hub</title>
+
 </head>
 
 <body>
+
     <!-- Navbar -->
     <div class="nava d-flex">
         <input type="checkbox" id="nava-check">
@@ -24,14 +26,6 @@
             <div class="nava-title">
                 <img src="./whiteLogo.png" width="100px">
             </div>
-        </div>
-        <div class="nava-btn">
-
-            <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <%= name[0].toUpperCase(); %>
-
-            </button>
         </div>
 
         <div class="nava-links">
@@ -55,7 +49,6 @@
 
         </div>
     </div>
-
 
 
     <!-- content  -->
@@ -215,6 +208,7 @@
     .a {
         height: 98%;
         width: 98%;
+        padding: 13.5px;
         border-radius: 50%;
         border: 2px solid rgb(245, 245, 242);
     }
@@ -242,7 +236,9 @@
         background-color: #5e3370;
     }
 
-
+    .a {
+        padding: 12 !important;
+    }
 
     .bttn {
         padding: 14px;
@@ -309,62 +305,62 @@
         }
 
         /* .nav>.nav-btn {
-            display: inline-block;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-        }
-
-        .nav>.nav-btn>label {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            padding: 13px;
-        }
-
-        .nav>.nav-btn>label:hover,
-        .nav #nav-check:checked~.nav-btn>label {
-            background-color: grey;
-        }
-
-        .nav>.nav-btn>label>span {
-            display: block;
-            width: 25px;
-            height: 10px;
-            border-top: 2px solid #eee;
-            z-index: 10000;
-        }
-
-        .nav>.nav-links {
-            position: absolute;
-            display: block;
-            float: right;
-            width: 100%;
-            background-color: #151414;
-            height: 0px;
-            transition: all 0.3s ease-in;
-            overflow-y: hidden;
-            top: 50px;
-            left: 0px;
-            z-index: 10000;
-
-        }
-
-        .nav>.nav-links>a {
-            display: block;
-            width: 100%;
-            z-index: 10000;
-
-        }
-
-        .nav>#nav-check:not(:checked)~.nav-links {
-            height: 0px;
-        }
-
-        .nav>#nav-check:checked~.nav-links {
-            height: calc(100vh - 50px);
-            overflow-y: auto;
-        } */
+              display: inline-block;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+          }
+  
+          .nav>.nav-btn>label {
+              display: inline-block;
+              width: 50px;
+              height: 50px;
+              padding: 13px;
+          }
+  
+          .nav>.nav-btn>label:hover,
+          .nav #nav-check:checked~.nav-btn>label {
+              background-color: grey;
+          }
+  
+          .nav>.nav-btn>label>span {
+              display: block;
+              width: 25px;
+              height: 10px;
+              border-top: 2px solid #eee;
+              z-index: 10000;
+          }
+  
+          .nav>.nav-links {
+              position: absolute;
+              display: block;
+              float: right;
+              width: 100%;
+              background-color: #151414;
+              height: 0px;
+              transition: all 0.3s ease-in;
+              overflow-y: hidden;
+              top: 50px;
+              left: 0px;
+              z-index: 10000;
+  
+          }
+  
+          .nav>.nav-links>a {
+              display: block;
+              width: 100%;
+              z-index: 10000;
+  
+          }
+  
+          .nav>#nav-check:not(:checked)~.nav-links {
+              height: 0px;
+          }
+  
+          .nav>#nav-check:checked~.nav-links {
+              height: calc(100vh - 50px);
+              overflow-y: auto;
+          } */
     }
 
 
@@ -655,6 +651,184 @@
 
         footer#site-footer section#footer-bottom-section #footer-social-buttons {
             margin-top: 1.32rem;
+        }
+    }
+
+    .btnLogin {
+        padding: 0;
+        border: none;
+        background: none;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(238, 155, 0);
+        /* color: white; */
+    }
+
+    .formContainer {
+        display: flex;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    /* input form  */
+    div.input-block {
+        position: relative;
+    }
+
+    div.input-block input {
+        font-weight: 500;
+        font-size: 1rem;
+        color: #495055;
+        width: 300px;
+        padding: 15px 15px;
+        border-radius: 1rem;
+        border: 2px solid #D9D9D9;
+        outline: none;
+    }
+
+    div.input-block span.placeholder {
+        position: absolute;
+        margin: 17px 0;
+        padding: 0 4px;
+        font-family: Roboto, sans-serif;
+
+        color: #6c757d;
+
+        display: flex;
+        align-items: center;
+
+        font-size: 1rem;
+
+        top: 0;
+        left: 17px;
+
+        transition: all 0.2s;
+        transform-origin: 0% 0%;
+        background: none;
+        pointer-events: none;
+    }
+
+    div.input-block input:valid+span.placeholder,
+    div.input-block input:focus+span.placeholder {
+        transform: scale(0.8) translateY(-30px);
+        background: #fff;
+    }
+
+    .placeFixed {
+        transform: scale(0.8) translateY(-30px);
+        background: #fff;
+    }
+
+    div.input-block input:focus {
+        color: #284B63;
+        border-color: #284B63;
+    }
+
+    div.input-block input:focus+span.placeholder {
+        color: #284B63;
+    }
+
+    .nav {
+        height: 8%;
+        width: 100%;
+        background-color: #131313 !important;
+        position: relative;
+    }
+
+    .nav>.nav-header {
+        display: inline;
+    }
+
+    .nav>.nav-header>.nav-title {
+        display: inline-block;
+        font-size: 22px;
+        color: #fff;
+        /* padding: 10px 10px 10px 10px; */
+    }
+
+    .nav>.nav-btn {
+        display: none;
+    }
+
+    .nav>.nav-links {
+        margin-left: 50%;
+        display: inline;
+        float: right;
+        font-size: 18px;
+    }
+
+    .nav>.nav-links>a {
+        display: inline-block;
+        padding: 13px 10px 13px 10px;
+        text-decoration: none;
+        color: #efefef;
+    }
+
+    .nav>.nav-links>a:hover {
+        background-color: grey;
+    }
+
+    .nav>#nav-check {
+        display: none;
+    }
+
+    @media (max-width:800px) {
+        .nav>.nav-btn {
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        .nav>.nav-btn>label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 13px;
+        }
+
+        .nav>.nav-btn>label:hover,
+        .nav #nav-check:checked~.nav-btn>label {
+            background-color: grey;
+        }
+
+        .nav>.nav-btn>label>span {
+            display: block;
+            width: 25px;
+            height: 10px;
+            border-top: 2px solid #eee;
+            z-index: 10000;
+        }
+
+        .nav>.nav-links {
+            position: absolute;
+            display: block;
+            float: right;
+            width: 100%;
+            background-color: #151414;
+            height: 0px;
+            transition: all 0.3s ease-in;
+            overflow-y: hidden;
+            top: 50px;
+            left: 0px;
+            z-index: 10000;
+
+        }
+
+        .nav>.nav-links>a {
+            display: block;
+            width: 100%;
+            z-index: 10000;
+
+        }
+
+        .nav>#nav-check:not(:checked)~.nav-links {
+            height: 0px;
+        }
+
+        .nav>#nav-check:checked~.nav-links {
+            height: calc(100vh - 50px);
+            overflow-y: auto;
         }
     }
 </style>
