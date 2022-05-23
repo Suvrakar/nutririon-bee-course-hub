@@ -46,7 +46,6 @@ initialPass(); //passport start
 
 app.set('view-engine', 'ejs')
 app.set('views', path.join(__dirname, './views'));
-app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -59,9 +58,9 @@ app.use(passport.session())
 app.use(express.static("public"));
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
+app.use(express.json())
 
 
 // var storage = multer.diskStorage({
@@ -100,11 +99,11 @@ app.get('/mycourses', checkAuthenticated, (req, res) => {
 })
 
 app.get('/quiz1', checkAuthenticated, (req, res) => {
-  res.render('quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
 })
 
 app.post('/quiz1', checkAuthenticated, (req, res) => {
-  res.render('quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('quiz1.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
 })
 
 app.get('/edit', checkAuthenticated, async (req, res) => {
@@ -152,6 +151,8 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     let paymentStatus = {
       paymentStatus: false,
+      quiz1: 0
+
     }
     let userData = new Users(req.body);
     const finalResult = Object.assign(userData, paymentStatus);
@@ -181,7 +182,6 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
   const mail = user[0].email;
   const id = user[0]._id.valueOf().toString();
   try {
-
     let check = await Users.updateOne({
       // _id: mongoose.Types.ObjectId("62716ab51b79cc655dc244b9")
       // _id: mongoose.Types.ObjectId(req.body._id)
@@ -194,9 +194,41 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
       res.redirect("/profile")
     }
   } catch (error) {
-    res.send("error");
+    res.redirect("/edit")
   }
 })
+
+app.put('/quiz1', checkNotAuthenticated, async (req, res) => {
+  const user = await Users.find({ email: req.body.email })
+  const id = user[0]._id.valueOf().toString();
+  console.log(id);
+  console.log(req.body.quiz1);
+  const a = {
+    "quiz1": req.body.quiz1
+  }
+  try {
+    let check = await Users.updateOne({
+      _id: mongoose.Types.ObjectId(id)
+    }, {
+      $set: a
+
+    });
+
+    if (check.modifiedCount !== 0) {
+      res.send("Success")
+      // res.redirect("/quiz1")
+      // console.log(check.modifiedCount);
+
+    }
+  } catch (error) {
+    res.send("No")
+    // res.redirect("/quiz1")
+    // console.log(check.modifiedCount);
+
+  }
+})
+
+
 
 
 

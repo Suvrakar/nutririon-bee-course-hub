@@ -8,6 +8,7 @@
     crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quiz 1 | Nutrition Bee Course Hub</title>
 
@@ -42,6 +43,7 @@
                 <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
                 <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
                 <li>
+                    <form method="POST" action="/edit?_method=PUT"></form>
                     <form action="/logout?_method=DELETE" method="POST">
                         <button class="bttn" type="submit">Log Out</button>
                     </form>
@@ -80,7 +82,7 @@
                 </li> -->
             </ul>
         </div>
-        <button id="submit">Submit</button>
+        <button id="submit" class="bttn">Submit</button>
     </div>
 </div>
 
@@ -196,7 +198,6 @@
 <script>
 
     const scoreArr = [];
-    console.log(scoreArr);
 
     const quizData = [
         {
@@ -270,7 +271,8 @@
             correct: "b",
         },
     ];
-
+    // const axios = require('axios');
+    // import axios from "axios"
     const quiz = document.getElementById('quiz')
     const answerEls = document.querySelectorAll('.answer')
     const questionEl = document.getElementById('question')
@@ -283,6 +285,8 @@
 
     let currentQuiz = 0
     let score = 0
+
+
 
     loadQuiz()
 
@@ -314,6 +318,29 @@
         return answer
     }
 
+    async function addNum() {
+        const a = {
+            "email": "kar.suvra6682@gmail.com",
+            "quiz1": score
+        }
+        console.log(a)
+        let res = await axios.put('http://localhost:3000/quiz1', a);
+
+        console.log(res);
+        // fetch('http://localhost:3000/quiz1', {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(a)
+        // }).then(response => {
+        //     return response.json()
+        // }).then(data =>
+        //     // this is the data we get after putting our data,
+        //     console.log(data)
+        
+    }
+
 
     submitBtn.addEventListener('click', () => {
         const answer = getSelected()
@@ -325,21 +352,37 @@
 
             }
 
-            console.log(score);
-            console.log(scoreArr);
+
+            // console.log(scoreArr);
 
             currentQuiz++
 
             if (currentQuiz < quizData.length) {
                 loadQuiz()
             } else {
-                quiz.innerHTML = `
-                <h2>You answered ${score}/${quizData.length} questions correctly</h2>
-                <button onclick="location.reload()">Reload</button>
-            `
+                if (score < 8) {
+                    quiz.innerHTML = `
+                <h2 style="color:red">You Scored Below 80%, you need Retake!</h2>
+                <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
+                <button onclick="location.reload()">Reload</button>`
+                }
+                else {
+                    quiz.innerHTML = `<h2 style="color:green">Congratulations you passed!</h2>
+                    <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
+                    <button onclick="addNum()">Submit</button>`
+
+                }
+
             }
         }
+
+
+
     })
+
+
+
+
 </script>
 
 <style>
@@ -373,14 +416,14 @@
         border-radius: 7px;
     }
 
-    button:hover {
+    /* button:hover {
         background-color: #732d91;
     }
 
     button:focus {
         outline: none;
         background-color: #5e3370;
-    }
+    } */
 
     .a {
         padding: 12 !important;
@@ -543,7 +586,7 @@
         cursor: pointer;
     }
 
-    button {
+    /* button {
         background-color: #8e44ad;
         color: #fff;
         border: none;
@@ -555,16 +598,16 @@
         padding: 1.3rem;
         margin: 15px;
         border-radius: 7px;
-    }
-
+    } */
+/* 
     button:hover {
         background-color: #732d91;
-    }
-
+    } */
+/* 
     button:focus {
         outline: none;
         background-color: #5e3370;
-    }
+    } */
 
     .a {
         padding: 12 !important;
