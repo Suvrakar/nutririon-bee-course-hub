@@ -27,11 +27,17 @@ connect(); //db connection
 const initializePassport = require('./passport-config')
 const initialPass = async () => {
   let userData = await Users.find().sort();
-  initializePassport(
-    passport,
-    email => userData.find(user => user.email === email),
-    id => userData.find(user => user.id === id)
-  )
+  try {
+    initializePassport(
+      passport,
+      email => userData.find(user => user.email === email),
+      id => userData.find(user => user.id === id)
+    )
+  }
+  catch (err) {
+    console.log(err);
+  }
+
 }
 
 initialPass(); //passport start
@@ -48,8 +54,9 @@ app.use(session({
   saveUninitialized: false
 }))
 app.use(passport.initialize())
-app.use(express.static("public"));
 app.use(passport.session())
+// require('./path/to/passport/config/file')(passport);
+app.use(express.static("public"));
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -57,16 +64,16 @@ app.use(bodyParser.json())
 
 
 
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-});
+// var storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'uploads')
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, file.fieldname + '-' + Date.now())
+//   }
+// });
 
-var upload = multer({ storage: storage });
+// var upload = multer({ storage: storage });
 
 
 
@@ -114,11 +121,26 @@ app.get('/payments', checkNotAuthenticated, (req, res) => {
   res.render('payments.ejs')
 })
 
+app.get('/successreg', checkNotAuthenticated, (req, res) => {
+  res.render('successReg.ejs')
+})
+
+app.get('/failedreg', checkNotAuthenticated, (req, res) => {
+  res.render('failReg.ejs')
+})
+
+app.get('/nbee101', checkNotAuthenticated, (req, res) => {
+  res.render('nbee101.ejs')
+})
+
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: true
-}))
+}),
+  function (req, res) {
+    res.redirect('/login');
+  })
 
 
 
@@ -126,7 +148,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register.ejs')
 })
 
-app.post('/register', checkNotAuthenticated, upload.single('image'), async (req, res) => {
+app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     let paymentStatus = {
       paymentStatus: false,
@@ -145,10 +167,11 @@ app.post('/register', checkNotAuthenticated, upload.single('image'), async (req,
     //   password: req.body.password,
     //   : true
     // })
-    res.redirect('/login')
+    res.redirect('/successreg')
   } catch (error) {
-    res.redirect('/register')
-    // return res.status(401).send({message: err});
+    res.redirect('/failedreg')
+    // console.log(res.send("Failed"))
+
   }
 })
 
@@ -156,7 +179,7 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.body.email })
   console.log(user[0]._id.valueOf());
   const mail = user[0].email;
-  const id=user[0]._id.valueOf().toString();
+  const id = user[0]._id.valueOf().toString();
   try {
 
     let check = await Users.updateOne({

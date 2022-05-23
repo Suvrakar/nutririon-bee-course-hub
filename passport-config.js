@@ -9,7 +9,7 @@ function initialize(passport, getUserByEmail, getUserById) {
     }
 
     try {
-      if (password===user.password) {
+      if (password === user.password) {
         return done(null, user)
       } else {
         return done(null, false, { message: 'Password incorrect' })
@@ -19,7 +19,7 @@ function initialize(passport, getUserByEmail, getUserById) {
     }
   }
 
-  passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
+  passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'password' }, authenticateUser))
   passport.serializeUser((user, done) => done(null, user.id))
   passport.deserializeUser((id, done) => {
     return done(null, getUserById(id))
