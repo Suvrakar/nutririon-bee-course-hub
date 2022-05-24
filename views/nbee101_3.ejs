@@ -1,130 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Diet | Nutrition Bee Course Hub</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Courses | Nutrition Bee Course Hub</title>
+<!-- Navbar -->
+<div class="nava d-flex">
+    <input type="checkbox" id="nava-check">
+    <div class="nava-header">
+        <div class="nava-title">
+            <img src="./whiteLogo.png" width="100px">
+        </div>
+    </div>
+    <div class="nava-btn">
 
-</head>
+        <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <%= name[0].toUpperCase(); %>
 
-<body>
+        </button>
+    </div>
 
-    <!-- Navbar -->
-    <div class="nava d-flex">
-        <input type="checkbox" id="nava-check">
-        <div class="nava-header">
-            <div class="nava-title">
-                <img src="./whiteLogo.png" width="100px">
-            </div>
+    <div class="nava-links">
+        <div class="dropdown">
+            <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <%= name[0].toUpperCase(); %>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
+                <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
+                <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
+                <li>
+                    <form action="/logout?_method=DELETE" method="POST">
+                        <button class="bttn" type="submit">Log Out</button>
+                    </form>
+                </li>
+            </ul>
         </div>
 
-        <div class="nava-links">
-            <div class="dropdown">
-                <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <%= name[0].toUpperCase(); %>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="/profile">My Profile</a></li>
-                    <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
-                    <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
-                    <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
-                    <li>
-                        <form action="/logout?_method=DELETE" method="POST">
-                            <button class="bttn" type="submit">Log Out</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+    </div>
+</div>
 
-        </div>
+
+<div class="container-fluid">
+
+    <div class="text-center my-5">
+        <h3>Food Caloric</h3>
+        <h5>Class - 3</h5>
     </div>
 
 
-    <!-- content  -->
-    <div class="container">
+    <% if(paymentStatus==="true" ){ %>
+        <div style="padding-top:56.25%;position:relative;">
+            <iframe
+                src="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versASE323B8hQruceecKpTaNNraTZzHWX2cjq0EnVJLJcY7m5h2Wgzr&playbackInfo=eyJ2aWRlb0lkIjoiMzc3ZmZhOWVlYzY0NGI1YTlmMDdkMzA4MzFiYWM1ZmIifQ=="
+                style="border:0;max-width:100%;position:absolute;top:0;left:0;height:100%;width:100%;"
+                allowFullScreen="true" allow="encrypted-media"></iframe>
+        </div>
 
-        <div class="mt-5">
-            <h5>আপনার এনরোলকৃত কোর্সসমূহ : </h5>
-            <h1>
-                <% %>
-            </h1>
-            <% if(paymentStatus==="true" ){ %>
-                <div class="pb-5 pt-2">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="./poster.jpeg" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><b>বেসিক ডায়েট প্লান</b></h5>
-                            <p class="card-text">
-                                <b>ইন্সট্রাক্টর :</b> উম্মে সালমা তামান্না, <br>
-                                ক্লিনিক্যাল ডায়েটিশিয়ান আ্যন্ড নিউট্রিশন কনসালট্যান্ট <br>
-                                <b>কোর্স কোড :</b> NBEE101 <br>
-        
-                            </p>
-
-                            <a href="/nbee101_1" class="btn btn-warning">Start</a>
-                        </div>
+        <div class="c mt-2 mb-5">
+            <div class="list">
+                <h1 style="color:white;">Contents</h1>
+                <br>
+                <div class="list-item">
+                    <div class="rank"><span>1</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_1">Balance Diet</a></h4>
+                        <!-- <p>Digital Artist</p> -->
                     </div>
                 </div>
-
-
-                <% } %>
+                <div class="list-item">
+                    <div class="rank"><span>2</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_2">Nutritional Assessment</a></h4>
+                        <!-- <p>Musician</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>3</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_3">Food Caloric</a></h4>
+                        <!-- <p>Film Maker</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>4</span></div>
+                    <div class="name">
+                        <h4><a href="/nbee101_quiz1">Quiz 1</a></h4>
+                        <!-- <p>UI/UX Designer</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>5</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_5">Caloric Calculation</a></h4>
+                        <!-- <p>Director</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>6</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_6">Diet Plan</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>7</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_7">Practice Class- 01</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>8</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_8">Practice Class- 02</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>9</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_9">Counseling</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>10</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_quiz2">Quiz 2</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <% if(paymentStatus==="false" ){ %>
+                    <div class="list-item">
+                        <div class="rank"><span>11</span></div>
+                        <div class="name">
+                            <h4><a href="./nbee101_certificate">Claim Certificate</a></h4>
+                            <!-- <p>Architecture</p> -->
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
         </div>
 
-    </div>
+
+        <!-- <div class="mt-5">
+            <h3>Contents</h3>
+            <p><a href="./profile2">Balance Diet</a></p>
+            <p><a href="./profile2">Nutritional Assessment</p>
+            <p><a href="./profile2">Food Caloric</p>
+            <p><a href="./quiz1">Quiz 1</a></p>
+            <p><a href="./quiz1">Caloric Calculation</a></p>
+            <p><a href="./quiz1">Diet Plan</a></p>
+            <p><a href="./quiz1">Practice Class- 01</a></p>
+            <p><a href="./quiz1">Practice Class- 02</a></p>
+            <p><a href="./quiz1"> Counseling</a></p>
+            <p><a href="./quiz1"> Quiz 2</a></p>
+
+        </div> -->
+
+        <% } %>
 
 
 
 
 
 
-    </div>
+</div>
 
 
 
-    <!-- Footer  -->
-    <footer id="site-footer">
-        <section class="horizontal-footer-section" id="footer-top-section">
-            <div id="footer-logo">
-                <picture>
-                    <img src="./whiteLogo.png" alt="footer logo" role="presentation">
-                </picture>
-            </div>
-            <div id="footer-top-menu-container" role="menubar">
+<!-- Footer  -->
+<footer id="site-footer">
+    <section class="horizontal-footer-section" id="footer-top-section">
+        <div id="footer-logo">
+            <picture>
+                <img src="./whiteLogo.png" alt="footer logo" role="presentation">
+            </picture>
+        </div>
+        <div id="footer-top-menu-container" role="menubar">
 
-            </div>
-            <div id="footer-buttons-container">
-                <a href="https://nutritionbee.net/" target="_blank" class="footer-button" role="button">View our
-                    Blogs</a>
-            </div>
-        </section>
+        </div>
+        <div id="footer-buttons-container">
+            <a href="https://nutritionbee.net/" target="_blank" class="footer-button" role="button">View our Blogs</a>
+        </div>
+    </section>
 
-        <section class="horizontal-footer-section" id="footer-middle-section">
-            <div id="footer-about" class="footer-columns footer-columns-large">
-                <h1>Our Address</h1>
-                <address>
-                    <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png">Mirpur, Dhaka
-                    </p>
-                    <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png">01521429803</p>
-                    <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png">nutritionbee00@gmail.com</p>
-                    <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png">10:00 AM – 10:00 PM</p>
-                </address>
-            </div>
-            <div class="footer-columns">
-                <h1>Need Help?</h1>
-                <ul class="footer-column-menu" role="menu">
-                    <p>If you face any problem feel free to contact with us over phone.</p>
-                    <!-- <li class="footer-column-menu-item" role="menuitem">
+    <section class="horizontal-footer-section" id="footer-middle-section">
+        <div id="footer-about" class="footer-columns footer-columns-large">
+            <h1>Our Address</h1>
+            <address>
+                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png">Mirpur, Dhaka
+                </p>
+                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png">01521429803</p>
+                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png">nutritionbee00@gmail.com</p>
+                <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png">10:00 AM – 10:00 PM</p>
+            </address>
+        </div>
+        <div class="footer-columns">
+            <h1>Need Help?</h1>
+            <ul class="footer-column-menu" role="menu">
+                <p>If you face any problem feel free to contact with us over phone.</p>
+                <!-- <li class="footer-column-menu-item" role="menuitem">
               <a href="#" class="footer-column-menu-item-link">Services </a>
             </li>
             <li class="footer-column-menu-item" role="menuitem">
@@ -136,9 +223,9 @@
             <li class="footer-column-menu-item" role="menuitem">
               <a href="#" class="footer-column-menu-item-link">News</a>
             </li> -->
-                </ul>
-            </div>
-            <!-- <div class="footer-columns">
+            </ul>
+        </div>
+        <!-- <div class="footer-columns">
         <h1>Resources</h1>
         <ul class="footer-column-menu" role="menu">
           <li class="footer-column-menu-item" role="menuitem">
@@ -158,7 +245,7 @@
           </li>
         </ul>
       </div> -->
-            <!-- <div class="footer-columns">
+        <!-- <div class="footer-columns">
         <h1>Information</h1>
         <ul class="footer-column-menu" role="menu">
           <li class="footer-column-menu-item" role="menuitem">
@@ -178,40 +265,155 @@
           </li>
         </ul>
       </div> -->
-        </section>
+    </section>
 
-        <section class="horizontal-footer-section" id="footer-bottom-section">
-            <div id="footer-copyright-info">
-                &copy; Nutrition Bee. 2022. All rights reserved.
-            </div>
-            <div id="footer-social-buttons">
-                <a target="_blank" href="https://www.facebook.com/nutritionbee"><img
-                        src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png" /></a>
-                <!-- <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png" />
+    <section class="horizontal-footer-section" id="footer-bottom-section">
+        <div id="footer-copyright-info">
+            &copy; Nutrition Bee. 2022. All rights reserved.
+        </div>
+        <div id="footer-social-buttons">
+            <a target="_blank" href="https://www.facebook.com/nutritionbee"><img
+                    src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png" /></a>
+            <!-- <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png" />
         <img src="https://img.icons8.com/ios-filled/25/999999/pinterest--v1.png" /> -->
-                <a target="_blank"
-                    href="https://www.instagram.com/nutritionbee00/?igshid=YmMyMTA2M2Y=&fbclid=IwAR3qfcUD9xFgCQ5oBdZJA-dp6H02_--nVXE2Ph4NDxFD6IA8xdDdws8LM9A"><img
-                        src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png" /></a>
-            </div>
-        </section>
+            <a target="_blank"
+                href="https://www.instagram.com/nutritionbee00/?igshid=YmMyMTA2M2Y=&fbclid=IwAR3qfcUD9xFgCQ5oBdZJA-dp6H02_--nVXE2Ph4NDxFD6IA8xdDdws8LM9A"><img
+                    src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png" /></a>
+        </div>
+    </section>
 
-    </footer>
-
-
-
-</body>
+</footer>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
+
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
+    .c {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .list {
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        padding: 50px;
+        background: #2f363e;
+        box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+            10px 10px 70px rgba(0, 0, 0, 0.25),
+            inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+            inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+            inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+        border-radius: 30px;
+    }
+
+    .list h3 {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .list-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        cursor: pointer;
+    }
+
+    .list-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 45px;
+        height: 45px;
+        background: #1f83f2;
+        border-radius: 22.5px;
+        box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25),
+            inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+            inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+    }
+
+    .list-item:hover::before {
+        width: 100%;
+    }
+
+    .list-item .rank {
+        position: relative;
+        min-width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .list-item .rank::before {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #2f363e;
+        border-radius: 30px;
+        transform: scale(0);
+        transition: 0.5s;
+    }
+
+    .list-item:hover .rank::before {
+        transform: scale(1);
+    }
+
+    .list-item .rank span {
+        position: relative;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        transition: 0.5s;
+    }
+
+    .list-item .name {
+        position: relative;
+        line-height: 1.15rem;
+    }
+
+    .list-item .name h4 {
+        font-weight: 600;
+
+        transition: 0.5s;
+    }
+
+    .list-item .name h4 a {
+        text-decoration: none;
+        color: #bcbcc0;
+    }
+
+    .list-item .name p {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #95999d;
+        transition: 0.5s;
+    }
+
+    .list-item:hover .name h4,
+    .list-item:hover .name p {
+        color: #fff;
+    }
+
     .a {
         height: 98%;
         width: 98%;
-        padding: 13.5px;
         border-radius: 50%;
         border: 2px solid rgb(245, 245, 242);
     }
@@ -835,5 +1037,3 @@
         }
     }
 </style>
-
-</html>

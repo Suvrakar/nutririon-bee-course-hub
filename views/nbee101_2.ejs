@@ -8,11 +8,8 @@
     crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quiz 1 | Nutrition Bee Course Hub</title>
-
-
+<title>Balance Diet | Nutrition Bee Course Hub</title>
 
 <!-- Navbar -->
 <div class="nava d-flex">
@@ -43,7 +40,6 @@
                 <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
                 <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
                 <li>
-                    <form method="POST" action="/edit?_method=PUT"></form>
                     <form action="/logout?_method=DELETE" method="POST">
                         <button class="bttn" type="submit">Log Out</button>
                     </form>
@@ -55,37 +51,132 @@
 </div>
 
 
-<!-- quiz  -->
-<div class="d-flex  align-items-center justify-content-center my-5">
-    <div class="quiz-container" id="quiz">
-        <div class="quiz-header">
-            <h2 id="question">Question text</h2>
-            <ul>
-                <li>
-                    <input type="radio" name="answer" id="a" class="answer">
-                    <label for="a" id="a_text">Question</label>
-                </li>
+<div class="container-fluid">
 
-                <li>
-                    <input type="radio" name="answer" id="b" class="answer">
-                    <label for="b" id="b_text">Question</label>
-                </li>
-
-                <li>
-                    <input type="radio" name="answer" id="c" class="answer">
-                    <label for="c" id="c_text">Question</label>
-                </li>
-
-                <!-- <li>
-                    <input type="radio" name="answer" id="d" class="answer">
-                    <label for="d" id="d_text">Question</label>
-                </li> -->
-            </ul>
-        </div>
-        <button id="submit" class="bttn">Submit</button>
+    <div class="text-center my-5">
+        <h3>Nutritional Assessment</h3>
+        <h5>Class - 2</h5>
     </div>
-</div>
 
+
+    <% if(paymentStatus==="true" ){ %>
+        <div style="padding-top:56.25%;position:relative;">
+            <iframe
+                src="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versASE323JC0eXw1BxlGcyru9hnJoISxSOrmkhge63VBFFC7d7eenZB&playbackInfo=eyJ2aWRlb0lkIjoiMDA2ZThjNGMyNmFlNGMwOWI5YjQzZmFlYmJiMWUxN2MifQ=="
+                style="border:0;max-width:100%;position:absolute;top:0;left:0;height:100%;width:100%;"
+                allowFullScreen="true" allow="encrypted-media"></iframe>
+        </div>
+
+        <div class="c mt-2 mb-5">
+            <div class="list">
+                <h1 style="color:white;">Contents</h1>
+                <br>
+                <div class="list-item">
+                    <div class="rank"><span>1</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_1">Balance Diet</a></h4>
+                        <!-- <p>Digital Artist</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>2</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_2">Nutritional Assessment</a></h4>
+                        <!-- <p>Musician</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>3</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_3">Food Caloric</a></h4>
+                        <!-- <p>Film Maker</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>4</span></div>
+                    <div class="name">
+                        <h4><a href="/nbee101_quiz1">Quiz 1</a></h4>
+                        <!-- <p>UI/UX Designer</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>5</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_5">Caloric Calculation</a></h4>
+                        <!-- <p>Director</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>6</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_6">Diet Plan</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>7</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_7">Practice Class- 01</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>8</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_8">Practice Class- 02</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>9</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_9">Counseling</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="rank"><span>10</span></div>
+                    <div class="name">
+                        <h4><a href="./nbee101_quiz2">Quiz 2</a></h4>
+                        <!-- <p>Architecture</p> -->
+                    </div>
+                </div>
+                <% if(paymentStatus==="false" ){ %>
+                    <div class="list-item">
+                        <div class="rank"><span>11</span></div>
+                        <div class="name">
+                            <h4><a href="./nbee101_certificate">Claim Certificate</a></h4>
+                            <!-- <p>Architecture</p> -->
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+
+
+        <!-- <div class="mt-5">
+            <h3>Contents</h3>
+            <p><a href="./profile2">Balance Diet</a></p>
+            <p><a href="./profile2">Nutritional Assessment</p>
+            <p><a href="./profile2">Food Caloric</p>
+            <p><a href="./quiz1">Quiz 1</a></p>
+            <p><a href="./quiz1">Caloric Calculation</a></p>
+            <p><a href="./quiz1">Diet Plan</a></p>
+            <p><a href="./quiz1">Practice Class- 01</a></p>
+            <p><a href="./quiz1">Practice Class- 02</a></p>
+            <p><a href="./quiz1"> Counseling</a></p>
+            <p><a href="./quiz1"> Quiz 2</a></p>
+
+        </div> -->
+
+        <% } %>
+
+
+
+
+
+
+</div>
 
 
 
@@ -193,206 +284,131 @@
 
 </footer>
 
-
-
-<script>
-
-    const scoreArr = [];
-
-    const quizData = [
-        {
-            question: "How much kcal do we get from 1 gram of protein?",
-            a: "2 kcal",
-            b: "4 kcal ",
-            c: "9 kcal",
-            correct: "c",
-        },
-        {
-            question: "1/2 cup cooked white rice = _?____ kcal",
-            a: "100",
-            b: "110",
-            c: "103",
-            correct: "c",
-        },
-        {
-            question: "Foods high in energy but low in nutritional value provide _____ calories",
-            a: "empty",
-            b: "high",
-            c: "moderate ",
-            correct: "a",
-        },
-        {
-            question: "How much percentage of your plate should consist whole grains?",
-            a: "50%",
-            b: "25%",
-            c: "35%",
-            correct: "b",
-        },
-        {
-            question: "What is the BMI range for over weight?",
-            a: "25.0 - 29.9",
-            b: "24.5 - 27.9",
-            c: "27.0 - 29.9",
-            correct: "a",
-        },
-        {
-            question: "Who shouldn’t use the BMI calculator?",
-            a: "Teenage Girls ",
-            b: "Young Children ",
-            c: "Adult Women",
-            correct: "c",
-        },
-        {
-            question: "Which one is at risk waist hip ratio for females?",
-            a: "> 0.86",
-            b: "> 0.95",
-            c: "< 0.75",
-            correct: "a",
-        },
-        {
-            question: "BMI is a better indicator and accurate tool than WHR for predicting complications in trauma patients and death in women with Heart failure?",
-            a: "True",
-            b: "False",
-            c: "No answer",
-            correct: "b",
-        },
-        {
-            question: "How much essential fat is needed for men?",
-            a: "0 - 12 %",
-            b: " 2 - 12 %",
-            c: "2 - 4 %",
-            correct: "c",
-        },
-        {
-            question: "The percentage of essential body fat is higher for ___",
-            a: "Children ",
-            b: "Women",
-            c: "Men",
-            correct: "b",
-        },
-    ];
-    // const axios = require('axios');
-    // import axios from "axios"
-    const quiz = document.getElementById('quiz')
-    const answerEls = document.querySelectorAll('.answer')
-    const questionEl = document.getElementById('question')
-    const a_text = document.getElementById('a_text')
-    const b_text = document.getElementById('b_text')
-    const c_text = document.getElementById('c_text')
-    const d_text = document.getElementById('d_text')
-    const submitBtn = document.getElementById('submit')
-
-
-    let currentQuiz = 0
-    let score = 0
-
-
-
-    loadQuiz()
-
-    function loadQuiz() {
-        deselectAnswers()
-
-        const currentQuizData = quizData[currentQuiz]
-
-        questionEl.innerText = currentQuizData.question
-        a_text.innerText = currentQuizData.a
-        b_text.innerText = currentQuizData.b
-        c_text.innerText = currentQuizData.c
-        // d_text.innerText = currentQuizData.d
-    }
-
-    function deselectAnswers() {
-        answerEls.forEach(answerEl => answerEl.checked = false)
-    }
-
-    function getSelected() {
-        let answer
-
-        answerEls.forEach(answerEl => {
-            if (answerEl.checked) {
-                answer = answerEl.id
-            }
-        })
-
-        return answer
-    }
-
-    async function addNum() {
-        const a = {
-            "email": "kar.suvra6682@gmail.com",
-            "quiz1": score
-        }
-        console.log(a)
-        let res = await axios.put('http://localhost:3000/quiz1', a);
-
-        console.log(res);
-        // fetch('http://localhost:3000/quiz1', {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(a)
-        // }).then(response => {
-        //     return response.json()
-        // }).then(data =>
-        //     // this is the data we get after putting our data,
-        //     console.log(data)
-        
-    }
-
-
-    submitBtn.addEventListener('click', () => {
-        const answer = getSelected()
-
-        if (answer) {
-            if (answer === quizData[currentQuiz].correct) {
-                score++
-                scoreArr.push(score);
-
-            }
-
-
-            // console.log(scoreArr);
-
-            currentQuiz++
-
-            if (currentQuiz < quizData.length) {
-                loadQuiz()
-            } else {
-                if (score < 8) {
-                    quiz.innerHTML = `
-                <h2 style="color:red">You Scored Below 80%, you need Retake!</h2>
-                <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
-                <button onclick="location.reload()">Reload</button>`
-                }
-                else {
-                    quiz.innerHTML = `<h2 style="color:green">Congratulations you passed!</h2>
-                    <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
-                    <button onclick="addNum()">Submit</button>`
-
-                }
-
-            }
-        }
-
-
-
-    })
-
-
-
-
-</script>
-
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap');
 
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'Montserrat', sans-serif;
+    }
+
+    .c {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .list {
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        padding: 50px;
+        background: #2f363e;
+        box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+            10px 10px 70px rgba(0, 0, 0, 0.25),
+            inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+            inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+            inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+        border-radius: 30px;
+    }
+
+    .list h3 {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .list-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        cursor: pointer;
+    }
+
+    .list-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 45px;
+        height: 45px;
+        background: #1f83f2;
+        border-radius: 22.5px;
+        box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25),
+            inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+            inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+        transition: 0.5s;
+    }
+
+    .list-item:hover::before {
+        width: 100%;
+    }
+
+    .list-item .rank {
+        position: relative;
+        min-width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .list-item .rank::before {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #2f363e;
+        border-radius: 30px;
+        transform: scale(0);
+        transition: 0.5s;
+    }
+
+    .list-item:hover .rank::before {
+        transform: scale(1);
+    }
+
+    .list-item .rank span {
+        position: relative;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        transition: 0.5s;
+    }
+
+    .list-item .name {
+        position: relative;
+        line-height: 1.15rem;
+    }
+
+    .list-item .name h4 {
+        font-weight: 600;
+
+        transition: 0.5s;
+    }
+
+    .list-item .name h4 a {
+        text-decoration: none;
+        color: #bcbcc0;
+    }
+
+    .list-item .name p {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: #95999d;
+        transition: 0.5s;
+    }
+
+    .list-item:hover .name h4,
+    .list-item:hover .name p {
+        color: #fff;
     }
 
     .a {
@@ -416,14 +432,14 @@
         border-radius: 7px;
     }
 
-    /* button:hover {
+    button:hover {
         background-color: #732d91;
     }
 
     button:focus {
         outline: none;
         background-color: #5e3370;
-    } */
+    }
 
     .a {
         padding: 12 !important;
@@ -550,177 +566,6 @@
               height: calc(100vh - 50px);
               overflow-y: auto;
           } */
-    }
-
-
-
-    .quiz-container {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
-        width: 600px;
-        overflow: hidden;
-    }
-
-    .quiz-header {
-        padding: 4rem;
-    }
-
-    h2 {
-        padding: 1rem;
-        text-align: center;
-        margin: 0;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    ul li {
-        font-size: 1.2rem;
-        margin: 1rem 0;
-    }
-
-    ul li label {
-        cursor: pointer;
-    }
-
-    /* button {
-        background-color: #8e44ad;
-        color: #fff;
-        border: none;
-        display: block;
-        width: 95%;
-        cursor: pointer;
-        font-size: 1.1rem;
-        font-family: inherit;
-        padding: 1.3rem;
-        margin: 15px;
-        border-radius: 7px;
-    } */
-/* 
-    button:hover {
-        background-color: #732d91;
-    } */
-/* 
-    button:focus {
-        outline: none;
-        background-color: #5e3370;
-    } */
-
-    .a {
-        padding: 12 !important;
-    }
-
-    .bttn {
-        padding: 14px;
-        background-color: #732d91;
-
-    }
-
-    .nav {
-        height: 8%;
-        width: 100%;
-        background-color: #131313 !important;
-        position: relative;
-    }
-
-    .nav>.nav-header {
-        display: inline;
-    }
-
-    .nav>.nav-header>.nav-title {
-        display: inline-block;
-        font-size: 22px;
-        color: #fff;
-        /* padding: 10px 10px 10px 10px; */
-    }
-
-    .nav>.nav-btn {
-        display: none;
-    }
-
-    .nav>.nav-links {
-        margin-left: 75%;
-        display: inline;
-        float: right;
-        font-size: 18px;
-    }
-
-    .nav>.nav-links>a {
-        display: inline-block;
-        padding: 13px 10px 13px 10px;
-        text-decoration: none;
-        color: #efefef;
-    }
-
-    .nav>.nav-links>a:hover {
-        background-color: grey;
-    }
-
-    .nav>#nav-check {
-        display: none;
-    }
-
-    @media (max-width:600px) {
-        .nav>.nav-btn {
-            display: inline-block;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-        }
-
-        .nav>.nav-btn>label {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            padding: 13px;
-        }
-
-        .nav>.nav-btn>label:hover,
-        .nav #nav-check:checked~.nav-btn>label {
-            background-color: grey;
-        }
-
-        .nav>.nav-btn>label>span {
-            display: block;
-            width: 25px;
-            height: 10px;
-            border-top: 2px solid #eee;
-            z-index: 10000;
-        }
-
-        .nav>.nav-links {
-            position: absolute;
-            display: block;
-            float: right;
-            width: 100%;
-            background-color: #151414;
-            height: 0px;
-            transition: all 0.3s ease-in;
-            overflow-y: hidden;
-            top: 50px;
-            left: 0px;
-            z-index: 10000;
-
-        }
-
-        .nav>.nav-links>a {
-            display: block;
-            width: 100%;
-            z-index: 10000;
-
-        }
-
-        .nav>#nav-check:not(:checked)~.nav-links {
-            height: 0px;
-        }
-
-        .nav>#nav-check:checked~.nav-links {
-            height: calc(100vh - 50px);
-            overflow-y: auto;
-        }
     }
 
 
@@ -1011,6 +856,184 @@
 
         footer#site-footer section#footer-bottom-section #footer-social-buttons {
             margin-top: 1.32rem;
+        }
+    }
+
+    .btnLogin {
+        padding: 0;
+        border: none;
+        background: none;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(238, 155, 0);
+        /* color: white; */
+    }
+
+    .formContainer {
+        display: flex;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    /* input form  */
+    div.input-block {
+        position: relative;
+    }
+
+    div.input-block input {
+        font-weight: 500;
+        font-size: 1rem;
+        color: #495055;
+        width: 300px;
+        padding: 15px 15px;
+        border-radius: 1rem;
+        border: 2px solid #D9D9D9;
+        outline: none;
+    }
+
+    div.input-block span.placeholder {
+        position: absolute;
+        margin: 17px 0;
+        padding: 0 4px;
+        font-family: Roboto, sans-serif;
+
+        color: #6c757d;
+
+        display: flex;
+        align-items: center;
+
+        font-size: 1rem;
+
+        top: 0;
+        left: 17px;
+
+        transition: all 0.2s;
+        transform-origin: 0% 0%;
+        background: none;
+        pointer-events: none;
+    }
+
+    div.input-block input:valid+span.placeholder,
+    div.input-block input:focus+span.placeholder {
+        transform: scale(0.8) translateY(-30px);
+        background: #fff;
+    }
+
+    .placeFixed {
+        transform: scale(0.8) translateY(-30px);
+        background: #fff;
+    }
+
+    div.input-block input:focus {
+        color: #284B63;
+        border-color: #284B63;
+    }
+
+    div.input-block input:focus+span.placeholder {
+        color: #284B63;
+    }
+
+    .nav {
+        height: 8%;
+        width: 100%;
+        background-color: #131313 !important;
+        position: relative;
+    }
+
+    .nav>.nav-header {
+        display: inline;
+    }
+
+    .nav>.nav-header>.nav-title {
+        display: inline-block;
+        font-size: 22px;
+        color: #fff;
+        /* padding: 10px 10px 10px 10px; */
+    }
+
+    .nav>.nav-btn {
+        display: none;
+    }
+
+    .nav>.nav-links {
+        margin-left: 50%;
+        display: inline;
+        float: right;
+        font-size: 18px;
+    }
+
+    .nav>.nav-links>a {
+        display: inline-block;
+        padding: 13px 10px 13px 10px;
+        text-decoration: none;
+        color: #efefef;
+    }
+
+    .nav>.nav-links>a:hover {
+        background-color: grey;
+    }
+
+    .nav>#nav-check {
+        display: none;
+    }
+
+    @media (max-width:800px) {
+        .nav>.nav-btn {
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+
+        .nav>.nav-btn>label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            padding: 13px;
+        }
+
+        .nav>.nav-btn>label:hover,
+        .nav #nav-check:checked~.nav-btn>label {
+            background-color: grey;
+        }
+
+        .nav>.nav-btn>label>span {
+            display: block;
+            width: 25px;
+            height: 10px;
+            border-top: 2px solid #eee;
+            z-index: 10000;
+        }
+
+        .nav>.nav-links {
+            position: absolute;
+            display: block;
+            float: right;
+            width: 100%;
+            background-color: #151414;
+            height: 0px;
+            transition: all 0.3s ease-in;
+            overflow-y: hidden;
+            top: 50px;
+            left: 0px;
+            z-index: 10000;
+
+        }
+
+        .nav>.nav-links>a {
+            display: block;
+            width: 100%;
+            z-index: 10000;
+
+        }
+
+        .nav>#nav-check:not(:checked)~.nav-links {
+            height: 0px;
+        }
+
+        .nav>#nav-check:checked~.nav-links {
+            height: calc(100vh - 50px);
+            overflow-y: auto;
         }
     }
 </style>

@@ -86,25 +86,53 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
   res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 
-app.get('/profile2', checkAuthenticated, (req, res) => {
-  res.render('content1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
-})
-
-app.get('/profile3', checkAuthenticated, (req, res) => {
-  res.render('content1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
-})
+// nbee classes 
 
 app.get('/mycourses', checkAuthenticated, (req, res) => {
   res.render('mycourses.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
-app.get('/quiz1', checkAuthenticated, (req, res) => {
-  res.render('quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+app.get('/nbee101_1', checkAuthenticated, (req, res) => {
+  res.render('nbee101_1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
-app.post('/quiz1', checkAuthenticated, (req, res) => {
-  res.render('quiz1.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+app.get('/nbee101_2', checkAuthenticated, (req, res) => {
+  res.render('nbee101_2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
+
+app.get('/nbee101_3', checkAuthenticated, (req, res) => {
+  res.render('nbee101_3.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+app.get('/nbee101_4', checkAuthenticated, (req, res) => {
+  res.render('nbee101_4.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+app.get('/nbee101_5', checkAuthenticated, (req, res) => {
+  res.render('nbee101_5.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+app.get('/nbee101_6', checkAuthenticated, (req, res) => {
+  res.render('nbee101_6.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+app.get('/nbee101_7', checkAuthenticated, (req, res) => {
+  res.render('nbee101_7.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+app.get('/nbee101_8', checkAuthenticated, (req, res) => {
+  res.render('nbee101_8.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+app.get('/nbee101_9', checkAuthenticated, (req, res) => {
+  res.render('nbee101_9.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+
+app.get('/nbee101_quiz1', checkAuthenticated, (req, res) => {
+  res.render('nbee_quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+})
+
+app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
+  res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+})
+
+
+
+
 
 app.get('/edit', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.user.email })
