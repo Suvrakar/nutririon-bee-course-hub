@@ -20,7 +20,9 @@ const mongoose = require("mongoose")
 
 
 
-
+// setInterval(() => {
+//   connect()
+// }, 500);
 
 connect(); //db connection
 
@@ -40,7 +42,8 @@ const initialPass = async () => {
 
 }
 
-initialPass(); //passport start
+setInterval(() => { initialPass(); }, 3000)
+//passport start
 
 // const users = []
 
