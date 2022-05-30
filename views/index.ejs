@@ -10,6 +10,9 @@
     integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Profile | Nutrition Bee Course Hub</title>
@@ -23,14 +26,7 @@
             <img src="./whiteLogo.png" width="100px">
         </div>
     </div>
-    <div class="nava-btn">
 
-        <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <%= name[0].toUpperCase(); %>
-
-        </button>
-    </div>
 
     <div class="nava-links">
         <div class="dropdown">
@@ -69,10 +65,14 @@
             <div class="">
                 <h5>User Information</h5><br>
                 <h6 class="test"> <b>Name :</b>
-                    <%= name %>
+                    <span>
+                        <%= name %>
+                    </span>
                 </h6>
-                <h6 class="test"><b>University Name :</b>
-                    <%= unvname %>
+                <h6 class="test"><b>Institution Name :</b>
+                    <span>
+                        <%= unvname %>
+                    </span>
                 </h6>
                 <h6 class="test"> <b>Phone :</b>
                     <%= phone %>
@@ -81,7 +81,12 @@
                     <%= mail %>
                 </h6>
                 <h6 class="test"> <b>Payment Status :</b>
-                    <%= paymentStatus==="true" ? "Done" : "Due" %>
+                    <!-- <%= paymentStatus==="true" ? "Done" : "Due" %> -->
+                    <% if (paymentStatus==="true" ) { %>
+                        <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
+                        <%} else { %>
+                            <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
+                            <% } %>
                 </h6>
 
 
@@ -115,7 +120,8 @@
             <% } %>
     </div> -->
 
-    <div>
+    <div class="my-5">
+        <h4>Payments</h4>
         <p>আপনার একাউন্ট টি খোলা হয়ে গেলে আপনি যে কোর্স টি নিতে চান তার জন্য পেমেন্ট টি সম্পন্ন করুন। পেমেন্ট করা
             কমপ্লিট হলে পেমেন্ট টি কন্ফার্ম করার জন্য অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে জমা দিবেন । ২৪ থাকে
             সর্বোচ্চ ৭২ ঘন্টার মধ্যে আপনাকে কোর্স এ অ্যাড করা হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।</p>
@@ -152,7 +158,7 @@
 
                 <p>পেমেন্ট করা কমপ্লিট হলে পেমেন্ট টি কন্ফার্ম করার জন্য <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে
                         জমা দিবেন
-                        ।</b> ২৪ থাকে সর্বোচ্চ ৭২
+                        ।</b> ২৪ থেকে সর্বোচ্চ ৭২
                     ঘন্টার
                     মধ্যে আপনাকে কোর্স এ অ্যাড করা
                     হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
@@ -225,7 +231,7 @@
 
                 <p>পেমেন্ট করা কমপ্লিট হলে পেমেন্ট টি কন্ফার্ম করার জন্য <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে
                         জমা দিবেন
-                        ।</b> ২৪ থাকে সর্বোচ্চ ৭২
+                        ।</b> ২৪ থেকে সর্বোচ্চ ৭২
                     ঘন্টার
                     মধ্যে আপনাকে কোর্স এ অ্যাড করা
                     হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
@@ -291,7 +297,7 @@
 
                 <p>পেমেন্ট করা কমপ্লিট হলে পেমেন্ট টি কন্ফার্ম করার জন্য <b>অবশ্যই নিচের লিংক এ ক্লিক করে ফর্ম পূরণ করে
                         জমা দিবেন
-                        ।</b> ২৪ থাকে সর্বোচ্চ ৭২
+                        ।</b> ২৪ থেকে সর্বোচ্চ ৭২
                     ঘন্টার
                     মধ্যে আপনাকে কোর্স এ অ্যাড করা
                     হবে অন্যথায় আপনি নিচের নম্বর এ কল দিবেন।
@@ -854,6 +860,7 @@
 
 
             footer#site-footer {
+                margin-top: 400px;
                 margin: 0 auto;
                 width: 100%;
                 background: #1e3138;

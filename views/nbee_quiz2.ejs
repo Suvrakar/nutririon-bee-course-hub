@@ -6,6 +6,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
+<link rel="icon" type="image/x-icon" href="/ic.ico">
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -22,14 +23,7 @@
             <img src="./whiteLogo.png" width="100px">
         </div>
     </div>
-    <div class="nava-btn">
 
-        <button class="a btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <%= name[0].toUpperCase(); %>
-
-        </button>
-    </div>
 
     <div class="nava-links">
         <div class="dropdown">
@@ -45,7 +39,7 @@
                 <li>
                     <form method="POST" action="/edit?_method=PUT"></form>
                     <form action="/logout?_method=DELETE" method="POST">
-                        <button class="bttn" type="submit">Log Out</button>
+                        <button class="bttn2" type="submit">Log Out</button>
                     </form>
                 </li>
             </ul>
@@ -56,39 +50,45 @@
 
 
 <!-- quiz  -->
-<div class="text-center my-5">
-    <h3>Quiz - 2</h3>
-    <!-- <h5>Quiz - 1</h5> -->
-</div>
-<div class="d-flex  align-items-center justify-content-center my-5">
-    <div class="quiz-container" id="quiz">
-        <div class="quiz-header">
-            <h4 id="question">Question text</h4>
-            <ul>
-                <li>
-                    <input type="radio" name="answer" id="a" class="answer">
-                    <label for="a" id="a_text">Question</label>
-                </li>
+<div class="container">
+    <div class="text-center my-5">
+        <h3>NBEE101</h3>
+        <p>Quiz - 2</p>
+        <!-- <h5>Quiz - 1</h5> -->
+    </div>
+    <div class="d-flex  align-items-center justify-content-center my-5">
+        <div class="quiz-container" id="quiz">
+            <div class="quiz-header">
+                <h4 id="question">Question text</h4>
+                <ul>
+                    <li>
+                        <input type="radio" name="answer" id="a" class="answer">
+                        <label for="a" id="a_text">Question</label>
+                    </li>
 
-                <li>
-                    <input type="radio" name="answer" id="b" class="answer">
-                    <label for="b" id="b_text">Question</label>
-                </li>
+                    <li>
+                        <input type="radio" name="answer" id="b" class="answer">
+                        <label for="b" id="b_text">Question</label>
+                    </li>
 
-                <li>
-                    <input type="radio" name="answer" id="c" class="answer">
-                    <label for="c" id="c_text">Question</label>
-                </li>
+                    <li>
+                        <input type="radio" name="answer" id="c" class="answer">
+                        <label for="c" id="c_text">Question</label>
+                    </li>
 
-                <!-- <li>
-                    <input type="radio" name="answer" id="d" class="answer">
-                    <label for="d" id="d_text">Question</label>
-                </li> -->
-            </ul>
+                    <!-- <li>
+                        <input type="radio" name="answer" id="d" class="answer">
+                        <label for="d" id="d_text">Question</label>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button id="submit" class="bttn">Submit</button>
+            </div>
         </div>
-        <button id="submit" class="bttn">Submit</button>
     </div>
 </div>
+
 
 
 
@@ -219,7 +219,7 @@
             correct: "b",
         },
         {
-            question: "শফিকের BMI এবং দৈহিক ক্যালরি চাহিদা কত?",
+            question: "(বয়স ২২ বছর,উচ্চতা ৫.৬, ওজন ৭০ কেজি) শফিকের BMI এবং দৈহিক ক্যালরি চাহিদা কত?",
             a: "23,1980 cal",
             b: "26,2240 cal",
             c: "28,1500 cal ",
@@ -324,8 +324,7 @@
 
     async function addNum() {
         const a = {
-            "email": "kar.suvra6682@gmail.com",
-            "quiz1": score
+            "quiz1_1": score
         }
         console.log(a)
         let res = await axios.put('http://localhost:3000/quiz1', a);
@@ -345,6 +344,11 @@
 
     }
 
+    function prevQuiz() {
+        currentQuiz--;
+
+    }
+
 
     submitBtn.addEventListener('click', () => {
         const answer = getSelected()
@@ -352,32 +356,30 @@
         if (answer) {
             if (answer === quizData[currentQuiz].correct) {
                 score++
-                scoreArr.push(score);
-
             }
-
-
-            // console.log(scoreArr);
 
             currentQuiz++
 
             if (currentQuiz < quizData.length) {
                 loadQuiz()
             } else {
-                if (score <= 8) {
+                if (score < 8) {
                     quiz.innerHTML = `
                 <h2 style="color:red">You Scored Below 80%, you need Retake!</h2>
                 <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
-                <button class="bttn text-center" onclick="location.reload()">Reload</button>
+                <div class="d-flex justify-content-center">
+                    <button class="bttn text-center" onclick="location.reload()">Reload</button>
                 <br>
-                <button class="bttn text-center p"><a href="./nbee101_8">Return to Previous Lesson</a></button>`
+                <button class="bttn text-center p"><a href="./nbee101_9">Previous Class</a></button> 
+                    </div>`
+
                 }
                 else {
-                    quiz.innerHTML = `<h2 style="color:green">Congratulations you passed!</h2>
+                    quiz.innerHTML = `<h2 style = "color:green" > Congratulations you have passed!</h2 >
                     <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
-                    <button class="bttn text-center" onclick="addNum()">Submit and Next</button>
-                    <br>
-                    <button class="bttn text-center p"><a href="#>Request For Certification</a></button>`
+                    <div class="text-center">
+                        <a style="text-decoration:none" href="./nbee101_5"> <button class="bttn text-center" onclick="addNum()">Submit & Next</button></a></div>
+                               </div> `
 
                 }
 
@@ -410,7 +412,7 @@
         border: 2px solid rgb(245, 245, 242);
     }
 
-    .p a{
+    .p a {
         text-decoration: none;
         color: white;
 
@@ -421,11 +423,26 @@
         color: #fff;
         border: none;
         display: block;
+        width: 30%;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+        padding: 1rem;
+        margin: 15px;
+        border-radius: 7px;
+        text-align: center;
+    }
+
+    .bttn2 {
+        background-color: #8e44ad;
+        color: #fff;
+        border: none;
+        display: block;
         width: 80%;
         cursor: pointer;
-        font-size: 1.1rem;
+        /* font-size: ; */
         font-family: inherit;
-        padding: 1.3rem;
+        padding: 1rem;
         margin: 15px;
         border-radius: 7px;
     }

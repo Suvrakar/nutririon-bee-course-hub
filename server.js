@@ -42,7 +42,7 @@ const initialPass = async () => {
 
 }
 
-setInterval(() => { initialPass(); }, 3000)
+setInterval(() => { initialPass(); }, 2000)
 //passport start
 
 // const users = []
@@ -53,7 +53,11 @@ app.use(flash())
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    secure: false,
+    maxAge: 86400000 * 90 // 3 months
+}
 }))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -83,6 +87,10 @@ app.get('/', checkNotAuthenticated, (req, res) => {
   res.render('home.ejs')
 })
 
+app.get('/reset', checkNotAuthenticated, (req, res) => {
+  res.render('reset.ejs')
+})
+
 app.get('/profile', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.user.email })
   const mail = user[0].email;
@@ -96,43 +104,42 @@ app.get('/mycourses', checkAuthenticated, (req, res) => {
 })
 
 app.get('/nbee101_1', checkAuthenticated, (req, res) => {
-  res.render('nbee101_1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 
 app.get('/nbee101_2', checkAuthenticated, (req, res) => {
-  res.render('nbee101_2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 
 app.get('/nbee101_3', checkAuthenticated, (req, res) => {
-  res.render('nbee101_3.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_3.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 app.get('/nbee101_4', checkAuthenticated, (req, res) => {
-  res.render('nbee101_4.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_4.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 app.get('/nbee101_5', checkAuthenticated, (req, res) => {
-  res.render('nbee101_5.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_5.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 app.get('/nbee101_6', checkAuthenticated, (req, res) => {
-  res.render('nbee101_6.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_6.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 app.get('/nbee101_7', checkAuthenticated, (req, res) => {
-  res.render('nbee101_7.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_7.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 app.get('/nbee101_8', checkAuthenticated, (req, res) => {
-  res.render('nbee101_8.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_8.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 app.get('/nbee101_9', checkAuthenticated, (req, res) => {
-  res.render('nbee101_9.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_9.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
 })
 
 app.get('/nbee101_quiz1', checkAuthenticated, (req, res) => {
-  res.render('nbee_quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+  res.render('nbee_quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1:req.user.quiz1_1 })
 })
 
 app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
-  res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+  res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1:req.user.quiz1_1 })
 })
-
 
 
 
@@ -140,7 +147,7 @@ app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
 app.get('/edit', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.user.email })
   const mail = user[0].email;
-  res.render('edit_profile.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email })
+  res.render('edit_profile.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
@@ -149,6 +156,10 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 
 app.get('/payments', checkNotAuthenticated, (req, res) => {
   res.render('payments.ejs')
+})
+
+app.get('/support', checkNotAuthenticated, (req, res) => {
+  res.render('support.ejs')
 })
 
 app.get('/successreg', checkNotAuthenticated, (req, res) => {
@@ -163,10 +174,14 @@ app.get('/nbee101', checkNotAuthenticated, (req, res) => {
   res.render('nbee101.ejs')
 })
 
+app.get('/nbee101_certificate', checkAuthenticated, (req, res) => {
+  res.render('nbee101_certificate.ejs', { name: req.user.name, unvname: req.user.unvname } )
+})
+
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/profile',
   failureRedirect: '/login',
-  failureFlash: true
+  failureFlash: false
 }),
   function (req, res) {
     res.redirect('/login');
@@ -199,7 +214,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     //   password: req.body.password,
     //   : true
     // })
-    res.redirect('/successreg')
+    res.redirect('/profile')
   } catch (error) {
     res.redirect('/failedreg')
     // console.log(res.send("Failed"))
@@ -278,7 +293,7 @@ function checkAuthenticated(req, res, next) {
 
 function checkNotAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    return res.redirect('/')
+    return res.redirect('/mycourses')
   }
   next()
 }
