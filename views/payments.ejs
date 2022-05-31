@@ -92,7 +92,7 @@
         </div>
         <br>
         <div class="input-block">
-          <input type="number" name="bkash" id="bkash" required>
+          <input type="number" name="bkash" minlength="11" id="bkash" required>
           <span class="placeholder">
             যেই নম্বর থেকে বিকাশ করেছেন
           </span>
@@ -118,9 +118,10 @@
             ট্রানসাকশান Id
           </span>
         </div>
+        <br>
+        <button onclick="SubForm()" class="btnLogin">Submit</button>
       </form>
-      <br>
-      <button onclick="SubForm()" class="btnLogin">Submit</button>
+
     </div>
 
 
@@ -161,7 +162,7 @@
       </div>
       <br>
       <div class="input-block">
-        <input type="number" name="nagad" id="nagad" required>
+        <input type="number" name="nagad" minlength="11" id="nagad" required>
         <span class="placeholder">
           যেই নম্বর থেকে নগদ করেছেন
         </span>
@@ -187,9 +188,10 @@
           ট্রানসাকশান Id
         </span>
       </div>
+      <br>
+      <button onclick="SubForm1()" class="btnLogin">Submit</button>
     </form>
-    <br>
-    <button onclick="SubForm()" class="btnLogin">Submit</button>
+
 
   </div>
 
@@ -226,7 +228,7 @@
       </div>
       <br>
       <div class="input-block">
-        <input type="number" name="rocket" id="rocket" required>
+        <input type="number" name="rocket" minlength="11" id="rocket" required>
         <span class="placeholder">
           যেই নম্বর থেকে রকেট করেছেন
         </span>
@@ -252,9 +254,10 @@
           ট্রানসাকশান Id
         </span>
       </div>
+      <br>
+      <button onclick="SubForm2()" type="submit" class="btnLogin">Submit</button>
     </form>
-    <br>
-    <button onclick="SubForm()" class="btnLogin">Submit</button>
+
 
   </div>
 </div>
@@ -415,6 +418,24 @@
       }
     });
   }
+
+
+  // function SubForm1() {
+  //   $.ajax({
+  //     url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+  //     type: "post",
+  //     data: $("#myForm1").serializeArray(),
+  //     success: function () {
+  //       console.log($("#myForm1").serializeArray())
+  //       alert("Form Data Submitted :)")
+  //     },
+  //     error: function () {
+  //       alert("There was an error :(")
+  //     }
+  //   });
+  // }
+
+  // function SubForm2() {
 
 
 </script>

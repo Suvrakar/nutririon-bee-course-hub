@@ -181,7 +181,7 @@ app.get('/nbee101_certificate', checkAuthenticated, (req, res) => {
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/profile',
   failureRedirect: '/login',
-  failureFlash: false
+  failureFlash: true
 }),
   function (req, res) {
     res.redirect('/login');
@@ -214,7 +214,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     //   password: req.body.password,
     //   : true
     // })
-    res.redirect('/profile')
+    res.redirect('/successreg')
   } catch (error) {
     res.redirect('/failedreg')
     // console.log(res.send("Failed"))

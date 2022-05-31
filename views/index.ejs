@@ -3,6 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
     crossorigin="anonymous"></script>
+<link rel="icon" type="image/x-icon" href="/ic.ico">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
@@ -179,7 +180,7 @@
                         </div>
                         <br>
                         <div class="input-block">
-                            <input type="number" name="bkash" id="bkash" required>
+                            <input type="number" name="bkash" minlength="11" id="bkash" required>
                             <span class="placeholder">
                                 যেই নম্বর থেকে বিকাশ করেছেন
                             </span>
@@ -276,9 +277,11 @@
                             ট্রানসাকশান Id
                         </span>
                     </div>
+
                 </form>
                 <br>
                 <button onclick="SubForm1()" class="btnLogin">Submit</button>
+
 
             </div>
 
@@ -345,6 +348,7 @@
                 </form>
                 <br>
                 <button onclick="SubForm2()" class="btnLogin">Submit</button>
+
 
             </div>
         </div>
@@ -536,6 +540,7 @@
 
 
             function SubForm1() {
+                // alert("test ")
                 $.ajax({
                     url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
                     type: "post",

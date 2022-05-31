@@ -5,14 +5,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
   integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="icon" type="image/x-icon" href="/ic.ico">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login | Nutrition Bee Course Hub</title>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<title>Registration | Nutrition Bee Course Hub</title>
 
 <!-- Navbar -->
 <div class="nav">
@@ -39,75 +38,81 @@
   </div>
 </div>
 
+<!-- Register  -->
+<div class="container formContainer row">
+  <div class="col-sm ">
+    <!-- <button class="btn-warning" onclick="myFunction()">Testing</button> -->
+    <div class="d-flex justify-content-center align-items-center">
+      <img src="mainlogo.png" alt="Nutrition bee" width="100%">
+    </div>
+    <div class="my-4">
+      <h5><b>একাউন্ট খোলার নিয়মাবলী</b></h5>
+      <p>১) ইংলিশ এ পুরো নাম লিখবেন। কারণ এই নাম এই সার্টিফিকেট ইস্যু হবে।</p>
+      <p>২) ভ্যালিড একটি ইমেইল এড্রেস এবং ফোন নম্বর ব্যবহার করবেন। কারণ এর মাধ্যমে আপনার সাথে নিউট্রিশন বি কন্টাক্ট
+        করবে।
+      </p>
+      <p>৩) পাসওয়ার্ড সেট করে জন্য মিনিয়াম ৬ টি ডিজিট/ক্যারেক্টর ব্যবহার করুন।</p>
+      <p>৪) নতুন একাউন্ট খোলার ক্ষেত্রে একটি নম্বর এবং ইমেইল এড্রেস কেবল একবারই ব্যবহার করা যাবে।</p>
+    </div>
 
-<div class="container my-5">
-
-  <div class="text-center my-3">
-    <img src="./poster.jpeg" width="80%">
   </div>
+  <div class="col-sm d-flex justify-content-center">
+    <form action="/register" method="POST">
+      <div class="input-block">
+        <input type="text" name="name" id="name" required>
+        <span class="placeholder">
+          Name
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="email" name="email" id="email" required>
+        <span class="placeholder">
+          Email
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="text" name="unvname" id="unvname" required>
+        <span class="placeholder">
+          Institute Name
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="number" name="phone" id="phone" minlength="11" required>
+        <span class="placeholder">
+          Phone Number
+        </span>
+      </div>
+      <br>
+      <div class="input-block">
+        <input type="password" name="password" id="password" minlength="6" required>
+        <span class="placeholder">
+          Password
+        </span>
+      </div>
+      <br>
+      <!-- <div>
+        <label for="image">Upload Image</label>
+        <input type="file" id="image" name="image" value="" required>
+      </div> -->
 
 
-  <div class="my-3">
-    <h5><b>কোর্সটি যাদের জন্য প্রযোজ্য - </b></h5>
-    <p>এই কোর্সটি পুষ্টিবিজ্ঞানে অধ্যয়নরত শিক্ষার্থীদের জন্য প্রযোজ্য যারা বিভিন্ন বয়সীদের ডায়েট চার্ট তৈরি নিয়ে পড়াশোনা
-      করে থাকে।</p>
+      <button type="submit" class="btnLogin" onclick="myFunction()">Register</button>
+      <br>
+      <br>
+      <p>Already have an account? <a href="/login">Login</a></p>
+
+
+    </form>
+
+    <!-- The actual snackbar -->
+    <div id="snackbar">Some text some message..</div>
+    </body>
+
   </div>
-
-  <div>
-    <h5><b>কোর্স Code- </b></h5>
-    <p>Nbee101</p>
-  </div>
-
-  <div class="my-5">
-    <h5><b>কোর্স কন্টেন্ট -</b></h5>
-    <p><b>ক্লাস ০১-
-        ব্যালেন্স ডায়েটঃ</b> <br> ব্যালেন্স ডায়েট কি, কেনো প্রয়োজন, ব্যালেন্স ডায়েট নিশ্চিত করতে আবশ্যক বিষয়াদি </p>
-    <p><b>ক্লাস ০২-
-        নিউট্রিশনাল অ্যাসেসমেন্টঃ </b><br> ডায়েট চার্ট তৈরির জন্য একজন ব্যক্তি সার্বিক শারিরীক অবস্থা বিবেচনায় BMI, WHR
-      সহ
-      অপরিহার্য
-      পরিমাপসমূহ বের করার নিয়ম।</p>
-    <p><b>ক্লাস ০৩-
-        ফুড ক্যালরিকঃ</b> <br> ডায়েট চার্ট তৈরির ক্ষেত্রে সর্বাধিক গুরুত্বপূর্ণ বিষয় খাদ্যের পুষ্টিমূল্য এবং সার্ভিং
-      সাইজ
-      অনুযায়ী
-      সঠিক খাদ্য উপাদান নিয়ে ডায়েট চার্ট তৈরি করার ক্ষেত্রে আবশ্যক বিষয়াদি।</p>
-    <p><b>ক্লাস ০৪-
-        ক্যালরি ক্যালকুলেশনঃ</b> <br>ডায়েট চার্ট তৈরির ক্ষেত্রে সবচেয়ে গুরুত্বপূর্ণ খাদ্যের ক্যালরি ক্যালকুলেট করে সঠিক
-      খাদ্য
-      নির্দেশিকা তৈরির ক্ষেত্রে আবশ্যক বিষয়াদি। </p>
-    <p><b>ক্লাস ০৫-
-        ডায়েট প্ল্যানঃ </b><br>ডায়েট প্ল্যান তৈরির ক্ষেত্রে শুধুমাত্র ক্যালরি ক্যালকুলেশন নয় বরং অন্যান্য আবশ্যিক যে
-      ব্যাপারগুলো
-      জানা দরকার সেগুলো নিয়ে বিস্তারিত। </p>
-    <p><b>ক্লাস ৬ ও ৭-
-        প্র‍্যাক্টিস ক্লাসঃ</b> <br>ডায়েট প্ল্যান তৈরির খুঁটিনাটি জানার পর সেগুলো নিয়ে প্র‍্যাক্টিস করে জ্ঞানকে আরও একটু
-      সমৃদ্ধ
-      করতে
-      ২টি প্র‍্যাক্টিস ক্লাস থাকছে</p>
-    <p><b>ক্লাস ০৮-
-        কাউন্সেলিংঃ</b> <br> ডায়েট প্ল্যান দেওয়ার পর পরামর্শগুলো কেমন হবে তা নিয়ে আলোচনা।</p>
-  </div>
-
-
-  <div class="my-5">
-    <p><b>কোর্সটি সফলভাবে কমপ্লিট করলে সার্টিফিকেট প্রদান করা হবে। </b></p>
-    <p>কোর্সটির সার্টিফিকেট প্রাপ্তির জন্যে প্রতি কুইজে ৮ অর্থাৎ কুইজ ১ ও কুইজ ২ তে (৮+৮) মোট ১৬ পয়েন্ট পেতে হবে। দুটি
-      কুইজ মিলে ৮+৮ = ১৬ পয়েন্ট পাওয়ার পর " Apply for certificate " অপশনটি কার্যকর হবে।</p>
-  </div>
-
-  <div class="my-5">
-    <h5 style="color: red"><b>সতর্কীকরণ -</b></h5>
-    <p>নিউট্রিশন বি -এর অনুমতি ছাড়া কোর্স ক্রয়-বিক্রয় আইনত দণ্ডনীয়। </p>
-  </div>
-
-  <a href="/profile" class="btn btn-warning btnLogin"><i class="fas fa-shopping-cart p-1"></i>Enroll Now!</a>
-
 </div>
-
-
-
-
 
 
 <!-- Footer  -->
@@ -215,6 +220,20 @@
 </footer>
 
 
+<script>
+  function myFunction() {
+    // Get the snackbar DIV
+    // var x = document.getElementById("snackbar")
+
+
+    // // Add the "show" class to DIV
+    // x.className = "show";
+
+
+    // // After 3 seconds, remove the show class from DIV
+    // setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+  }
+</script>
 
 
 <style>
@@ -227,19 +246,101 @@
     font-family: 'Montserrat', sans-serif;
   }
 
-  
-  .btnLogin {
-    padding: 0;
-    border: none;
-    background: none;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgb(238, 155, 0);
-    /* color: white; */
+
+  button {
+    color: #000;
+    background-color: #999;
+    margin-top: 20px;
   }
 
+  /* The snackbar - position it at the bottom and in the middle of the screen */
+  #snackbar {
+    visibility: hidden;
+    /* Hidden by default. Visible on click */
+    min-width: 250px;
+    /* Set a default minimum width */
+    margin-left: -125px;
+    /* Divide value of min-width by 2 */
+    background-color: #333;
+    /* Black background color */
+    color: #fff;
+    /* White text color */
+    text-align: center;
+    /* Centered text */
+    border-radius: 2px;
+    /* Rounded borders */
+    padding: 16px;
+    /* Padding */
+    position: fixed;
+    /* Sit on top of the screen */
+    z-index: 1;
+    /* Add a z-index if needed */
+    left: 50%;
+    /* Center the snackbar */
+    bottom: 30px;
+    /* 30px from the bottom */
+  }
 
-  /* navigation  */
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  .show {
+    visibility: visible !important;
+    /* Show the snackbar */
+
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeout {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeout {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
   .nav {
     width: 100%;
     background: #1e3138 !important;
@@ -345,6 +446,9 @@
     }
   }
 
+
+
+
   .btnLogin {
     padding: 0;
     border: none;
@@ -413,6 +517,7 @@
   div.input-block input:focus+span.placeholder {
     color: #284B63;
   }
+
 
 
 

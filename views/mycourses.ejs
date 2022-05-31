@@ -59,28 +59,38 @@
             <h5>Your Enrolled Courses: </h5>
 
             <% if (paymentStatus==="true" ) { %>
-                <div>
-                    <div class="pb-5 pt-2">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="./poster.jpeg" alt="Card image cap">
+                <div class="row my-5">
+                    <div class="col-sm">
+                        <div class="card" style="width: 18rem; border-radius: 20px;">
+                            <img class="card-img-top" style="border-radius: 20px;" src="./poster.jpeg"
+                                alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title"><b>বেসিক ডায়েট প্লান</b></h5>
                                 <p class="card-text">
                                     <b>ইন্সট্রাক্টর :</b> উম্মে সালমা তামান্না, <br>
                                     ক্লিনিক্যাল ডায়েটিশিয়ান আ্যন্ড নিউট্রিশন কনসালট্যান্ট <br>
                                     <b>কোর্স কোড :</b> NBEE101 <br>
-
+                                    <span><b>কোর্স ফী:</b> <s>১৫০০ টাকা</s> <span style="color: red ;"><b>৭৫০
+                                                টাকা</b></span> </span>
                                 </p>
+                                <a href="/nbee101_1" class="btn btn-warning btnLogin"><i class="fas fa-shopping-cart"></i>
+                                    Start</a>
 
-                                <a href="/nbee101_1" class="btn btn-warning">Start</a>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-sm">
+
+                    </div>
+                    <div class="col-sm">
+
                     </div>
                 </div>
                 <%} else { %>
                     <div class="my-5">
                         <p class="text-center"> Currently you have no enrolled course! <br> Please make your payments if
-                            not done yet, it might take 24-72 hours to sync after payment. <br> Go to profile and make payments then fill up the form.</p>
+                            not done yet, it might take 24-72 hours to sync after payment. <br> Go to profile and make
+                            payments then fill up the form.</p>
                     </div>>
 
                     <% } %>
