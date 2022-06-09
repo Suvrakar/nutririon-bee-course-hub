@@ -189,6 +189,9 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 
 
 
+app.get('/preresigter', checkNotAuthenticated, (req, res) => {
+  res.render('preregister.ejs')
+})
 app.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register.ejs')
 })

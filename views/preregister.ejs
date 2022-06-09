@@ -11,7 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
   crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<title>Registration | Nutrition Bee Course Hub</title>
+<title>Terms & Conditions | Nutrition Bee Course Hub</title>
+
 
 <!-- Navbar -->
 <div class="nav">
@@ -32,7 +33,7 @@
   <div class="nav-links">
     <a href="/">Home</a>
     <a href="/login">Login</a>
-    <a href="register">Registration</a>
+    <a href="/preresigter">Registration</a>
     <!-- <a href="/payments">Payments</a> -->
     <a href="/support">Support</a>
   </div>
@@ -43,73 +44,20 @@
   <div class="col-sm ">
     <!-- <button class="btn-warning" onclick="myFunction()">Testing</button> -->
     <div class="d-flex justify-content-center align-items-center">
-      <img src="mainlogo.png" alt="Nutrition bee" width="100%">
+      <!-- <img src="mainlogo.png" alt="Nutrition bee" width="100%"> -->
     </div>
     <div class="my-4">
-      <h5><b>একাউন্ট খোলার নিয়মাবলী</b></h5>
-      <p>১) ইংলিশ এ পুরো নাম লিখবেন। কারণ এই নাম এই সার্টিফিকেট ইস্যু হবে।</p>
-      <p>২) ভ্যালিড একটি ইমেইল এড্রেস এবং ফোন নম্বর ব্যবহার করবেন। কারণ এর মাধ্যমে আপনার সাথে নিউট্রিশন বি কন্টাক্ট
-        করবে।
+      <h5><b>Rules for opening account</b></h5>
+      <p>1) Please use your full name because the certificate will be issued on this name.</p>
+      <p>2)Please use a valid mail and phone number as Nutrition Bee will contact with you through this mail or phone
+        number.
       </p>
-      <p>৩) পাসওয়ার্ড সেট করে জন্য মিনিয়াম ৬ টি ডিজিট/ক্যারেক্টর ব্যবহার করুন।</p>
-      <p>৪) নতুন একাউন্ট খোলার ক্ষেত্রে একটি নম্বর এবং ইমেইল এড্রেস কেবল একবারই ব্যবহার করা যাবে।</p>
+      <p>3) You should use at least six characters/number for your password.</p>
+      <p>4) You can not open duplicate account with <b>same email address and phone number. A unique phone number and
+          email address can only be used once.</b></p>
     </div>
-
-  </div>
-  <div class="col-sm d-flex justify-content-center">
-    <form action="/register" method="POST">
-      <div class="input-block">
-        <input type="text" name="name" id="name" required>
-        <span class="placeholder">
-          Name
-        </span>
-      </div>
-      <br>
-      <div class="input-block">
-        <input type="email" name="email" id="email" required>
-        <span class="placeholder">
-          Email
-        </span>
-      </div>
-      <br>
-      <div class="input-block">
-        <input type="text" name="unvname" id="unvname" required>
-        <span class="placeholder">
-          Institute Name
-        </span>
-      </div>
-      <br>
-      <div class="input-block">
-        <input type="number" name="phone" id="phone" minlength="11" required>
-        <span class="placeholder">
-          Phone Number
-        </span>
-      </div>
-      <br>
-      <div class="input-block">
-        <input type="password" name="password" id="password" minlength="6" required>
-        <span class="placeholder">
-          Password
-        </span>
-      </div>
-      <br>
-      <!-- <div>
-        <label for="image">Upload Image</label>
-        <input type="file" id="image" name="image" value="" required>
-      </div> -->
-
-
-      <button type="submit" class="btnLogin" onclick="myFunction()">Register</button>
-      <br>
-      <br>
-      <p>Already have an account? <a href="/login">Login</a></p>
-
-
-    </form>
-
-    <!-- The actual snackbar -->
-    <div id="snackbar">Some text some message..</div>
-    </body>
+    <br>
+    <a href="/register" class="btnLogin" style="text-decoration:none; color: black">Accept</a>
 
   </div>
 </div>
