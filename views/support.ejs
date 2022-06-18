@@ -18,28 +18,38 @@
 <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
-      <div class="nav-title">
-        <img src="./whiteLogo.png" width="100px" style="">
-      </div>
+        <div class="nav-title">
+            <img src="./whiteLogo.png" width="100px" style="">
+        </div>
     </div>
     <div class="nav-btn">
-      <label for="nav-check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+        <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
     </div>
-  
+
     <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/login">Login</a>
-      <a href="/preresigter">Registration</a>
-      <!-- <a href="/payments">Payments</a> -->
-      <a href="/support">Support</a>
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a href="/preresigter">Registration</a>
+        <!-- <a href="/payments">Payments</a> -->
+        <a href="/support">Support</a>
     </div>
-  </div>
+</div>
 
 <div class="container">
+
+    <div class="text-center my-5 video-container">
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/HexEjY9freo" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+
+
     <div class="my-5">
         <h5>What We are- </h5>
         <p>নিউট্রিশন বি এমন একটি প্ল্যাটফর্ম যার মাধ্যমে বিভিন্ন প্রতিষ্ঠানের পুষ্টিবিজ্ঞানে অধ্যয়নরত শিক্ষার্থীরা তাদের
@@ -55,6 +65,8 @@
             শোষিত হবে। পুষ্টি সংক্রান্ত এই সকল তথ্য ও ভ্রান্ত ধারণা দূরীভূত করে একটি সুস্থ ও নিরোগ জাতি গঠনে কাজ করে
             যাচ্ছে
             নিউট্রিশন বি।</p>
+
+        <h5 class="text-center">Feel Free to call us for any support </h5>
     </div>
 
 </div>
@@ -283,6 +295,26 @@
             height: calc(100vh - 50px);
             overflow-y: auto;
         }
+    }
+
+    .video-container {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    .video-container::after {
+        padding-top: 56.25%;
+        display: block;
+        content: '';
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 
     .btnLogin {

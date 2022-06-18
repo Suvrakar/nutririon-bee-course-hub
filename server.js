@@ -1,7 +1,9 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
+const nodemailer = require('nodemailer');
 
+// const mailer = require("./mailer")
 const { connect } = require("./dbConnection")
 const express = require('express')
 const app = express()
@@ -13,16 +15,12 @@ const methodOverride = require('method-override')
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 const { Users } = require("./models/Users")
+const { Comments } = require("./models/Comments")
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
 const mongoose = require("mongoose")
 
-
-
-// setInterval(() => {
-//   connect()
-// }, 500);
 
 connect(); //db connection
 
@@ -57,7 +55,7 @@ app.use(session({
   cookie: {
     secure: false,
     maxAge: 86400000 * 90 // 3 months
-}
+  }
 }))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -83,6 +81,22 @@ app.use(express.json())
 
 
 
+app.post('/comment', checkNotAuthenticated, async (req, res) => {
+  let comment = new Comments(req.body);
+  await comment.save();
+  // res.redirect('/nbee101.ejs', {Comments })
+  res.send("Comment hyse",)
+})
+
+
+app.get('/comment', checkNotAuthenticated, async (req, res) => {
+  const comment = await Comments.find()
+  // res.send(comment)
+  // const cmnt = comment[0].comment;
+  console.log(comment);
+  res.send(comment);
+})
+
 app.get('/', checkNotAuthenticated, (req, res) => {
   res.render('home.ejs')
 })
@@ -104,41 +118,41 @@ app.get('/mycourses', checkAuthenticated, (req, res) => {
 })
 
 app.get('/nbee101_1', checkAuthenticated, (req, res) => {
-  res.render('nbee101_1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_2', checkAuthenticated, (req, res) => {
-  res.render('nbee101_2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_3', checkAuthenticated, (req, res) => {
-  res.render('nbee101_3.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_3.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 app.get('/nbee101_4', checkAuthenticated, (req, res) => {
-  res.render('nbee101_4.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_4.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 app.get('/nbee101_5', checkAuthenticated, (req, res) => {
-  res.render('nbee101_5.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_5.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 app.get('/nbee101_6', checkAuthenticated, (req, res) => {
-  res.render('nbee101_6.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_6.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 app.get('/nbee101_7', checkAuthenticated, (req, res) => {
-  res.render('nbee101_7.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_7.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 app.get('/nbee101_8', checkAuthenticated, (req, res) => {
-  res.render('nbee101_8.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_8.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 app.get('/nbee101_9', checkAuthenticated, (req, res) => {
-  res.render('nbee101_9.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee101_9.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_quiz1', checkAuthenticated, (req, res) => {
-  res.render('nbee_quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee_quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
-  res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1:req.user.quiz1_1 })
+  res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
 
 
@@ -171,11 +185,13 @@ app.get('/failedreg', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/nbee101', checkNotAuthenticated, (req, res) => {
+  // const user = await Users.find({ email: req.user.email })
+  // const mail = user[0].email;
   res.render('nbee101.ejs')
 })
 
 app.get('/nbee101_certificate', checkAuthenticated, (req, res) => {
-  res.render('nbee101_certificate.ejs', { name: req.user.name, unvname: req.user.unvname } )
+  res.render('nbee101_certificate.ejs', { name: req.user.name, unvname: req.user.unvname })
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -206,18 +222,38 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     let userData = new Users(req.body);
     const finalResult = Object.assign(userData, paymentStatus);
     await finalResult.save();
-    // res.send(userData);
-    // const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    // users.push({
-    //   id: Date.now().toString(),
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   phone: req.body.phone,
-    //   unvname: req.body.unvname,
-    //   password: req.body.password,
-    //   : true
-    // })
+    var email = req.body.email;
+    var regEmailConfrim = email;
+
+    var mailTransporter = nodemailer.createTransport({
+
+      host: "nutritionbee.net",
+      port: 465,
+      auth: {
+        user: "info@nutritionbee.net",
+        pass: "01770677688Suv"
+      }
+
+    });
+
+    const sendRegMail = async () => {
+      //Default Mail
+      const mailOptions = {
+        from: 'info@nutritionbee.net',
+        to: `${regEmailConfrim}`,
+        subject: 'Thanks for registering into Nutrition Bee course hub',
+        html: "<p>Dear participant</p><p>Thanks for registering into Nutrition Bee course hub. You can choose your desired courses. For more info visit: https://www.facebook.com/nutritionbee</p><p>Best regards</p><img src=`https://course.nutritionbee.net/mainlogo.png` width=`100px`>",
+      };
+      await mailTransporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Email sent successfully');
+        }
+      });
+    }
     res.redirect('/successreg')
+    await sendRegMail()
   } catch (error) {
     res.redirect('/failedreg')
     // console.log(res.send("Failed"))
@@ -232,8 +268,6 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
   const id = user[0]._id.valueOf().toString();
   try {
     let check = await Users.updateOne({
-      // _id: mongoose.Types.ObjectId("62716ab51b79cc655dc244b9")
-      // _id: mongoose.Types.ObjectId(req.body._id)
       _id: mongoose.Types.ObjectId(id)
     }, {
       $set: req.body
