@@ -20,7 +20,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
 const mongoose = require("mongoose")
-
+var cors = require('cors')
 
 connect(); //db connection
 
@@ -57,6 +57,7 @@ app.use(session({
     maxAge: 86400000 * 90 // 3 months
   }
 }))
+app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
 // require('./path/to/passport/config/file')(passport);

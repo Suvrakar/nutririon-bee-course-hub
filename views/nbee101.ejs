@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
-  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+  
   <title>Nbee101 | Nutrition Bee Course Hub</title>
 
 
@@ -87,7 +87,8 @@
       // }
 
       const getComments = async () => {
-        res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
+        // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
+        res = await axios.get(`https://course.nutritionbee.net/comment`)
         console.log(res.data[0].name)
         // const nameData = res.data.map(x=> x.rating);
         let nameData, addRatings, elementInt = 0;
@@ -109,7 +110,8 @@
       getComments()
 
       const getNbeeUsers = async () => {
-        const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
+        // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
+        const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled` )
         const Nbee101Enrolled = usersArr.data;
         console.log(Nbee101Enrolled)
         let nameData, addRatings, elementInt = 0;
