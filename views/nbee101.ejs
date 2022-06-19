@@ -26,9 +26,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
     integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
   <title>Nbee101 | Nutrition Bee Course Hub</title>
 
 
@@ -64,13 +72,9 @@
 
 
   <div class="container my-5">
-
-
-    <!-- <h1 id="show">dgdf</h1> -->
-
-
     <script>
-      let res;
+      var res;
+      let a = "3"
       // const postComment = async () => {
 
       //   const data = {
@@ -81,25 +85,64 @@
       //   let res = await axios.post(`http://localhost:3000/comment`, data)
       //   console.log(res, "fodfshjsdfhkjdsfndsndsfk");
       // }
+
       const getComments = async () => {
         res = await axios.get(`http://localhost:3000/comment`)
-        console.log(res.data[0].name, "fkdsfkdssdfkmfds")
+        console.log(res.data[0].name)
+        // const nameData = res.data.map(x=> x.rating);
+        let nameData, addRatings, elementInt = 0;
+
+        for (let i = 0; i < res.data.length; i++) {
+          elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
+          const ratingShow = document.getElementById("show");
+          const showRating = (elementInt / res.data.length);
+          ratingShow.innerHTML = showRating;
+          const p = document.getElementById("statshow").setAttribute("data-value", showRating);
+          console.log(p)
+
+          // q.value = p;
+        }
+
+
       }
 
       getComments()
 
-      const p = document.getElementById("show");
-      // p.innerHTML = res.data[0].name;
-      // console.log(p)
-    // a.innerHTML = "skfdkls"
-    // Checkrecord()
+      const getNbeeUsers = async () => {
+        const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled`)
+        const Nbee101Enrolled = usersArr.data;
+        console.log(Nbee101Enrolled)
+        let nameData, addRatings, elementInt = 0;
+
+        for (let i = 0; i < res.data.length; i++) {
+
+          const ratingShow = document.getElementById("nbee101UsersNum");
+          ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
+          // q.value = p;
+        }
+      }
+
+      getNbeeUsers()
     </script>
+
+
+
 
 
 
     <div class="text-center my-3">
       <img src="./poster.jpeg" width="80%">
     </div>
+
+    <div class="my-5 text-center">
+      <span>Rating : </span>
+      <h5 id="show" style="display: inline-block ;">No Ratings</h5>
+      <br>
+      <input id="statshow" data-stared-color="crimson" data-stared-color="crimson" data-role="rating"
+        data-round-func="round"><br>
+        <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
+    </div>
+
 
 
     <div class="my-3">
@@ -167,7 +210,7 @@
 
 
 
-
+  <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
 
 
   <!-- Footer  -->

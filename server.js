@@ -91,10 +91,15 @@ app.post('/comment', checkNotAuthenticated, async (req, res) => {
 
 app.get('/comment', checkNotAuthenticated, async (req, res) => {
   const comment = await Comments.find()
-  // res.send(comment)
-  // const cmnt = comment[0].comment;
-  console.log(comment);
   res.send(comment);
+})
+
+app.get('/nbee101enrolled', checkNotAuthenticated, async (req, res) => {
+  const userNbee = await Users.find()
+
+  const EnrolledNbee101 = userNbee.filter(x=> x.paymentStatus === "true");
+  console.log(EnrolledNbee101.length);
+  res.send("" +EnrolledNbee101.length);
 })
 
 app.get('/', checkNotAuthenticated, (req, res) => {
