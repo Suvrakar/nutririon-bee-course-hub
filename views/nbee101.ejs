@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
-  
+
   <title>Nbee101 | Nutrition Bee Course Hub</title>
 
 
@@ -89,8 +89,8 @@
       const getComments = async () => {
         // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
         res = await axios.get(`https://course.nutritionbee.net/comment`)
-        console.log(res.data[0].name)
-        // const nameData = res.data.map(x=> x.rating);
+        console.log(res.data)
+
         let nameData, addRatings, elementInt = 0;
 
         for (let i = 0; i < res.data.length; i++) {
@@ -99,9 +99,14 @@
           const showRating = (elementInt / res.data.length);
           ratingShow.innerHTML = showRating;
           const p = document.getElementById("statshow").setAttribute("data-value", showRating);
-          console.log(p)
+        }
 
-          // q.value = p;
+        for (let i = 0; i < res.data.length; i++) {
+          elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
+          const ratingShow = document.getElementById("show");
+          const showRating = (elementInt / res.data.length);
+          ratingShow.innerHTML = showRating;
+          const p = document.getElementById("statshow").setAttribute("data-value", showRating);
         }
 
 
@@ -111,7 +116,7 @@
 
       const getNbeeUsers = async () => {
         // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
-        const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled` )
+        const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
         const Nbee101Enrolled = usersArr.data;
         console.log(Nbee101Enrolled)
         let nameData, addRatings, elementInt = 0;
@@ -141,8 +146,12 @@
       <h5 id="show" style="display: inline-block ;">No Ratings</h5>
       <br>
       <input id="statshow" data-stared-color="crimson" data-stared-color="crimson" data-role="rating"
-        data-round-func="round"><br>
-        <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
+        data-round-func="round" data-static="true"><br>
+      <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
+    </div>
+
+    <div id="comments">
+
     </div>
 
 

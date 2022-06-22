@@ -21,8 +21,11 @@ const fs = require('fs');
 const multer = require('multer');
 const mongoose = require("mongoose")
 var cors = require('cors')
+// import getMAC, { isMAC } from 'getmac'
 
 connect(); //db connection
+
+
 
 const initializePassport = require('./passport-config')
 const initialPass = async () => {
@@ -82,11 +85,18 @@ app.use(express.json())
 
 
 
-app.post('/comment', checkNotAuthenticated, async (req, res) => {
-  let comment = new Comments(req.body);
-  await comment.save();
-  // res.redirect('/nbee101.ejs', {Comments })
-  res.send("Comment hyse",)
+app.post('/comment', checkAuthenticated, async (req, res) => {
+  let userName = await Users.find({ name: req.user.name });
+
+  let name = {
+    name: userName[0].name
+  }
+  let comment = await new Comments(req.body);
+  const finalResult = await Object.assign(comment, name);
+  console.log(finalResult, "this is final rslt")
+  await finalResult.save();
+  res.redirect('/thanks')
+  // res.send("Comment hyse")
 })
 
 
@@ -95,17 +105,27 @@ app.get('/comment', checkNotAuthenticated, async (req, res) => {
   res.send(comment);
 })
 
+app.get('/thanks', checkAuthenticated, (req, res) => {
+  res.render('thnxforcomment.ejs')
+})
+
 app.get('/nbee101enrolled', checkNotAuthenticated, async (req, res) => {
   const userNbee = await Users.find()
 
-  const EnrolledNbee101 = userNbee.filter(x=> x.paymentStatus === "true");
+  const EnrolledNbee101 = userNbee.filter(x => x.paymentStatus === "true");
   console.log(EnrolledNbee101.length);
-  res.send("" +EnrolledNbee101.length);
+  res.send("" + EnrolledNbee101.length);
+})
+
+
+app.get('/givereview', checkAuthenticated, (req, res) => {
+  res.render('giveReview.ejs')
 })
 
 app.get('/', checkNotAuthenticated, (req, res) => {
   res.render('home.ejs')
 })
+
 
 app.get('/reset', checkNotAuthenticated, (req, res) => {
   res.render('reset.ejs')
