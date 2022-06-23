@@ -180,6 +180,13 @@
                         </div>
                         <br>
                         <div class="input-block">
+                            <input type="text" name="email" id="email" required>
+                            <span class="placeholder">
+                                ইমেইল
+                            </span>
+                        </div>
+                        <br>
+                        <div class="input-block">
                             <input type="number" name="bkash" minlength="11" id="bkash" required>
                             <span class="placeholder">
                                 যেই নম্বর থেকে বিকাশ করেছেন
@@ -251,6 +258,13 @@
                     </div>
                     <br>
                     <div class="input-block">
+                        <input type="text" name="email" id="email" required>
+                        <span class="placeholder">
+                            ইমেইল
+                        </span>
+                    </div>
+                    <br>
+                    <div class="input-block">
                         <input type="number" name="nagad" id="nagad" required>
                         <span class="placeholder">
                             যেই নম্বর থেকে নগদ করেছেন
@@ -315,6 +329,13 @@
                         <input type="text" name="name" id="name" required>
                         <span class="placeholder">
                             নাম
+                        </span>
+                    </div>
+                    <br>
+                    <div class="input-block">
+                        <input type="text" name="email" id="email" required>
+                        <span class="placeholder">
+                            ইমেইল
                         </span>
                     </div>
                     <br>
@@ -525,7 +546,8 @@
 
             function SubForm() {
                 $.ajax({
-                    url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                    // url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                    url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
                     type: "post",
                     data: $("#myForm").serializeArray(),
                     success: function () {
@@ -542,7 +564,7 @@
             function SubForm1() {
                 // alert("test ")
                 $.ajax({
-                    url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                    url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
                     type: "post",
                     data: $("#myForm1").serializeArray(),
                     success: function () {
@@ -557,7 +579,7 @@
 
             function SubForm2() {
                 $.ajax({
-                    url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                    url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
                     type: "post",
                     data: $("#myForm3").serializeArray(),
                     success: function () {
