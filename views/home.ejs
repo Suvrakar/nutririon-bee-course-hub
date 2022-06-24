@@ -38,7 +38,55 @@
 <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
 <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 <title>Home | Nutrition Bee Course Hub</title>
+<script>
+  const getNbeeUsers = async () => {
+    // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled`)
+    const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
+    const Nbee101Enrolled = usersArr.data;
+    console.log(Nbee101Enrolled)
+    let nameData, addRatings, elementInt = 0;
 
+    for (let i = 0; i < res.data.length; i++) {
+
+      const ratingShow = document.getElementById("nbee101UsersNum");
+      ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
+      // q.value = p;
+    }
+  }
+
+  getNbeeUsers()
+
+  const getComments = async () => {
+    res = await axios.get(`https://course.nutritionbee.net/comment`)
+    console.log(res.data[0].name)
+    let nameData, addRatings, elementInt = 0;
+    for (let i = 0; i < res.data.length; i++) {
+      elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
+      const ratingShow = document.getElementById("show");
+      const showRating = (elementInt / res.data.length);
+      ratingShow.innerHTML = (showRating).toFixed(2);
+      const p = document.getElementById("statshow").setAttribute("data-value", showRating);
+    }
+  }
+
+
+  const getReviewLen = async () => {
+    res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
+    let nameData, addRatings, elementInt = 0;
+
+    const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
+
+  }
+
+
+
+
+
+  getComments()
+
+  getReviewLen()
+
+</script>
 <!-- Navbar -->
 <div class="nav">
   <input type="checkbox" id="nav-check">
@@ -74,55 +122,11 @@
   <h3 class="text-center" style="margin-top: 20px;">Welcome to Nutrition Bee course hub
   </h3>
 
+
+
+
   <!-- card  -->
   <div class="py-5">
-    <script>
-      const getComments = async () => {
-        res = await axios.get(`https://course.nutritionbee.net/comment`)
-        console.log(res.data[0].name)
-        let nameData, addRatings, elementInt = 0;
-        for (let i = 0; i < res.data.length; i++) {
-          elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
-          const ratingShow = document.getElementById("show");
-          const showRating = (elementInt / res.data.length);
-          ratingShow.innerHTML = (showRating).toFixed(2);
-          const p = document.getElementById("statshow").setAttribute("data-value", showRating);
-        }
-      }
-
-
-      const getReviewLen = async () => {
-        res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
-        let nameData, addRatings, elementInt = 0;
-
-        const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
-
-      }
-
-
-      const getNbeeUsers = async () => {
-        // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled`)
-        const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
-        const Nbee101Enrolled = usersArr.data;
-        console.log(Nbee101Enrolled)
-        let nameData, addRatings, elementInt = 0;
-
-        for (let i = 0; i < res.data.length; i++) {
-
-          const ratingShow = document.getElementById("nbee101UsersNum");
-          ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
-          // q.value = p;
-        }
-      }
-
-      getNbeeUsers()
-
-      getComments()
-
-
-      getReviewLen()
-
-    </script>
 
 
     <h5>Available Courses: </h5>
@@ -136,7 +140,7 @@
               <b>ইন্সট্রাক্টর :</b> উম্মে সালমা তামান্না, <br>
               ক্লিনিক্যাল ডায়েটিশিয়ান আ্যন্ড নিউট্রিশন কনসালট্যান্ট <br>
               <b>কোর্স কোড :</b> NBEE101 <br>
-              <span><b>কোর্স ফী:</b> <s>১৫০০ টাকা</s> <span style="color: red ;"><b>৫০০ টাকা</b></span> </span>
+              <span><b>কোর্স ফী:</b> <s>১৫০০ টাকা</s> <span style="color: red ;"><b>৭৫০ টাকা</b></span> </span>
             </p>
             <div class="mb-4">
               <span>Rating : </span>
@@ -147,7 +151,7 @@
               <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
             </div>
             <div class="noStyle">
-              <a href="/nbee101" class="btn btn-warning btnLogin"><i class="fa fa-eye" aria-hidden="true"></i> See
+              <a href="/nbee101" class="btn btn-warning btnLogin text-decoration-none"><i class="fa fa-eye p-1" aria-hidden="true"></i> See
                 Details!</a>
             </div>
 
@@ -299,12 +303,10 @@
     /* color: white; */
   }
 
-  .btnLogin a {
-    text-decoration: none !important;
-  }
-
-  .btnLogin a:hover {
-    color: #00c3ce;
+  .btnLogin a :hover {
+    text-decoration: none!important;
+    background-color: #00c3ce!important;
+    /* color: white; */
   }
 
 

@@ -16,12 +16,14 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const { Users } = require("./models/Users")
 const { Comments } = require("./models/Comments")
+const { CertiNbee101 } = require("./models/CertiNbee101")
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
 const mongoose = require("mongoose")
 var cors = require('cors')
 // import getMAC, { isMAC } from 'getmac'
+
 
 connect(); //db connection
 
@@ -271,7 +273,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     const sendRegMail = async () => {
       //Default Mail
       const mailOptions = {
-        from: 'info@nutritionbee.net',
+        from: '"Nutrition Bee" <info@nutritionbee.net>',
         to: `${regEmailConfrim}`,
         subject: 'Thanks for registering into Nutrition Bee course hub',
         html: "<p>Dear participant</p><p>Thanks for registering into Nutrition Bee course hub. You can choose your desired courses. For more info visit: https://www.facebook.com/nutritionbee</p><p>Best regards</p><img src=`https://course.nutritionbee.net/mainlogo.png` width=`100px`>",
@@ -314,33 +316,10 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
 })
 
 app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
-  const user = await Users.find({ email: req.body.email })
-  const id = user[0]._id.valueOf().toString();
-  console.log(id);
-  console.log(req.body.quiz1);
-  const a = {
-    "quiz1": req.body.quiz1
-  }
-  try {
-    let check = await Users.updateOne({
-      _id: mongoose.Types.ObjectId(id)
-    }, {
-      $set: a
+  const user = await CertiNbee101.find({ email: req.body.email })
 
-    });
+  res.send(user)
 
-    if (check.modifiedCount !== 0) {
-      res.send("Success")
-      // res.redirect("/quiz1")
-      // console.log(check.modifiedCount);
-
-    }
-  } catch (error) {
-    res.send("No")
-    // res.redirect("/quiz1")
-    // console.log(check.modifiedCount);
-
-  }
 })
 
 

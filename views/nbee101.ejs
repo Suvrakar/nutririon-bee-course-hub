@@ -39,7 +39,76 @@
   <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
 
   <title>Nbee101 | Nutrition Bee Course Hub</title>
+  <script>
+    var res;
+    // const postComment = async () => {
 
+    //   const data = {
+    //     "name": "Leo kukur",
+    //     "comment": "test comment2",
+    //     "rating": "5"
+    //   }
+    //   let res = await axios.post(`http://localhost:3000/comment`, data)
+    //   console.log(res, "fodfshjsdfhkjdsfndsndsfk");
+    // }
+    const getNbeeUsers = async () => {
+      // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
+      const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
+      const Nbee101Enrolled = usersArr.data;
+      console.log(Nbee101Enrolled)
+      let nameData, addRatings, elementInt = 0;
+
+      for (let i = 0; i < res.data.length; i++) {
+
+        const ratingShow = document.getElementById("nbee101UsersNum");
+        ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
+        // q.value = p;
+      }
+    }
+
+    getNbeeUsers()
+
+    const getComments = async () => {
+      // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
+      res = await axios.get(`https://course.nutritionbee.net/comment`)
+      console.log(res.data)
+
+      let nameData, addRatings, elementInt = 0;
+
+      for (let i = 0; i < res.data.length; i++) {
+        elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
+        const ratingShow = document.getElementById("show");
+        const showRating = (elementInt / res.data.length);
+        ratingShow.innerHTML = (showRating).toFixed(2);
+        const p = document.getElementById("statshow").setAttribute("data-value", showRating);
+      }
+
+      for (let i = 0; i < res.data.length; i++) {
+
+        const ratingShow = document.getElementById("comments");
+        const showRating = (elementInt / res.data.length);
+        ratingShow.innerHTML = showRating;
+        const p = document.getElementById("statshow").setAttribute("data-value", showRating);
+      }
+
+
+    }
+
+
+    const getReviewLen = async () => {
+      res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
+      let nameData, addRatings, elementInt = 0;
+
+      const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
+
+    }
+
+
+    getComments()
+
+    getReviewLen()
+
+  </script>
 
   <script>
 
@@ -73,80 +142,6 @@
 
 
   <div class="container my-5">
-    <script>
-      var res;
-      // const postComment = async () => {
-
-      //   const data = {
-      //     "name": "Leo kukur",
-      //     "comment": "test comment2",
-      //     "rating": "5"
-      //   }
-      //   let res = await axios.post(`http://localhost:3000/comment`, data)
-      //   console.log(res, "fodfshjsdfhkjdsfndsndsfk");
-      // }
-
-      const getComments = async () => {
-        // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
-        res = await axios.get(`https://course.nutritionbee.net/comment`)
-        console.log(res.data)
-
-        let nameData, addRatings, elementInt = 0;
-
-        for (let i = 0; i < res.data.length; i++) {
-          elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
-          const ratingShow = document.getElementById("show");
-          const showRating = (elementInt / res.data.length);
-          ratingShow.innerHTML = (showRating).toFixed(2);
-          const p = document.getElementById("statshow").setAttribute("data-value", showRating);
-        }
-
-        for (let i = 0; i < res.data.length; i++) {
-
-          const ratingShow = document.getElementById("comments");
-          const showRating = (elementInt / res.data.length);
-          ratingShow.innerHTML = showRating;
-          const p = document.getElementById("statshow").setAttribute("data-value", showRating);
-        }
-
-
-      }
-
-
-      const getReviewLen = async () => {
-        res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
-        let nameData, addRatings, elementInt = 0;
-
-        const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
-
-      }
-
-
-      const getNbeeUsers = async () => {
-        // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
-        const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
-        const Nbee101Enrolled = usersArr.data;
-        console.log(Nbee101Enrolled)
-        let nameData, addRatings, elementInt = 0;
-
-        for (let i = 0; i < res.data.length; i++) {
-
-          const ratingShow = document.getElementById("nbee101UsersNum");
-          ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
-          // q.value = p;
-        }
-      }
-      getComments()
-
-      getNbeeUsers()
-
-      getReviewLen()
-
-    </script>
-
-
-
-
 
 
     <div class="text-center my-3">
@@ -227,7 +222,7 @@
       <p>নিউট্রিশন বি -এর অনুমতি ছাড়া কোর্স ক্রয়-বিক্রয় আইনত দণ্ডনীয়। </p>
     </div>
 
-    <a href="/profile" class="btn btn-warning btnLogin"><i class="fas fa-shopping-cart p-1"></i>Enroll Now!</a>
+    <a href="/profile" class="btn btn-warning btnLogin text-decoration-none"><i class="fas fa-shopping-cart p-1"></i>Enroll Now!</a>
 
   </div>
 
