@@ -16,7 +16,9 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profile | Nutrition Bee Course Hub</title>
+<title>
+    <%= name %> | Nutrition Bee Course Hub
+</title>
 
 
 <!-- Navbar -->
@@ -97,30 +99,6 @@
     </div>
 
 
-    <!-- <div class="mt-5">
-        <h5>আপনার এনরোলকৃত কোর্সসমূহ : </h5>
-        <h1>
-            <% %>
-        </h1>
-        <% if(paymentStatus==="true"){ %>
-            <div class="pb-5 pt-2">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="./poster.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">বেসিক ডায়েট প্লান</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's
-                            content.</p>
-                        <a href="/profile2" class="btn btn-warning">শুরু</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <% } %>
-    </div> -->
-
     <div class="my-5">
         <h4>Payments</h4>
         <p>আপনার একাউন্ট টি খোলা হয়ে গেলে আপনি যে কোর্স টি নিতে চান তার জন্য পেমেন্ট টি সম্পন্ন করুন। পেমেন্ট করা
@@ -173,14 +151,14 @@
                     <!-- bkash  -->
                     <form id="myForm">
                         <div class="input-block">
-                            <input type="text" name="name" id="name" required>
+                            <input type="text" name="name" id="name" value="<%= name %>" required>
                             <span class="placeholder">
                                 নাম
                             </span>
                         </div>
                         <br>
                         <div class="input-block">
-                            <input type="text" name="email" id="email" required>
+                            <input type="text" name="email" id="email" value=<%=mail %> required>
                             <span class="placeholder">
                                 ইমেইল
                             </span>
@@ -192,13 +170,19 @@
                                 যেই নম্বর থেকে বিকাশ করেছেন
                             </span>
                         </div>
-                        <br>
-                        <div class="input-block">
+                        <!-- <br> -->
+                        <!-- <div class="input-block">
                             <input type="text" name="course_code" id="course_code" required>
                             <span class="placeholder">
                                 কোর্স কোড
                             </span>
-                        </div>
+                        </div> -->
+                        <br>
+                        <label style="color:#6c757d;">কোর্স কোড : </label>
+                        <select id="course_code" name="course_code" class="dropdown" required>
+                            <option value="NBee101">NBEE101</option>
+                        </select>
+                        <br>
                         <br>
                         <div class="input-block">
                             <input type="number" name="amount" id="amount" required>
@@ -215,7 +199,9 @@
                         </div>
                     </form>
                     <br>
-                    <button onclick="SubForm()" class="btnLogin">Submit</button>
+                    <button id="submitbutton" onclick="SubForm()" class="btnLogin">Submit</button>
+                    <!-- <button id="submitbutton" onclick="SubForm()" class="btnLogin">Submit</button> -->
+                    <br>
                 </div>
 
 
@@ -251,14 +237,14 @@
                 <!-- nagad  -->
                 <form id="myForm1">
                     <div class="input-block">
-                        <input type="text" name="name" id="name" required>
+                        <input type="text" name="name" id="name" value="<%=name%>" required>
                         <span class="placeholder">
                             নাম
                         </span>
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="text" name="email" id="email" required>
+                        <input type="text" name="email" id="email" value="<%=mail%>" required>
                         <span class="placeholder">
                             ইমেইল
                         </span>
@@ -270,13 +256,13 @@
                             যেই নম্বর থেকে নগদ করেছেন
                         </span>
                     </div>
+
                     <br>
-                    <div class="input-block">
-                        <input type="text" name="course_code" id="course_code" required>
-                        <span class="placeholder">
-                            কোর্স কোড
-                        </span>
-                    </div>
+                    <label style="color:#6c757d;">কোর্স কোড : </label>
+                    <select id="course_code" name="course_code" class="dropdown" required>
+                        <option value="NBee101">NBEE101</option>
+                    </select>
+                    <br>
                     <br>
                     <div class="input-block">
                         <input type="number" name="amount" id="amount" required>
@@ -326,14 +312,14 @@
                 <!-- rocket  -->
                 <form id="myForm3">
                     <div class="input-block">
-                        <input type="text" name="name" id="name" required>
+                        <input type="text" name="name" id="name" value="<%=name%>" required>
                         <span class="placeholder">
                             নাম
                         </span>
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="text" name="email" id="email" required>
+                        <input type="text" name="email" id="email" value="<%=mail%>" required>
                         <span class="placeholder">
                             ইমেইল
                         </span>
@@ -346,12 +332,18 @@
                         </span>
                     </div>
                     <br>
-                    <div class="input-block">
+                    <label style="color:#6c757d;">কোর্স কোড : </label>
+                    <select id="course_code" name="course_code" class="dropdown" required>
+                        <option value="NBee101">NBEE101</option>
+                    </select>
+                    <br>
+
+                    <!-- <div class="input-block">
                         <input type="text" name="course_code" id="course_code" required>
                         <span class="placeholder">
                             কোর্স কোড
                         </span>
-                    </div>
+                    </div> -->
                     <br>
                     <div class="input-block">
                         <input type="number" name="amount" id="amount" required>
@@ -540,57 +532,120 @@
                     $("#first").removeClass("activeTab");
                     $("#second").addClass("activeTab");
                     $("#third").removeClass("activeTab");
-                    console.log(check);
                 })
             });
 
+            let SubFormClick = 0;
             function SubForm() {
-                $.ajax({
-                    // url: "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                    url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                    type: "post",
-                    data: $("#myForm").serializeArray(),
-                    success: function () {
-                        console.log($("#myForm").serializeArray())
-                        alert("Form Data Submitted :)")
-                    },
-                    error: function () {
-                        alert("There was an error :(")
-                    }
-                });
+                if (SubFormClick === 0) {
+                    let err = '';
+                    $.ajax({
+                        // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                        url: err === "err" ? "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" : "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                        type: "post",
+                        data: $("#myForm").serializeArray(),
+                        success: function () {
+                            $("#myForm").serializeArray()
+                            alert("Thanks For Submitting")
+                        },
+                        error: function () {
+                            alert("Could not Submit");
+                            err = "err"
+                            console.log(err)
+
+                        }
+                    });
+                    SubFormClick = SubFormClick + 1;
+                }
+                else {
+                    $("#submitbutton").click(function () {
+                        // disable button
+                        $(this).prop("disabled", true);
+                        // add spinner to button
+                        $(this).html(
+                            // 'Please Wait'
+                            // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
+                        );
+                    });
+                    console.log("2 bar click porse")
+                }
+
             }
 
+            let SubFormClick1 = 0;
 
             function SubForm1() {
+                let err = '';
+
                 // alert("test ")
-                $.ajax({
-                    url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                    type: "post",
-                    data: $("#myForm1").serializeArray(),
-                    success: function () {
-                        console.log($("#myForm1").serializeArray())
-                        alert("Form Data Submitted :)")
-                    },
-                    error: function () {
-                        alert("There was an error :(")
-                    }
-                });
+                if (SubFormClick1 === 0) {
+                    $.ajax({
+                        // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                        url: err === "err" ? "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" : "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                        type: "post",
+                        data: $("#myForm1").serializeArray(),
+                        success: function () {
+                            $("#myForm1").serializeArray()
+                            alert("Form Data Submitted")
+                        },
+                        error: function () {
+                            alert("Could not Submit");
+                            err = "err"
+                            console.log(err)
+                        }
+                    });
+                }
+                else {
+                    $("#submitbutton").click(function () {
+                        // disable button
+                        $(this).prop("disabled", true);
+                        // add spinner to button
+                        $(this).html(
+                            // 'Please Wait'
+                            // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
+                        );
+                    });
+                    console.log("2 bar click porse")
+                }
             }
 
+            let SubFormClick2 = 0;
+
             function SubForm2() {
-                $.ajax({
-                    url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                    type: "post",
-                    data: $("#myForm3").serializeArray(),
-                    success: function () {
-                        console.log($("#myForm3").serializeArray())
-                        alert("Form Data Submitted :)")
-                    },
-                    error: function () {
-                        alert("There was an error :(")
-                    }
-                });
+                let err = '';
+
+                if (SubFormClick2 === 0) {
+                    $.ajax({
+                        // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                        url: err === "err" ? "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" : "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                        type: "post",
+                        data: $("#myForm3").serializeArray(),
+                        success: function () {
+                            $("#myForm3").serializeArray()
+                            alert("Form Data Submitted")
+                        },
+                        error: function () {
+                            alert("Could not Submit");
+                            err = "err"
+                            console.log(err)
+
+                        }
+                    });
+                }
+                else {
+                    $("#submitbutton").click(function () {
+                        // disable button
+                        $(this).prop("disabled", true);
+                        // add spinner to button
+                        $(this).html(
+                            // 'Please Wait'
+                            // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
+                        );
+                    });
+                    console.log("2 bar click porse")
+                }
             }
+
 
 
         </script>
@@ -605,6 +660,11 @@
                 margin: 0;
                 padding: 0;
                 font-family: 'Montserrat', sans-serif;
+            }
+
+            .dropdown {
+                padding: 5px;
+                color: #6c757d;
             }
 
             .btnLogin {
@@ -745,14 +805,6 @@
                 border-radius: 7px;
             }
 
-            button:hover {
-                background-color: #732d91;
-            }
-
-            button:focus {
-                outline: none;
-                background-color: #5e3370;
-            }
 
             .a {
                 padding: 12 !important;
@@ -887,7 +939,7 @@
 
 
             footer#site-footer {
-                margin-top: 400px;
+                margin-top: 700px !important;
                 margin: 0 auto;
                 width: 100%;
                 background: #1e3138;

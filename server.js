@@ -187,7 +187,8 @@ app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
 app.get('/edit', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.user.email })
   const mail = user[0].email;
-  res.render('edit_profile.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password })
+  const pass = user[0].password;
+  res.render('edit_profile.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, pass })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
