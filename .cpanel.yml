@@ -2,5 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/nutrvfys/public_html/nbeefull
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin cp * $DEPLOYPATH                        
 
