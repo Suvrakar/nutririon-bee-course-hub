@@ -102,7 +102,7 @@
         }
 
         for (let i = 0; i < res.data.length; i++) {
-        
+
           const ratingShow = document.getElementById("comments");
           const showRating = (elementInt / res.data.length);
           ratingShow.innerHTML = showRating;
@@ -112,7 +112,6 @@
 
       }
 
-      getComments()
 
       const getReviewLen = async () => {
         res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
@@ -122,7 +121,6 @@
 
       }
 
-      getReviewLen()
 
       const getNbeeUsers = async () => {
         // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
@@ -138,8 +136,12 @@
           // q.value = p;
         }
       }
+      getComments()
 
       getNbeeUsers()
+
+      getReviewLen()
+
     </script>
 
 

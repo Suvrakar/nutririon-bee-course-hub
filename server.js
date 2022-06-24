@@ -313,7 +313,7 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
   }
 })
 
-app.put('/quiz1', checkNotAuthenticated, async (req, res) => {
+app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.body.email })
   const id = user[0]._id.valueOf().toString();
   console.log(id);

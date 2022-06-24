@@ -89,7 +89,6 @@
           const p = document.getElementById("statshow").setAttribute("data-value", showRating);
         }
       }
-      getComments()
 
 
       const getReviewLen = async () => {
@@ -100,7 +99,6 @@
 
       }
 
-      getReviewLen()
 
       const getNbeeUsers = async () => {
         // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled`)
@@ -118,6 +116,12 @@
       }
 
       getNbeeUsers()
+
+      getComments()
+
+
+      getReviewLen()
+
     </script>
 
 
@@ -143,7 +147,8 @@
               <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
             </div>
             <div class="noStyle">
-              <a href="/nbee101" class="btn btn-warning btnLogin"><i class="fa fa-eye" aria-hidden="true"></i> See Details!</a>
+              <a href="/nbee101" class="btn btn-warning btnLogin"><i class="fa fa-eye" aria-hidden="true"></i> See
+                Details!</a>
             </div>
 
           </div>
