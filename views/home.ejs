@@ -78,27 +78,29 @@
   <div class="py-5">
     <script>
       const getComments = async () => {
-        // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
         res = await axios.get(`https://course.nutritionbee.net/comment`)
         console.log(res.data[0].name)
-        // const nameData = res.data.map(x=> x.rating);
         let nameData, addRatings, elementInt = 0;
-
         for (let i = 0; i < res.data.length; i++) {
           elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
           const ratingShow = document.getElementById("show");
           const showRating = (elementInt / res.data.length);
-          ratingShow.innerHTML = showRating;
+          ratingShow.innerHTML = (showRating).toFixed(2);
           const p = document.getElementById("statshow").setAttribute("data-value", showRating);
-          console.log(p)
-
-          // q.value = p;
         }
+      }
+      getComments()
 
+
+      const getReviewLen = async () => {
+        res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
+        let nameData, addRatings, elementInt = 0;
+
+        const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
 
       }
 
-      getComments()
+      getReviewLen()
 
       const getNbeeUsers = async () => {
         // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled`)
@@ -136,11 +138,13 @@
               <span>Rating : </span>
               <h5 id="show" style="display:inline-block ;">No Ratings</h5>
               <br>
-              <input id="statshow" data-stared-color="crimson" data-stared-color="crimson" data-role="rating"
-                data-round-func="round" data-static="true"><br>
+              <input id="statshow" data-message="(0)" data-stared-color="crimson" data-stared-color="crimson"
+                data-role="rating" data-round-func="round" data-static="true"><br>
               <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
             </div>
-            <a href="/nbee101" class="btn btn-warning btnLogin"><i class="fas fa-shopping-cart"></i> See Details!</a>
+            <div class="noStyle">
+              <a href="/nbee101" class="btn btn-warning btnLogin"><i class="fa fa-eye" aria-hidden="true"></i> See Details!</a>
+            </div>
 
           </div>
         </div>
@@ -291,9 +295,13 @@
   }
 
   .btnLogin a {
-    /* text-decoration: none; */
+    text-decoration: none !important;
   }
- 
+
+  .btnLogin a:hover {
+    color: #00c3ce;
+  }
+
 
   .nav {
     width: 100%;

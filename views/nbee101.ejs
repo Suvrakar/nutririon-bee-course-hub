@@ -97,13 +97,13 @@
           elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
           const ratingShow = document.getElementById("show");
           const showRating = (elementInt / res.data.length);
-          ratingShow.innerHTML = showRating;
+          ratingShow.innerHTML = (showRating).toFixed(2);
           const p = document.getElementById("statshow").setAttribute("data-value", showRating);
         }
 
         for (let i = 0; i < res.data.length; i++) {
-          elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
-          const ratingShow = document.getElementById("show");
+        
+          const ratingShow = document.getElementById("comments");
           const showRating = (elementInt / res.data.length);
           ratingShow.innerHTML = showRating;
           const p = document.getElementById("statshow").setAttribute("data-value", showRating);
@@ -113,6 +113,16 @@
       }
 
       getComments()
+
+      const getReviewLen = async () => {
+        res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
+        let nameData, addRatings, elementInt = 0;
+
+        const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
+
+      }
+
+      getReviewLen()
 
       const getNbeeUsers = async () => {
         // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
@@ -145,7 +155,7 @@
       <span>Rating : </span>
       <h5 id="show" style="display: inline-block ;">No Ratings</h5>
       <br>
-      <input id="statshow" data-stared-color="crimson" data-stared-color="crimson" data-role="rating"
+      <input id="statshow" data-message="(0)" data-stared-color="crimson" data-stared-color="crimson" data-role="rating"
         data-round-func="round" data-static="true"><br>
       <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span>
     </div>

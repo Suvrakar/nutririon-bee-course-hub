@@ -577,7 +577,6 @@
             function SubForm1() {
                 let err = '';
 
-                // alert("test ")
                 if (SubFormClick1 === 0) {
                     $.ajax({
                         // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
@@ -593,7 +592,9 @@
                             err = "err"
                             console.log(err)
                         }
+
                     });
+                    SubFormClick1 = SubFormClick1 + 1;
                 }
                 else {
                     $("#submitbutton").click(function () {
@@ -631,6 +632,7 @@
 
                         }
                     });
+                    SubFormClick2 = SubFormClick2 + 1;
                 }
                 else {
                     $("#submitbutton").click(function () {

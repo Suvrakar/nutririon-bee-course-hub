@@ -105,6 +105,11 @@ app.get('/comment', checkNotAuthenticated, async (req, res) => {
   res.send(comment);
 })
 
+app.get('/reviewsnumber', checkNotAuthenticated, async (req, res) => {
+  const comment = await Comments.find()
+  res.send("" + comment.length);
+})
+
 app.get('/thanks', checkAuthenticated, (req, res) => {
   res.render('thnxforcomment.ejs')
 })
