@@ -95,7 +95,6 @@ app.post('/comment', checkAuthenticated, async (req, res) => {
   }
   let comment = await new Comments(req.body);
   const finalResult = await Object.assign(comment, name);
-  console.log(finalResult, "this is final rslt")
   await finalResult.save();
   res.redirect('/thanks')
   // res.send("Comment hyse")
@@ -106,6 +105,7 @@ app.get('/comment', checkNotAuthenticated, async (req, res) => {
   const comment = await Comments.find()
   res.send(comment);
 })
+
 
 app.get('/reviewsnumber', checkNotAuthenticated, async (req, res) => {
   const comment = await Comments.find()
@@ -145,50 +145,142 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 })
 
 // nbee classes 
+app.get('/mycourses', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
 
-app.get('/mycourses', checkAuthenticated, (req, res) => {
-  res.render('mycourses.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
-})
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
-app.get('/nbee101_1', checkAuthenticated, (req, res) => {
-  res.render('nbee101_1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
 
-app.get('/nbee101_2', checkAuthenticated, (req, res) => {
-  res.render('nbee101_2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+  res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
-app.get('/nbee101_3', checkAuthenticated, (req, res) => {
-  res.render('nbee101_3.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
-app.get('/nbee101_4', checkAuthenticated, (req, res) => {
-  res.render('nbee101_4.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
-app.get('/nbee101_5', checkAuthenticated, (req, res) => {
-  res.render('nbee101_5.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
-app.get('/nbee101_6', checkAuthenticated, (req, res) => {
-  res.render('nbee101_6.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
-app.get('/nbee101_7', checkAuthenticated, (req, res) => {
-  res.render('nbee101_7.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
-app.get('/nbee101_8', checkAuthenticated, (req, res) => {
-  res.render('nbee101_8.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
-})
-app.get('/nbee101_9', checkAuthenticated, (req, res) => {
-  res.render('nbee101_9.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+app.get('/nbee101_1', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  console.log(user[0]);
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+  console.log(QuizMarks);
+  res.render('nbee101_1.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
-app.get('/nbee101_quiz1', checkAuthenticated, (req, res) => {
-  res.render('nbee_quiz1.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
+app.get('/nbee101_2', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+  res.render('nbee101_2.ejs', { QuizMarks, quiz2: req.user.quiz2, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+
+app.get('/nbee101_3', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+
+
+  res.render('nbee101_3.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+app.get('/nbee101_4', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+
+  res.render('nbee101_4.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+app.get('/nbee101_5', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+  res.render('nbee101_5.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+app.get('/nbee101_6', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+  res.render('nbee101_6.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+app.get('/nbee101_7', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+  res.render('nbee101_7.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+app.get('/nbee101_8', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === [] ? user[0].quiz2 : "undefined"
+
+  res.render('nbee101_8.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+app.get('/nbee101_9', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+
+  res.render('nbee101_9.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+})
+
+app.get('/nbee101_quiz1', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
+
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+  res.render('nbee_quiz1.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
+})
+
+// app.post('/nbee101_quiz1', checkNotAuthenticated, async (req, res) => {
+//   // let quiz1 = await new CertiNbee101(req.body);
+
+//   let userName = await CertiNbee101.find({name:"Limon"});
+
+//   let quiz2 = {
+//     quiz2: "0"
+//   }
+//   const finalResult = await Object.assign(userName, quiz2);
+
+//   console.log(finalResult);
+
+//   await finalResult.save();
+
+//   res.send("kam hyse")
+// })
+
+app.post('/nbee101_quiz2', checkAuthenticated, async (req, res) => {
+  let userName = await Users.find({ name: req.user.name });
+
+  let quiz2 = await new CertiNbee101(req.body)
+
+  let name = {
+    name: userName[0].name,
+    email: userName[0].email
+  }
+
+  console.log(req.body)
+
+  const finalResult = await Object.assign(quiz2, name);
+  console.log(finalResult)
+
+  await finalResult.save();
+  res.render('nbee101_certificate.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
   res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
-
-
 
 
 app.get('/edit', checkAuthenticated, async (req, res) => {
@@ -224,8 +316,10 @@ app.get('/nbee101', checkNotAuthenticated, (req, res) => {
   res.render('nbee101.ejs')
 })
 
-app.get('/nbee101_certificate', checkAuthenticated, (req, res) => {
-  res.render('nbee101_certificate.ejs', { name: req.user.name, unvname: req.user.unvname })
+app.get('/nbee101_certificate', checkAuthenticated, async (req, res) => {
+  const user = await Users.find({ email: req.user.email })
+  const mail = user[0].email;
+  res.render('nbee101_certificate.ejs', { mail,name: req.user.name, unvname: req.user.unvname })
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
@@ -316,11 +410,33 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
 })
 
 app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
-  const user = await CertiNbee101.find({ email: req.body.email })
+  let userName = await Users.find({ name: req.user.name });
 
-  res.send(user)
-
+  let name = {
+    name: userName[0].name
+  }
+  console.log(userName);
+  // let comment = await new Comments(req.body);
+  // const finalResult = await Object.assign(comment, name);
+  // await finalResult.save();
+  // res.redirect('/thanks')
+  res.send("kam hyse")
 })
+
+app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
+  let userName = await Users.find({ name: req.user.name });
+
+  let name = {
+    name: userName[0].name
+  }
+  console.log(userName);
+  // let comment = await new Comments(req.body);
+  // const finalResult = await Object.assign(comment, name);
+  // await finalResult.save();
+  // res.redirect('/thanks')
+  res.send("kam hyse")
+})
+
 
 
 

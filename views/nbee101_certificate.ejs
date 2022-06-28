@@ -6,6 +6,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+    integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,9 +60,64 @@
 <div class="container my-5 text-center">
     <h4>Congratulation! You have successfully completed the course!</h4>
     <p>We will send your certificate via email that you provided.</p>
+    <br>
+    <!-- Certificate  -->
+    <form id="myForm">
+        <div class="input-block">
+            <input type="text" name="name" id="name" value="<%=name%>" required>
+        </div>
+        <br>
+        <div class="input-block">
+            <input type="text" name="email" id="email" value="<%=mail%>" required>
+        </div>
+        <br>
+        <label style="color:#6c757d;">কোর্স কোড : </label>
+        <select id="course_code" name="course_code" class="dropdowna" required>
+            <option value="NBee101">NBEE101</option>
+        </select>
+        <br>
+    </form>
+    <br>
+    <button onclick="SubForm()" class="btnLogin">Request For Certificate</button>
 </div>
 
+<script>
+    let SubFormClick = 0;
+    function SubForm() {
+        if (SubFormClick === 0) {
+            $.ajax({
+                // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
+                url: "https://api.apispreadsheets.com/data/o5MrMeqAfCUX7qAX/",
+                type: "post",
+                data: $("#myForm").serializeArray(),
+                success: function () {
+                    $("#myForm").serializeArray()
+                    alert("Thanks For Submitting")
+                },
+                error: function () {
+                    alert("Could not Submit");
+                    err = "err"
+                    console.log(err)
 
+                }
+            });
+            SubFormClick = SubFormClick + 1;
+        }
+        else {
+            $("#submitbutton").click(function () {
+                // disable button
+                $(this).prop("disabled", true);
+                // add spinner to button
+                $(this).html(
+                    // 'Please Wait'
+                    // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
+                );
+            });
+            console.log("2 bar click porse")
+        }
+
+    }
+</script>
 
 
 

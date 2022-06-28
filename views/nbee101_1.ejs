@@ -61,8 +61,11 @@
 
     <% if(paymentStatus==="true" ){ %>
         <div style="padding-top:56.25%;position:relative;">
-            <iframe src="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versASE323C0ojpeDaOa4QiaIMREt9Q1RV4fu6Zvt2npmSmvWx51Qcf2&playbackInfo=eyJ2aWRlb0lkIjoiMzg0YzczZDI1MzlmNDdkMThmN2YzNmYxOWM0MDljYjUifQ==" style="border:0;max-width:100%;position:absolute;top:0;left:0;height:100%;width:100%;" allowFullScreen="true" allow="encrypted-media"></iframe>
-            </div>
+            <iframe
+                src="https://player.vdocipher.com/playerAssets/1.x/vdo/embed/index.html#otp=20160313versASE323iPEvMZwkpV4ES0u2lCEH0iZjQ1OzkTdBY9bX7pvqep1ygF&playbackInfo=eyJ2aWRlb0lkIjoiODhmZjljZjY0ZGM5NDllMjgyOGI1ODllMzE2MWZlNzAifQ=="
+                style="border:0;max-width:100%;position:absolute;top:0;left:0;height:100%;width:100%;"
+                allowFullScreen="true" allow="encrypted-media"></iframe>
+        </div>
 </div>
 <div class="d-flex justify-content-around my-3">
     <!-- <button class="btn btn-warning">Previous</button> -->
@@ -143,7 +146,7 @@
                 <!-- <p>Architecture</p> -->
             </div>
         </div>
-        <% if(quiz1_1===10 ){ %>
+        <% if(QuizMarks!=null && QuizMarks==="10" || QuizMarks==="9" || QuizMarks==="8" ){ %>
             <div class="list-item">
                 <div class="rank"><span>11</span></div>
                 <div class="name">
@@ -156,20 +159,6 @@
 </div>
 
 
-<!-- <div class="mt-5">
-            <h3>Contents</h3>
-            <p><a href="./profile2">Balance Diet</a></p>
-            <p><a href="./profile2">Nutritional Assessment</p>
-            <p><a href="./profile2">Food Caloric</p>
-            <p><a href="./quiz1">Quiz 1</a></p>
-            <p><a href="./quiz1">Caloric Calculation</a></p>
-            <p><a href="./quiz1">Diet Plan</a></p>
-            <p><a href="./quiz1">Practice Class- 01</a></p>
-            <p><a href="./quiz1">Practice Class- 02</a></p>
-            <p><a href="./quiz1"> Counseling</a></p>
-            <p><a href="./quiz1"> Quiz 2</a></p>
-
-        </div> -->
 
 <% } %>
 
