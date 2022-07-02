@@ -20,6 +20,7 @@
     "express-session": "^1.16.2",
     "getmac": "^5.20.0",
     "html-form-enhancer": "^0.1.11",
+    "macaddress": "^0.5.3",
     "method-override": "^3.0.0",
     "mongoose": "^6.3.1",
     "multer": "^1.4.4",

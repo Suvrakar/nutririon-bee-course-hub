@@ -17,11 +17,14 @@ const PORT = process.env.PORT || 3000;
 const { Users } = require("./models/Users")
 const { Comments } = require("./models/Comments")
 const { CertiNbee101 } = require("./models/CertiNbee101")
+const { DeviceLog } = require("./models/DeviceLog")
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
 const mongoose = require("mongoose")
 var cors = require('cors')
+var macaddress = require('macaddress');
+
 // import getMAC, { isMAC } from 'getmac'
 
 
@@ -50,6 +53,7 @@ setInterval(() => { initialPass(); }, 2000)
 
 // const users = []
 
+
 app.set('view-engine', 'ejs')
 app.set('views', path.join(__dirname, './views'));
 app.use(flash())
@@ -73,18 +77,43 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.json())
 
+let macAddress = 0;
 
-// var storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'uploads')
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.fieldname + '-' + Date.now())
-//   }
-// });
 
-// var upload = multer({ storage: storage });
+// if (arr[0] !== macAddress) {
+//   console.log("New Device")
+//   arr.push(macAddress)
+// }
+// if (arr[0] === macAddress) {
+//   console.log("Your Device 1")
+// }
+// if (arr[1] === macAddress) {
+//   console.log("Your Device 2")
+// }
+// else {
+//   console.log("You can not Enter")
+// }
 
+
+// const macAdd = async () => {
+//   // let DLog = await new DeviceLog(req.body);
+//   var new_user = new DeviceLog({
+//     name: 'suvra',
+//     email: "kar.suvra",
+//     device1: mac
+//   })
+
+//   new_user.save(function (err, result) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     else {
+//       console.log(result)
+//     }
+
+
+//   })
+let nameUser;
 
 
 app.post('/comment', checkAuthenticated, async (req, res) => {
@@ -138,11 +167,19 @@ app.get('/reset', checkNotAuthenticated, (req, res) => {
   res.render('reset.ejs')
 })
 
-app.get('/profile', checkAuthenticated, async (req, res) => {
-  const user = await Users.find({ email: req.user.email })
-  const mail = user[0].email;
-  res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
-})
+const a = 0;
+
+a === 1 ?
+  app.get('/noentry', checkAuthenticated, async (req, res) => {
+    res.send("Magi Mehedi")
+  })
+  :
+  app.get('/profile', checkAuthenticated, async (req, res) => {
+    nameUser = await Users.find({ email: req.user.email })
+    const mail = nameUser[0].email;
+    await macAdd()
+    res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+  })
 
 // nbee classes 
 app.get('/mycourses', checkAuthenticated, async (req, res) => {
@@ -242,22 +279,7 @@ app.get('/nbee101_quiz1', checkAuthenticated, async (req, res) => {
   res.render('nbee_quiz1.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
 
-// app.post('/nbee101_quiz1', checkNotAuthenticated, async (req, res) => {
-//   // let quiz1 = await new CertiNbee101(req.body);
 
-//   let userName = await CertiNbee101.find({name:"Limon"});
-
-//   let quiz2 = {
-//     quiz2: "0"
-//   }
-//   const finalResult = await Object.assign(userName, quiz2);
-
-//   console.log(finalResult);
-
-//   await finalResult.save();
-
-//   res.send("kam hyse")
-// })
 
 app.post('/nbee101_quiz2', checkAuthenticated, async (req, res) => {
   let userName = await Users.find({ name: req.user.name });
@@ -319,11 +341,11 @@ app.get('/nbee101', checkNotAuthenticated, (req, res) => {
 app.get('/nbee101_certificate', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.user.email })
   const mail = user[0].email;
-  res.render('nbee101_certificate.ejs', { mail,name: req.user.name, unvname: req.user.unvname })
+  res.render('nbee101_certificate.ejs', { mail, name: req.user.name, unvname: req.user.unvname })
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: '/profile',
+  successRedirect: a === 1 ? "/noentry" : '/profile',
   failureRedirect: '/login',
   failureFlash: true
 }),
@@ -461,6 +483,86 @@ function checkNotAuthenticated(req, res, next) {
   }
   next()
 }
+
+
+const macAdd = async () => {
+  let mail = nameUser[0].email;
+
+  let userName = await DeviceLog.find({ mail });
+
+  macaddress.one(function (err, mac) {
+    console.log("Mac address for this host: %s", mac);
+    macAddress = mac;
+
+    // console.log(nameUser, "nfdskjndfsfdnsfsjnkjfsnokjfd");
+
+    // let device1 = "00:d8:61:37:32:a8";
+    let device1 = userName[0] === undefined ? undefined : userName[0].device1;
+    // let device2 = "00:d8:61:37:32:a9";
+    let device2 = userName[0] === undefined ? undefined : userName[0].device2;
+
+    if (device1 === undefined && device2 === undefined) {
+      console.log("New Device 1 logged");
+
+      console.log(userName, "Sala madari");
+
+      const new_user = new DeviceLog({
+        name: nameUser[0].name,
+        email: nameUser[0].email,
+        device1: mac,
+        device2: "undefined",
+      })
+      new_user.save(function (err, result) {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          console.log(result)
+        }
+      })
+    }
+    else if (macAddress === device1) {
+      console.log("Device 1 Running");
+    }
+    else if (macAddress === device2) {
+      console.log("Device 2 Running");
+    }
+    else if (device1 === macAddress && device2 !== device1) {
+      console.log("New Device 2 logged");
+      const Log = DeviceLog.updateOne({ email: nameUser[0].email }, { email: 'Will Riker' })
+      // await Character.updateOne(filter, { name: 'Will Riker' });
+      // const new_user = new DeviceLog({
+      //   name: nameUser[0].name,
+      //   email: nameUser[0].email,
+      //   device2: mac
+      // })
+      // new_user.save(function (err, result) {
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      //   else {
+      //     console.log(result)
+      //   }
+      // })
+      Log.save((err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        else {
+          console.log(result)
+        }
+      });
+    }
+    else if (macAddress !== device2 && macAddress !== device1) {
+      console.log(device1);
+      console.log(device2);
+      console.log("You can not enter");
+    }
+
+
+  })
+}
+
 
 app.listen(PORT, () => {
   console.log("Running app");
