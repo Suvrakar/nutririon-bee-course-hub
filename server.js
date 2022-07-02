@@ -546,7 +546,7 @@ const macAdd = async () => {
       // })
 
     }
-    else if (macAddress !== device2 && macAddress !== device1) {
+    else if (macAddress !== device2 && macAddress !== device1 && device1!==undefined && device2!==undefined) {
       console.log(device1, "device1");
       console.log(device2, "device2");
       console.log(macAddress, "macAddress");
