@@ -553,9 +553,9 @@ const macAdd = async () => {
         }
       });
     }
-    else if (macAddress !== device2 && macAddress !== device1) {
-      console.log(device1);
-      console.log(device2);
+    else if (macAddress !== device2 && macAddress !== device1 && device2!=="undefined") {
+      console.log(device1, "device1");
+      console.log(device2, "device2");
       console.log("You can not enter");
     }
 
