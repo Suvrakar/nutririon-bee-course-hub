@@ -527,7 +527,7 @@ const macAdd = async () => {
     else if (macAddress === device2) {
       console.log("Device 2 Running");
     }
-    else if (device1 !== null && device2 !== device1 && device2===0) {
+    else if (device1 !== null && device2 !== device1 && device2==="undefined") {
       console.log("New Device 2 logged");
       const Log =  DeviceLog.updateOne({ email: nameUser[0].email }, { email: 'Will Riker' })
       // await Character.updateOne(filter, { name: 'Will Riker' });
