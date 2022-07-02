@@ -527,7 +527,7 @@ const macAdd = async () => {
     else if (macAddress === device2) {
       console.log("Device 2 Running");
     }
-    else if (device1 === macAddress && device2 !== device1) {
+    else if (device1 === macAddress && device2 !== device1 && device2==="undefined") {
       console.log("New Device 2 logged");
       const Log = DeviceLog.updateOne({ email: nameUser[0].email }, { email: 'Will Riker' })
       // await Character.updateOne(filter, { name: 'Will Riker' });
@@ -553,7 +553,7 @@ const macAdd = async () => {
         }
       });
     }
-    else if (macAddress !== device2 && macAddress !== device1 && device2!=="undefined") {
+    else if (macAddress !== device2 && macAddress !== device1) {
       console.log(device1, "device1");
       console.log(device2, "device2");
       console.log("You can not enter");
