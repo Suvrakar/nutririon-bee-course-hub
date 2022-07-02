@@ -530,6 +530,7 @@ const macAdd = async () => {
     else if (device1 !== null && device2 !== device1 && device2==="undefined") {
       console.log("New Device 2 logged");
       const Log = DeviceLog.updateOne({ email: nameUser[0].email }, { email: 'Will Riker' })
+      console.log(Log, "Log");
       // await Character.updateOne(filter, { name: 'Will Riker' });
       // const new_user = new DeviceLog({
       //   name: nameUser[0].name,
@@ -544,14 +545,14 @@ const macAdd = async () => {
       //     console.log(result)
       //   }
       // })
-      Log.save((err, result) => {
+      Log.save(function (err, result) {
         if (err) {
           console.log(err);
         }
         else {
           console.log(result)
         }
-      });
+      })
     }
     else if (macAddress !== device2 && macAddress !== device1) {
       console.log(device1, "device1");
