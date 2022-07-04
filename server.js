@@ -77,7 +77,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.json())
 
-let macAddress = 0;
+let macAddress;
 
 
 // if (arr[0] !== macAddress) {
@@ -177,6 +177,10 @@ a === 1 ?
   app.get('/profile', checkAuthenticated, async (req, res) => {
     nameUser = await Users.find({ email: req.user.email })
     const mail = nameUser[0].email;
+    await macaddress.one(function (err, mac) {
+      console.log("Mac address for this host: %s", mac);
+      macAddress = mac;
+    })
     await macAdd()
     res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
   })
@@ -490,10 +494,7 @@ const macAdd = async () => {
 
   let userName = await DeviceLog.find({ mail });
 
-  macaddress.one(function (err, mac) {
-    console.log("Mac address for this host: %s", mac);
-    macAddress = mac;
-  })
+
 
   let device1 = userName[0] === undefined ? undefined : userName[0].device1;
   let device2 = userName[0] === undefined ? undefined : userName[0].device2;
@@ -509,7 +510,7 @@ const macAdd = async () => {
       device1: macAddress,
       device2: "undefined",
     })
-    new_user.save(function (err, result) {
+    await new_user.save(function (err, result) {
       if (err) {
         console.log(err);
       }
