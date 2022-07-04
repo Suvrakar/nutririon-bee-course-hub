@@ -167,33 +167,34 @@ app.get('/reset', checkNotAuthenticated, (req, res) => {
   res.render('reset.ejs')
 })
 
-const a = 0;
 
-a === 1 ?
+app.get('/profile', checkAuthenticated, async (req, res) => {
+  nameUser = await Users.find({ email: req.user.email })
+  const mail = nameUser[0].email;
+  await macaddress.one(function (err, mac) {
+    console.log("Mac address for this host: %s", mac);
+    macAddress = mac;
+  })
+  await macAdd()
+  res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+})
+
+// nbee classes 
+const a = 1;
+
+a === 0 ?
   app.get('/noentry', checkAuthenticated, async (req, res) => {
     res.send("Magi Mehedi")
   })
   :
-  app.get('/profile', checkAuthenticated, async (req, res) => {
-    nameUser = await Users.find({ email: req.user.email })
-    const mail = nameUser[0].email;
-    await macaddress.one(function (err, mac) {
-      console.log("Mac address for this host: %s", mac);
-      macAddress = mac;
-    })
-    await macAdd()
-    res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+  app.get('/mycourses', checkAuthenticated, async (req, res) => {
+    const user = await CertiNbee101.find({ name: req.user.name })
+
+    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+
+
+    res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
   })
-
-// nbee classes 
-app.get('/mycourses', checkAuthenticated, async (req, res) => {
-  const user = await CertiNbee101.find({ name: req.user.name })
-
-  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
-  res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
-})
 
 app.get('/nbee101_1', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
@@ -523,11 +524,12 @@ const macAdd = async () => {
     console.log("Device 1 Running");
   }
   else if (macAddress === device2) {
+    a = a + 1;
     console.log("Device 2 Running");
   }
   else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
-
     console.log("New Device 2 logged");
+    a = a + 1;
     console.log(nameUser[0].device2);
     const Log = await DeviceLog.updateOne({ email: nameUser[0].email }, { device2: macAddress })
     console.log(Log, "Log");
@@ -535,6 +537,7 @@ const macAdd = async () => {
   else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
     console.log(device1, "device1");
     console.log(device2, "device2");
+
     console.log(macAddress, "macAddress");
     console.log("You can not enter");
   }
