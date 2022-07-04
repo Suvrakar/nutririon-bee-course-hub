@@ -180,9 +180,9 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 })
 
 // nbee classes 
-const a = 1;
+const a = 0;
 
-a === 0 ?
+a === 1 ?
   app.get('/noentry', checkAuthenticated, async (req, res) => {
     res.send("Magi Mehedi")
   })
