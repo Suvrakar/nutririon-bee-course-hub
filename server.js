@@ -183,7 +183,7 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 const a = 1;
 
 a === 0 ?
-  app.get('/noentry', checkAuthenticated, async (req, res) => {
+  app.get('/noentry', checkNotAuthenticated, async (req, res) => {
     res.send("Magi Mehedi")
   })
   :
