@@ -490,15 +490,12 @@ const macAdd = async () => {
 
   let userName = await DeviceLog.find({ mail });
 
-  macaddress.one(function (err, mac) {
-    console.log("Mac address for this host: %s", mac);
-    macAddress = mac;
+    macaddress.one(function (err, mac) {
+      console.log("Mac address for this host: %s", mac);
+      macAddress = mac;
+    })
 
-    // console.log(nameUser, "nfdskjndfsfdnsfsjnkjfsnokjfd");
-
-    // let device1 = "00:d8:61:37:32:a8";
     let device1 = userName[0] === undefined ? undefined : userName[0].device1;
-    // let device2 = "00:d8:61:37:32:a9";
     let device2 = userName[0] === undefined ? undefined : userName[0].device2;
 
     if (device1 === undefined && device2 === undefined) {
@@ -506,10 +503,10 @@ const macAdd = async () => {
 
       console.log(userName, "Sala madari");
 
-      const new_user = new DeviceLog({
+      const new_user = await new DeviceLog({
         name: nameUser[0].name,
         email: nameUser[0].email,
-        device1: mac,
+        device1: macAddress,
         device2: "undefined",
       })
       new_user.save(function (err, result) {
@@ -527,35 +524,22 @@ const macAdd = async () => {
     else if (macAddress === device2) {
       console.log("Device 2 Running");
     }
-    else if (device1 !== null && device2 !== device1 && device2==="undefined") {
-      console.log("New Device 2 logged");
-      const Log =  DeviceLog.updateOne({ email: nameUser[0].email }, { email: 'Will Riker' })
-      // await Character.updateOne(filter, { name: 'Will Riker' });
-      // const new_user = new DeviceLog({
-      //   name: nameUser[0].name,
-      //   email: nameUser[0].email,
-      //   device2: mac
-      // })
-      // new_user.save(function (err, result) {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      //   else {
-      //     console.log(result)
-      //   }
-      // })
+    else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
 
+      console.log("New Device 2 logged");
+      const Log = await DeviceLog.updateOne({ device2: nameUser[0].device2 }, { device2: macAddress })
     }
-    else if (macAddress !== device2 && macAddress !== device1 && device1!==undefined && device2!==undefined) {
+    else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
       console.log(device1, "device1");
       console.log(device2, "device2");
       console.log(macAddress, "macAddress");
       console.log("You can not enter");
     }
+  
 
-
-  })
 }
+
+
 
 
 app.listen(PORT, () => {
