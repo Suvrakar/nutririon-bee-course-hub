@@ -490,52 +490,54 @@ const macAdd = async () => {
 
   let userName = await DeviceLog.find({ mail });
 
-    macaddress.one(function (err, mac) {
-      console.log("Mac address for this host: %s", mac);
-      macAddress = mac;
+  macaddress.one(function (err, mac) {
+    console.log("Mac address for this host: %s", mac);
+    macAddress = mac;
+  })
+
+  let device1 = userName[0] === undefined ? undefined : userName[0].device1;
+  let device2 = userName[0] === undefined ? undefined : userName[0].device2;
+
+  if (device1 === undefined && device2 === undefined) {
+    console.log("New Device 1 logged");
+
+    console.log(userName, "Sala madari");
+
+    const new_user = await new DeviceLog({
+      name: nameUser[0].name,
+      email: nameUser[0].email,
+      device1: macAddress,
+      device2: "undefined",
     })
+    new_user.save(function (err, result) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        console.log(result)
+      }
+    })
+  }
+  else if (macAddress === device1) {
+    console.log("Device 1 Running");
+  }
+  else if (macAddress === device2) {
+    console.log("Device 2 Running");
+  }
+  else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
 
-    let device1 = userName[0] === undefined ? undefined : userName[0].device1;
-    let device2 = userName[0] === undefined ? undefined : userName[0].device2;
+    console.log("New Device 2 logged");
+    console.log(nameUser[0].device2);
+    const Log = await DeviceLog.updateOne({ email: nameUser[0].email }, { name: "macAddress" })
+    console.log(Log, "Log");
+  }
+  else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
+    console.log(device1, "device1");
+    console.log(device2, "device2");
+    console.log(macAddress, "macAddress");
+    console.log("You can not enter");
+  }
 
-    if (device1 === undefined && device2 === undefined) {
-      console.log("New Device 1 logged");
-
-      console.log(userName, "Sala madari");
-
-      const new_user = await new DeviceLog({
-        name: nameUser[0].name,
-        email: nameUser[0].email,
-        device1: macAddress,
-        device2: "undefined",
-      })
-      new_user.save(function (err, result) {
-        if (err) {
-          console.log(err);
-        }
-        else {
-          console.log(result)
-        }
-      })
-    }
-    else if (macAddress === device1) {
-      console.log("Device 1 Running");
-    }
-    else if (macAddress === device2) {
-      console.log("Device 2 Running");
-    }
-    else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
-
-      console.log("New Device 2 logged");
-      const Log = await DeviceLog.updateOne({ device2: nameUser[0].device2 }, { name: "macAddress" })
-    }
-    else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
-      console.log(device1, "device1");
-      console.log(device2, "device2");
-      console.log(macAddress, "macAddress");
-      console.log("You can not enter");
-    }
-  
 
 }
 
