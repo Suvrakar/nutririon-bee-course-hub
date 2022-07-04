@@ -183,7 +183,7 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 const a = 1;
 
 a === 0 ?
-  app.get('/noentry', checkNotAuthenticated, async (req, res) => {
+  app.get('/noentry', checkAuthenticated, async (req, res) => {
     res.send("Magi Mehedi")
   })
   :
@@ -524,12 +524,10 @@ const macAdd = async () => {
     console.log("Device 1 Running");
   }
   else if (macAddress === device2) {
-    a = a + 1;
     console.log("Device 2 Running");
   }
   else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
     console.log("New Device 2 logged");
-    a = a + 1;
     console.log(nameUser[0].device2);
     const Log = await DeviceLog.updateOne({ email: nameUser[0].email }, { device2: macAddress })
     console.log(Log, "Log");
@@ -537,7 +535,7 @@ const macAdd = async () => {
   else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
     console.log(device1, "device1");
     console.log(device2, "device2");
-
+    a = a + 1;
     console.log(macAddress, "macAddress");
     console.log("You can not enter");
   }
