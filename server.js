@@ -491,20 +491,20 @@ function checkNotAuthenticated(req, res, next) {
 
 
 const macAdd = async () => {
-  let mail = nameUser[0].email;
+  let mail = nameUser.map(x=>x.email);
 
-  let userName = await DeviceLog.find({ mail });
+  let Device = await DeviceLog.find({email:mail});
+
+  console.log(nameUser, "nameUser");
+  console.log(mail, "mail");
+  console.log(Device, "Device");
 
 
-
-  let device1 = userName[0] === undefined ? undefined : userName[0].device1;
-  let device2 = userName[0] === undefined ? undefined : userName[0].device2;
+  let device1 = Device[0] === undefined ? undefined : Device[0].device1;
+  let device2 = Device[0] === undefined ? undefined : Device[0].device2;
 
   if (device1 === undefined && device2 === undefined) {
     console.log("New Device 1 logged");
-
-    console.log(userName, "Sala madari");
-
     const new_user = await new DeviceLog({
       name: nameUser[0].name,
       email: nameUser[0].email,
