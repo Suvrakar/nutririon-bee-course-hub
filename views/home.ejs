@@ -39,26 +39,9 @@
 <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
 <title>Home | Nutrition Bee Course Hub</title>
 <script>
-  const getNbeeUsers = async () => {
-    // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled`)
-    const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
-    const Nbee101Enrolled = usersArr.data;
-    console.log(Nbee101Enrolled)
-    let nameData, addRatings, elementInt = 0;
-
-    for (let i = 0; i < res.data.length; i++) {
-
-      const ratingShow = document.getElementById("nbee101UsersNum");
-      ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
-      // q.value = p;
-    }
-  }
-
-  getNbeeUsers()
 
   const getComments = async () => {
     res = await axios.get(`https://course.nutritionbee.net/comment`)
-    console.log(res.data[0].name)
     let nameData, addRatings, elementInt = 0;
     for (let i = 0; i < res.data.length; i++) {
       elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
@@ -75,11 +58,7 @@
     let nameData, addRatings, elementInt = 0;
 
     const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
-
   }
-
-
-
 
 
   getComments()
@@ -115,9 +94,6 @@
 
 <div class="container">
 
-
-
-
   <!-- headng  -->
   <h3 class="text-center" style="margin-top: 20px;">Welcome to Nutrition Bee course hub
   </h3>
@@ -127,8 +103,6 @@
 
   <!-- card  -->
   <div class="py-5">
-
-
     <h5>Available Courses: </h5>
     <div class="row">
       <div class="col-sm">
@@ -152,7 +126,8 @@
               <!-- <span>Total Students:</span><span id="nbee101UsersNum"> 0 </span> -->
             </div>
             <div class="noStyle">
-              <a href="/nbee101" class="btn btn-warning btnLogin text-decoration-none"><i class="fa fa-eye p-1" aria-hidden="true"></i> See
+              <a href="/nbee101" class="btn btn-warning btnLogin text-decoration-none"><i class="fa fa-eye p-1"
+                  aria-hidden="true"></i> See
                 Details!</a>
             </div>
 
@@ -167,15 +142,15 @@
       </div>
     </div>
 
-
   </div>
-
-
-
-
-
-
 </div>
+
+<div class="my-5 p-3" style="background-color:#1e3138; color:white">
+  <p><i class="fas fa-exclamation-triangle p-3" style="color:red"></i>Only 2 Devices(Phone/PC/Tab etc) are allowed
+    for an account. If you use more than 2 devices you won't able to
+    be logged in. Please do not use more than 2 devices for an account.</p>
+</div>
+
 <!-- Footer  -->
 <footer id="site-footer">
   <section class="horizontal-footer-section" id="footer-top-section">
@@ -305,8 +280,8 @@
   }
 
   .btnLogin a :hover {
-    text-decoration: none!important;
-    background-color: #00c3ce!important;
+    text-decoration: none !important;
+    background-color: #00c3ce !important;
     /* color: white; */
   }
 

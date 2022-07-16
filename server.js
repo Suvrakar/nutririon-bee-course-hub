@@ -29,7 +29,7 @@ var macaddress = require('macaddress');
 
 
 connect(); //db connection
-
+const a = 0;
 
 
 const initializePassport = require('./passport-config')
@@ -47,6 +47,19 @@ const initialPass = async () => {
   }
 
 }
+
+
+function generatePassword() {
+  var length = 8,
+      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+      retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+}
+
+console.log(generatePassword(), "password");
 
 setInterval(() => { initialPass(); }, 2000)
 //passport start
@@ -180,8 +193,6 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 })
 
 // nbee classes 
-const a = 0;
-
 a === 1 ?
   app.get('/noentry', checkAuthenticated, async (req, res) => {
     res.send("Magi Mehedi")
@@ -225,15 +236,15 @@ app.get('/nbee101_3', checkAuthenticated, async (req, res) => {
 
   res.render('nbee101_3.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
+
 app.get('/nbee101_4', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
 
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
-
-
   res.render('nbee101_4.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
+
 app.get('/nbee101_5', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
 
@@ -350,7 +361,7 @@ app.get('/nbee101_certificate', checkAuthenticated, async (req, res) => {
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: a === 1 ? "/noentry" : '/profile',
+  successRedirect: a === 1 ? `/noentry` : '/profile',
   failureRedirect: '/login',
   failureFlash: true
 }),
@@ -491,9 +502,9 @@ function checkNotAuthenticated(req, res, next) {
 
 
 const macAdd = async () => {
-  let mail = nameUser.map(x=>x.email);
+  let mail = nameUser.map(x => x.email);
 
-  let Device = await DeviceLog.find({email:mail});
+  let Device = await DeviceLog.find({ email: mail });
 
   console.log(nameUser, "nameUser");
   console.log(mail, "mail");
