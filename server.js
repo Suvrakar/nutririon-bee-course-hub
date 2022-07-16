@@ -48,23 +48,7 @@ const initialPass = async () => {
 
 }
 
-
-function generatePassword() {
-  var length = 8,
-      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-      retVal = "";
-  for (var i = 0, n = charset.length; i < length; ++i) {
-      retVal += charset.charAt(Math.floor(Math.random() * n));
-  }
-  return retVal;
-}
-
-console.log(generatePassword(), "password");
-
 setInterval(() => { initialPass(); }, 2000)
-//passport start
-
-// const users = []
 
 
 app.set('view-engine', 'ejs')
@@ -91,41 +75,6 @@ app.use(bodyParser.json())
 app.use(express.json())
 
 let macAddress;
-
-
-// if (arr[0] !== macAddress) {
-//   console.log("New Device")
-//   arr.push(macAddress)
-// }
-// if (arr[0] === macAddress) {
-//   console.log("Your Device 1")
-// }
-// if (arr[1] === macAddress) {
-//   console.log("Your Device 2")
-// }
-// else {
-//   console.log("You can not Enter")
-// }
-
-
-// const macAdd = async () => {
-//   // let DLog = await new DeviceLog(req.body);
-//   var new_user = new DeviceLog({
-//     name: 'suvra',
-//     email: "kar.suvra",
-//     device1: mac
-//   })
-
-//   new_user.save(function (err, result) {
-//     if (err) {
-//       console.log(err);
-//     }
-//     else {
-//       console.log(result)
-//     }
-
-
-//   })
 let nameUser;
 
 
@@ -139,7 +88,6 @@ app.post('/comment', checkAuthenticated, async (req, res) => {
   const finalResult = await Object.assign(comment, name);
   await finalResult.save();
   res.redirect('/thanks')
-  // res.send("Comment hyse")
 })
 
 
@@ -162,7 +110,6 @@ app.get('/nbee101enrolled', checkNotAuthenticated, async (req, res) => {
   const userNbee = await Users.find()
 
   const EnrolledNbee101 = userNbee.filter(x => x.paymentStatus === "true");
-  console.log(EnrolledNbee101.length);
   res.send("" + EnrolledNbee101.length);
 })
 
@@ -178,6 +125,51 @@ app.get('/', checkNotAuthenticated, (req, res) => {
 
 app.get('/reset', checkNotAuthenticated, (req, res) => {
   res.render('reset.ejs')
+})
+
+app.post('/reset', checkNotAuthenticated, async (req, res) => {
+  const user = await Users.find({ email: req.body.email })
+  const password = user[0].password;
+  const mail = user[0].email;
+  const name = user[0].name;
+
+  var mailTransporter = nodemailer.createTransport({
+
+    host: "nutritionbee.net",
+    port: 465,
+    auth: {
+      user: "info@nutritionbee.net",
+      pass: "01770677688Suv"
+    }
+
+  });
+
+  const sendMail = async () => {
+    //Default Mail
+    const mailOptions = {
+      from: '"Nutrition Bee" <info@nutritionbee.net>',
+      to: `${mail}`,
+      subject: 'Password of Nutrition Bee Course Hub',
+      html: `<p>Dear ${name}, <br> You have requested for your password. Your password is : <b> ${password} </b> <br><br> Best Regards<br>Nutrition Bee</p>`
+    };
+    await mailTransporter.sendMail(mailOptions, function (err, data) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Email sent successfully');
+      }
+    });
+  }
+
+  try {
+    res.render("reset.ejs");
+    await sendMail()
+  }
+  catch (err) {
+    console.log(err);
+  }
+
+
 })
 
 
@@ -209,11 +201,7 @@ a === 1 ?
 
 app.get('/nbee101_1', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-
-  console.log(user[0]);
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-  console.log(QuizMarks);
   res.render('nbee101_1.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
@@ -306,12 +294,7 @@ app.post('/nbee101_quiz2', checkAuthenticated, async (req, res) => {
     name: userName[0].name,
     email: userName[0].email
   }
-
-  console.log(req.body)
-
   const finalResult = await Object.assign(quiz2, name);
-  console.log(finalResult)
-
   await finalResult.save();
   res.render('nbee101_certificate.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
@@ -389,6 +372,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     const finalResult = Object.assign(userData, paymentStatus);
     await finalResult.save();
     var email = req.body.email;
+    var name = req.body.name;
     var regEmailConfrim = email;
 
     var mailTransporter = nodemailer.createTransport({
@@ -408,7 +392,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         from: '"Nutrition Bee" <info@nutritionbee.net>',
         to: `${regEmailConfrim}`,
         subject: 'Thanks for registering into Nutrition Bee course hub',
-        html: "<p>Dear participant</p><p>Thanks for registering into Nutrition Bee course hub. You can choose your desired courses. For more info visit: https://www.facebook.com/nutritionbee</p><p>Best regards</p><img src=`https://course.nutritionbee.net/mainlogo.png` width=`100px`>",
+        html: `<p>Dear ${name}</p><p>Thanks for registering into Nutrition Bee course hub. You can choose your desired courses. For more info visit: https://www.facebook.com/nutritionbee</p><p>Best regards</p><p>Nutrition Bee</p>`,
       };
       await mailTransporter.sendMail(mailOptions, function (err, data) {
         if (err) {
@@ -422,15 +406,12 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
     await sendRegMail()
   } catch (error) {
     res.redirect('/failedreg')
-    // console.log(res.send("Failed"))
-
   }
 })
 
 app.put('/edit', checkAuthenticated, async (req, res) => {
   const user = await Users.find({ email: req.body.email })
-  console.log(user[0]._id.valueOf());
-  const mail = user[0].email;
+
   const id = user[0]._id.valueOf().toString();
   try {
     let check = await Users.updateOne({
@@ -439,7 +420,6 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
       $set: req.body
     });
     if (check.modifiedCount !== 0) {
-      // res.send("Success")
       res.redirect("/profile")
     }
   } catch (error) {
@@ -447,19 +427,7 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
   }
 })
 
-app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
-  let userName = await Users.find({ name: req.user.name });
 
-  let name = {
-    name: userName[0].name
-  }
-  console.log(userName);
-  // let comment = await new Comments(req.body);
-  // const finalResult = await Object.assign(comment, name);
-  // await finalResult.save();
-  // res.redirect('/thanks')
-  res.send("kam hyse")
-})
 
 app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
   let userName = await Users.find({ name: req.user.name });
@@ -468,15 +436,8 @@ app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
     name: userName[0].name
   }
   console.log(userName);
-  // let comment = await new Comments(req.body);
-  // const finalResult = await Object.assign(comment, name);
-  // await finalResult.save();
-  // res.redirect('/thanks')
   res.send("kam hyse")
 })
-
-
-
 
 
 
@@ -506,13 +467,13 @@ const macAdd = async () => {
 
   let Device = await DeviceLog.find({ email: mail });
 
-  console.log(nameUser, "nameUser");
-  console.log(mail, "mail");
-  console.log(Device, "Device");
+  let n = nameUser[0].name;
 
 
   let device1 = Device[0] === undefined ? undefined : Device[0].device1;
   let device2 = Device[0] === undefined ? undefined : Device[0].device2;
+
+
 
   if (device1 === undefined && device2 === undefined) {
     console.log("New Device 1 logged");
@@ -539,7 +500,36 @@ const macAdd = async () => {
   }
   else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
     console.log("New Device 2 logged");
-    console.log(nameUser[0].device2);
+
+    var mailTransporter = nodemailer.createTransport({
+
+      host: "nutritionbee.net",
+      port: 465,
+      auth: {
+        user: "info@nutritionbee.net",
+        pass: "01770677688Suv"
+      }
+
+    });
+
+    const sendMail = async () => {
+      //Default Mail
+      const mailOptions = {
+        from: '"Nutrition Bee" <info@nutritionbee.net>',
+        to: `${mail}`,
+        subject: 'Nutrition Bee Course Hub - Warning',
+        html: `<p>Dear ${n}, <br> Your second device has been detected. From nou can not now log in from any third device otherwise your account can be suspended. You can only log in from your first and second device. </b> <br><br> Best Regards<br>Nutrition Bee</p>`
+      };
+      await mailTransporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Email sent successfully');
+        }
+      });
+    }
+    await sendMail();
+
     const Log = await DeviceLog.updateOne({ email: nameUser[0].email }, { device2: macAddress })
     console.log(Log, "Log");
   }
