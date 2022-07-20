@@ -518,7 +518,7 @@ const macAdd = async () => {
         from: '"Nutrition Bee" <info@nutritionbee.net>',
         to: `${mail}`,
         subject: 'Nutrition Bee Course Hub - Warning',
-        html: `<p>Dear ${n}, <br> Your second device has been detected. From nou can not now log in from any third device otherwise your account can be suspended. You can only log in from your first and second device. </b> <br><br> Best Regards<br>Nutrition Bee</p>`
+        html: `<p>Dear ${n}, <br> Your second device has been detected. From now, can not now log in from any third device otherwise your account can be suspended. You can only log in from your first and second device. </b> <br><br> Best Regards<br>Nutrition Bee</p>`
       };
       await mailTransporter.sendMail(mailOptions, function (err, data) {
         if (err) {
