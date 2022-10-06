@@ -9,6 +9,9 @@
 </head>
 
 <body>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -157,9 +160,25 @@
       <span><b>Total Students:</b></span><span id="nbee101UsersNum"> 0 </span>
     </div>
 
-    <!-- <div id="comments">
 
-    </div> -->
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+
 
 
 
@@ -222,7 +241,8 @@
       <p>নিউট্রিশন বি -এর অনুমতি ছাড়া কোর্স ক্রয়-বিক্রয় আইনত দণ্ডনীয়। </p>
     </div>
 
-    <a href="/profile" class="btn btn-warning btnLogin text-decoration-none"><i class="fas fa-shopping-cart p-1"></i>Enroll Now!</a>
+    <a href="/profile" class="btn btn-warning btnLogin text-decoration-none"><i
+        class="fas fa-shopping-cart p-1"></i>Enroll Now!</a>
 
   </div>
 
@@ -336,6 +356,20 @@
   </footer>
 
 
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+  </script>
+
 
 
   <style>
@@ -348,6 +382,11 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+
+    .swiper {
+      width: 600px;
+      height: 300px;
+    }
 
     .btnLogin {
       padding: 0;
