@@ -139,7 +139,7 @@ app.post('/reset', checkNotAuthenticated, async (req, res) => {
     port: 465,
     auth: {
       user: "info@nutritionbee.net",
-      pass: "01770677688Suv"
+      pass: process.env.MAIL_PASS
     }
 
   });
@@ -228,10 +228,10 @@ app.get('/nbee101_3', checkAuthenticated, async (req, res) => {
 
 app.get('/nbee101_4', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_4 = process.env.NBEE101_4;
+
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
-  res.render('nbee101_5.ejs', {nbee_101_4, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+  res.render('nbee101_5.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_5', checkAuthenticated, async (req, res) => {
