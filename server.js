@@ -260,7 +260,7 @@ app.get('/nbee101_7', checkAuthenticated, async (req, res) => {
 })
 app.get('/nbee101_8', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_8 = process.env.Practice_Class_1;
+  const nbee_101_8 = process.env.Practice_Class_2;
 
   let QuizMarks = user[0] === [] ? user[0].quiz2 : "undefined"
 
