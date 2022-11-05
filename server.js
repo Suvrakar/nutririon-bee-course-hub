@@ -200,7 +200,7 @@ a === 1 ?
   })
 
 app.get('/nbee101_1', checkAuthenticated, async (req, res) => {
-  const nbee_101_1 = process.env.NBEE101_1;
+  const nbee_101_1 = process.env.Balance_Diet;
   const user = await CertiNbee101.find({ name: req.user.name })
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
   res.render('nbee101_1.ejs', { nbee_101_1, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
@@ -208,7 +208,7 @@ app.get('/nbee101_1', checkAuthenticated, async (req, res) => {
 
 app.get('/nbee101_2', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_2 = process.env.NBEE101_2;
+  const nbee_101_2 = process.env.Nutritional_Assessment;
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
 
@@ -217,11 +217,8 @@ app.get('/nbee101_2', checkAuthenticated, async (req, res) => {
 
 app.get('/nbee101_3', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_3 = process.env.NBEE101_3;
+  const nbee_101_3 = process.env.Food_Caloric;
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
-
 
   res.render('nbee101_3.ejs', {nbee_101_3, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
@@ -236,7 +233,7 @@ app.get('/nbee101_4', checkAuthenticated, async (req, res) => {
 
 app.get('/nbee101_5', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_5 = process.env.NBEE101_5;
+  const nbee_101_5 = process.env.Caloric_Calculation;
 
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
@@ -245,7 +242,7 @@ app.get('/nbee101_5', checkAuthenticated, async (req, res) => {
 })
 app.get('/nbee101_6', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_6 = process.env.NBEE101_6;
+  const nbee_101_6 = process.env.Diet_Plan;
 
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
@@ -254,7 +251,7 @@ app.get('/nbee101_6', checkAuthenticated, async (req, res) => {
 })
 app.get('/nbee101_7', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_7 = process.env.NBEE101_7;
+  const nbee_101_7 = process.env.Practice_Class_1;
 
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
@@ -263,7 +260,7 @@ app.get('/nbee101_7', checkAuthenticated, async (req, res) => {
 })
 app.get('/nbee101_8', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_8 = process.env.NBEE101_8;
+  const nbee_101_8 = process.env.Practice_Class_1;
 
   let QuizMarks = user[0] === [] ? user[0].quiz2 : "undefined"
 
@@ -271,7 +268,7 @@ app.get('/nbee101_8', checkAuthenticated, async (req, res) => {
 })
 app.get('/nbee101_9', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee_101_9 = process.env.NBEE101_9;
+  const nbee_101_9 = process.env.Counselling;
 
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
