@@ -25,7 +25,6 @@ const mongoose = require("mongoose")
 var cors = require('cors')
 var macaddress = require('macaddress');
 
-// import getMAC, { isMAC } from 'getmac'
 
 
 connect(); //db connection
@@ -384,7 +383,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       port: 465,
       auth: {
         user: "info@nutritionbee.net",
-        pass: "01770677688Suv"
+        pass: process.env.MAIL_PASS
       }
 
     });
