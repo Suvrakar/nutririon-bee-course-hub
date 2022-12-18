@@ -107,7 +107,6 @@ app.get('/thanks', checkAuthenticated, (req, res) => {
 
 app.get('/nbee101enrolled', checkNotAuthenticated, async (req, res) => {
   const userNbee = await Users.find()
-
   const EnrolledNbee101 = userNbee.filter(x => x.paymentStatus === "true");
   res.send("" + EnrolledNbee101.length);
 })
@@ -175,12 +174,14 @@ app.post('/reset', checkNotAuthenticated, async (req, res) => {
 app.get('/profile', checkAuthenticated, async (req, res) => {
   nameUser = await Users.find({ email: req.user.email })
   const mail = nameUser[0].email;
+  var currentdate = new Date().toLocaleDateString(); 
+  var currenttime = new Date().toLocaleTimeString(); 
   await macaddress.one(function (err, mac) {
     console.log("Mac address for this host: %s", mac);
     macAddress = mac;
   })
   await macAdd()
-  res.render('index.ejs', { mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+  res.render('index.ejs', { currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 
 // nbee classes 
