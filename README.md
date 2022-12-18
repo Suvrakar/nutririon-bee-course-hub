@@ -1,3 +1,3 @@
 # nbeefull
 
-Live Link: https://course.nutritionbee.net/
+Production: https://course.nutritionbee.net/
