@@ -1,7 +1,7 @@
 # nbeefull
 
 Nutrition bee is mainly targeted the students and professionals who are studying Nutrition science. 
-I have used monolithic, 3-tier architecture for it. We have around active 200+ users and almost 30-50 logins daily. Some of the core features are beta-tested successfully and integrated. And the app is in production. Let's discuss some of the core features:
+I have used monolithic, MVC 3-tier architecture for it. We have around active 200+ users and almost 30-50 logins daily. Some of the core features are beta-tested successfully and integrated. And the app is in production. Let's discuss some of the core features:
 1. Authentication: I have used PassportJS for authentication and token management. The library is so handy and made my task easy.
 2. Admin Panel: A separate admin panel has been made with AdminBro(AdminJS) which is an admin panel for the NodeJS app. I connected it with my MongoDB Database.
 3. Payment Gateway and Payment Confirmation: Users can use pay through MFS services(Bkash, Nagad, Rocket). After payment
