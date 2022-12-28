@@ -22,8 +22,9 @@ const multer = require('multer');
 const mongoose = require("mongoose")
 var cors = require('cors')
 var macaddress = require('macaddress');
-var upload = multer({ limits: { fileSize: 1064960 }, dest: '/uploads/' }).single('picture');
 var imgModel = require('./models/ProfileImage');
+var store = require('store')
+
 
 connect(); //db connection
 const a = 0;
@@ -74,78 +75,6 @@ app.use(express.json())
 let macAddress;
 let nameUser;
 
-
-var storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-});
-
-var upload = multer({ storage: storage });
-
-
-app.get('/uploa', checkNotAuthenticated, (req, res) => {
-  imgModel.find({}, (err, items) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send('An error occurred', err);
-    }
-    else {
-      res.render('imagesPage', { items: items });
-    }
-  });
-});
-
-
-app.post("/upload", upload.single('image'), (req, res) => {
-  var img = fs.readFileSync(req.file.path);
-  var encode_img = img.toString('base64');
-  var final_img = {
-    contentType: req.file.mimetype,
-    image: Buffer.from(encode_img, 'base64')
-    // new Buffer(encode_img, 'base64')
-  };
-  imgModel.create(final_img, function (err, result) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(result.img.Buffer);
-      console.log("Saved To database");
-      result.save();
-
-      res.contentType(final_img.contentType);
-      res.send(final_img.image);
-    }
-  })
-})
-
-
-// app.post('/upload', upload.single('image'), checkNotAuthenticated, (req, res, next) => {
-
-//   var obj = {
-//     name: req.body.name,
-//     desc: req.body.desc,
-//     img: {
-//       data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-//       contentType: 'image/png'
-//     }
-//   }
-
-//   console.log("fndfjnfsjdfsndfsj");
-//   imgModel.create(obj, (err, item) => {
-//     if (err) {
-//       console.log(err);
-//     }
-//     else {
-//       item.save();
-//       res.send("Done")
-
-//     }
-//   });
-// });
 
 
 app.post('/comment', checkAuthenticated, async (req, res) => {
@@ -245,8 +174,9 @@ app.post('/reset', checkNotAuthenticated, async (req, res) => {
 app.get('/profile', checkAuthenticated, async (req, res) => {
   nameUser = await Users.find({ email: req.user.email })
   const mail = nameUser[0].email;
-  var currentdate = new Date().toLocaleDateString(); 
-  var currenttime = new Date().toLocaleTimeString(); 
+  var currentdate = new Date().toLocaleDateString();
+  var currenttime = new Date().toLocaleTimeString();
+  store.set('user', { name:'Marcus' })
   await macaddress.one(function (err, mac) {
     console.log("Mac address for this host: %s", mac);
     macAddress = mac;
