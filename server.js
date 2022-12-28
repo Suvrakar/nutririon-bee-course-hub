@@ -23,7 +23,6 @@ const mongoose = require("mongoose")
 var cors = require('cors')
 var macaddress = require('macaddress');
 var imgModel = require('./models/ProfileImage');
-var store = require('store')
 
 
 connect(); //db connection
@@ -176,7 +175,6 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
   const mail = nameUser[0].email;
   var currentdate = new Date().toLocaleDateString();
   var currenttime = new Date().toLocaleTimeString();
-  store.set('user', { name:'Marcus' })
   await macaddress.one(function (err, mac) {
     console.log("Mac address for this host: %s", mac);
     macAddress = mac;
