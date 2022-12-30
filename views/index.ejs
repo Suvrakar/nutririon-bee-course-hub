@@ -72,6 +72,7 @@
                 </div>
             </form> -->
         </div>
+
         <div class="col-sm">
             <div class="">
                 <h5>User Information</h5><br>
@@ -492,6 +493,17 @@
 
 <!-- payments  -->
 <script>
+
+    const key = localStorage.getItem("Second");;
+
+    key == "logged 2" ? window.location = '/logout' : console.log("First time")
+
+    if (key == "") {
+        localStorage.setItem("First", "logged 1");
+    }
+    else if (key == "logged 1") {
+        localStorage.setItem("Second", "logged 2");
+    }
 
 
     $(document).ready(function () {

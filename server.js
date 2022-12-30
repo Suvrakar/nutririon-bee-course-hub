@@ -22,8 +22,6 @@ const multer = require('multer');
 const mongoose = require("mongoose")
 var cors = require('cors')
 var macaddress = require('macaddress');
-var imgModel = require('./models/ProfileImage');
-
 
 connect(); //db connection
 const a = 0;
@@ -45,6 +43,8 @@ const initialPass = async () => {
 
 }
 
+
+
 setInterval(() => { initialPass(); }, 2000)
 
 
@@ -63,6 +63,11 @@ app.use(session({
 app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
+var passportOneSessionPerUser=require('passport-one-session-per-user')
+passport.use(new passportOneSessionPerUser())
+
+app.use(passport.authenticate('passport-one-session-per-user'))
+
 // require('./path/to/passport/config/file')(passport);
 app.use(express.static("public"));
 app.use(methodOverride('_method'))
