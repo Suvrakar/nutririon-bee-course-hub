@@ -24,7 +24,6 @@ var cors = require('cors')
 var macaddress = require('macaddress');
 
 connect(); //db connection
-const a = 0;
 
 
 const initializePassport = require('./passport-config')
@@ -189,11 +188,6 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 })
 
 // nbee classes 
-a === 1 ?
-  app.get('/noentry', checkAuthenticated, async (req, res) => {
-    res.send("Magi Mehedi")
-  })
-  :
   app.get('/mycourses', checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
 
@@ -351,7 +345,7 @@ app.get('/nbee101_certificate', checkAuthenticated, async (req, res) => {
 })
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-  successRedirect: a === 1 ? `/noentry` : '/profile',
+  successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: true
 }),
@@ -543,15 +537,10 @@ const macAdd = async () => {
   else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
     console.log(device1, "device1");
     console.log(device2, "device2");
-    a = a + 1;
     console.log(macAddress, "macAddress");
     console.log("You can not enter");
   }
-
-
 }
-
-
 
 
 app.listen(PORT, () => {
