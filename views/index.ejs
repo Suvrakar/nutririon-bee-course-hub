@@ -33,7 +33,7 @@
         <div class="dropdown">
             <button class="a btn btn-warning dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <%= name[0].toUpperCase(); %>
+                <%= name[0]?.toUpperCase(); %>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/profile">My Profile</a></li>
@@ -54,56 +54,62 @@
 
 <div class="container">
     <div class="row d-flex justify-content-center align-items-center">
-        <div class="col-sm my-5 text-center">
+        <div class="col-sm my-3 text-center">
+            <img src=<%=proPicLink %>
+            width="200px" height="200px" style="border-radius: 50%; margin: 10px; text-align: center;" />
+            <h5 class="test p-5">WELCOME, <%= name %>
+            </h5>
             <div>
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                    width="200px" style="border-radius: 50%; margin: 10px; text-align: center;" />
-                <h5 class="test p-5">WELCOME, <%= name %>
-                </h5>
+                <% if (proPicLink=="https://cdn-icons-png.flaticon.com/512/1946/1946429.png") { %>
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="image" />
+                        <br /><br />
+                        <input type="submit" value="Upload" />
+                    </form>
+                    <%} else { %>
+                        <!-- <form method="POST" action="/edit?_method=PUT"></form> -->
+                        <form method="POST" action="/image/<%= id %>?_method=DELETE">
+                            <button type="submit">Delete Image</button>
+                        </form>
+                        <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="image" />
+                            <br /><br />
+                            <input type="submit" value="Upload" /> -->
+                        </form>
+                        <% } %>
+
             </div>
 
-            <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
-                <div>
-                    <label for="image">Upload Image</label>
-                    <input type="file" id="image" name="image" value="" required>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-            </form> -->
+
         </div>
 
         <div class="col-sm">
-            <div class="">
-                <h5>User Information</h5><br>
-                <h6 class="test"> <b>Name :</b>
-                    <span>
-                        <%= name %>
-                    </span>
-                </h6>
-                <h6 class="test"><b>Institution Name :</b>
-                    <span>
-                        <%= unvname %>
-                    </span>
-                </h6>
-                <h6 class="test"> <b>Phone :</b>
-                    <%= phone %>
-                </h6>
-                <h6 class="test"> <b>Email :</b>
-                    <%= mail %>
-                </h6>
-                <h6 class="test"> <b>Payment Status :</b>
-                    <!-- <%= paymentStatus==="true" ? "Done" : "Due" %> -->
-                    <% if (paymentStatus==="true" ) { %>
-                        <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
-                        <%} else { %>
-                            <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
-                            <% } %>
-                </h6>
+            <h5>User Information</h5><br>
+            <h6 class="test"> <b>Name :</b>
+                <span>
+                    <%= name %>
+                </span>
+            </h6>
+            <h6 class="test"><b>Institution Name :</b>
+                <span>
+                    <%= unvname %>
+                </span>
+            </h6>
+            <h6 class="test"> <b>Phone :</b>
+                <%= phone %>
+            </h6>
+            <h6 class="test"> <b>Email :</b>
+                <%= mail %>
+            </h6>
+            <h6 class="test"> <b>Payment Status :</b>
+                <!-- <%= paymentStatus==="true" ? "Done" : "Due" %> -->
+                <% if (paymentStatus==="true" ) { %>
+                    <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
+                    <%} else { %>
+                        <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
+                        <% } %>
+            </h6>
 
-
-
-            </div>
         </div>
     </div>
 
@@ -766,7 +772,7 @@
         display: block;
     }
 
-    input {
+    inputt {
         font-size: 1em;
         height: 15px;
         margin: 0;

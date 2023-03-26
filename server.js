@@ -26,6 +26,23 @@ var macaddress = require('macaddress');
 connect(); //db connection
 
 
+// Define schema for uploaded files
+const imageSchema = new mongoose.Schema({
+  name: String,
+  data: Buffer,
+  contentType: String,
+  email: String
+});
+
+const Image = mongoose.model('Image', imageSchema);
+
+// Define storage for uploaded files
+const storage = multer.memoryStorage();
+
+// Create multer instance with specified storage
+const upload = multer({ storage: storage })
+
+
 const initializePassport = require('./passport-config')
 const initialPass = async () => {
   let userData = await Users.find().sort();
@@ -62,7 +79,7 @@ app.use(session({
 app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
-var passportOneSessionPerUser=require('passport-one-session-per-user')
+var passportOneSessionPerUser = require('passport-one-session-per-user')
 passport.use(new passportOneSessionPerUser())
 
 app.use(passport.authenticate('passport-one-session-per-user'))
@@ -77,6 +94,64 @@ app.use(express.json())
 
 let macAddress;
 let nameUser;
+
+
+// Define route to handle file upload
+app.post('/upload', upload.single('image'), async (req, res) => {
+  nameUser = await Users.find({ email: req.user.email })
+  const mail = nameUser[0]?.email;
+  const newImage = new Image();
+  newImage.name = req.file.originalname;
+  newImage.data = req.file.buffer;
+  newImage.email = mail;
+  newImage.contentType = req.file.mimetype;
+  newImage.save()
+    .then(image => {
+      res.redirect('/profile');
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
+
+// Define route to display image by ID
+app.get('/image/:id', async (req, res) => {
+  const imageId = req.params.id;
+  Image.findById(imageId)
+    .then(image => {
+      if (!image) {
+        return res.status(404).send('Image not found');
+      }
+      res.set('Content-Type', image.contentType);
+      res.send(image.data);
+
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
+
+// Define route to delete image by ID
+app.delete('/image/:id', async (req, res) => {
+  const imageId = req.params.id;
+  nameUser = await Users.find({ email: req.user.email })
+  const mail = nameUser[0]?.email;
+  var currentdate = new Date().toLocaleDateString();
+  var currenttime = new Date().toLocaleTimeString();
+  const image = await Image.find({ email: req.user.email })
+  const id = image[0]?.id;
+  Image.findByIdAndDelete(imageId)
+    .then(image => {
+      if (!image) {
+        return res.status(404).send('Image not found');
+      }
+      // res.send('Image deleted successfully', {imageId});
+      res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+});
 
 
 
@@ -176,26 +251,29 @@ app.post('/reset', checkNotAuthenticated, async (req, res) => {
 
 app.get('/profile', checkAuthenticated, async (req, res) => {
   nameUser = await Users.find({ email: req.user.email })
-  const mail = nameUser[0].email;
+  const mail = nameUser[0]?.email;
   var currentdate = new Date().toLocaleDateString();
   var currenttime = new Date().toLocaleTimeString();
+  const image = await Image.find({ email: req.user.email })
+  const id = image[0]?.id;
+  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `http://localhost:3000/image/${id}`
   await macaddress.one(function (err, mac) {
     console.log("Mac address for this host: %s", mac);
     macAddress = mac;
   })
   await macAdd()
-  res.render('index.ejs', { currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+  res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 
 // nbee classes 
-  app.get('/mycourses', checkAuthenticated, async (req, res) => {
-    const user = await CertiNbee101.find({ name: req.user.name })
+app.get('/mycourses', checkAuthenticated, async (req, res) => {
+  const user = await CertiNbee101.find({ name: req.user.name })
 
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
 
-    res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
-  })
+  res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
 
 app.get('/nbee101_1', checkAuthenticated, async (req, res) => {
   const nbee_101_1 = process.env.Balance_Diet;
