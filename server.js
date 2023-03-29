@@ -24,6 +24,7 @@ var cors = require('cors')
 var macaddress = require('macaddress');
 
 connect(); //db connection
+const a = 0;
 
 
 // Define schema for uploaded files
@@ -610,6 +611,8 @@ const macAdd = async () => {
   }
   else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
     console.log(device1, "device1");
+    console.log(device2, "device2");
+    a = a + 1;
     console.log(macAddress, "macAddress");
     console.log("You can not enter");
   }
