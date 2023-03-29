@@ -145,8 +145,8 @@ app.delete('/image/:id', async (req, res) => {
       if (!image) {
         return res.status(404).send('Image not found');
       }
-      // res.send('Image deleted successfully', {imageId});
-      res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+      res.redirect("/profile");
+      // res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
     })
     .catch(err => {
       res.status(500).send(err);
