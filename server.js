@@ -24,23 +24,7 @@ var cors = require('cors')
 var macaddress = require('macaddress');
 
 connect(); //db connection
-
-
-// Define schema for uploaded files
-const imageSchema = new mongoose.Schema({
-  name: String,
-  data: Buffer,
-  contentType: String,
-  email: String
-});
-
-const Image = mongoose.model('Image', imageSchema);
-
-// Define storage for uploaded files
-const storage = multer.memoryStorage();
-
-// Create multer instance with specified storage
-const upload = multer({ storage: storage })
+const a = 0;
 
 
 const initializePassport = require('./passport-config')
@@ -262,8 +246,13 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
 })
 
 // nbee classes 
-app.get('/mycourses', checkAuthenticated, async (req, res) => {
-  const user = await CertiNbee101.find({ name: req.user.name })
+a === 1 ?
+  app.get('/noentry', checkAuthenticated, async (req, res) => {
+    res.send("Magi Mehedi")
+  })
+  :
+  app.get('/mycourses', checkAuthenticated, async (req, res) => {
+    const user = await CertiNbee101.find({ name: req.user.name })
 
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
 
@@ -611,6 +600,7 @@ const macAdd = async () => {
   else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
     console.log(device1, "device1");
     console.log(device2, "device2");
+    a = a + 1;
     console.log(macAddress, "macAddress");
     console.log("You can not enter");
   }
