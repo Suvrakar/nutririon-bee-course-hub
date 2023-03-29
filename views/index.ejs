@@ -33,7 +33,7 @@
         <div class="dropdown">
             <button class="a btn btn-warning dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <%= name[0]?.toUpperCase(); %>
+                <%= name[0].toUpperCase(); %>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" href="/profile">My Profile</a></li>
@@ -61,15 +61,15 @@
             </h5>
             <div>
                 <% if (proPicLink=="https://cdn-icons-png.flaticon.com/512/1946/1946429.png") { %>
-                    <form  action="/upload" method="POST" enctype="multipart/form-data">
-                        <input class="bttn" type="file" name="image" />
+                    <form action="/upload" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="image" />
                         <br /><br />
-                        <input class="bttn" type="submit" value="Upload" />
+                        <input type="submit" value="Upload" />
                     </form>
                     <%} else { %>
                         <!-- <form method="POST" action="/edit?_method=PUT"></form> -->
                         <form method="POST" action="/image/<%= id %>?_method=DELETE">
-                            <button class="bttn" type="submit">Delete Image</button>
+                            <button type="submit">Delete Image</button>
                         </form>
                         <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
                             <input type="file" name="image" />
@@ -80,36 +80,48 @@
 
             </div>
 
-
+            <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="image">Upload Image</label>
+                    <input type="file" id="image" name="image" value="" required>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form> -->
         </div>
 
         <div class="col-sm">
-            <h5>User Information</h5><br>
-            <h6 class="test"> <b>Name :</b>
-                <span>
-                    <%= name %>
-                </span>
-            </h6>
-            <h6 class="test"><b>Institution Name :</b>
-                <span>
-                    <%= unvname %>
-                </span>
-            </h6>
-            <h6 class="test"> <b>Phone :</b>
-                <%= phone %>
-            </h6>
-            <h6 class="test"> <b>Email :</b>
-                <%= mail %>
-            </h6>
-            <h6 class="test"> <b>Payment Status :</b>
-                <!-- <%= paymentStatus==="true" ? "Done" : "Due" %> -->
-                <% if (paymentStatus==="true" ) { %>
-                    <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
-                    <%} else { %>
-                        <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
-                        <% } %>
-            </h6>
+            <div class="">
+                <h5>User Information</h5><br>
+                <h6 class="test"> <b>Name :</b>
+                    <span>
+                        <%= name %>
+                    </span>
+                </h6>
+                <h6 class="test"><b>Institution Name :</b>
+                    <span>
+                        <%= unvname %>
+                    </span>
+                </h6>
+                <h6 class="test"> <b>Phone :</b>
+                    <%= phone %>
+                </h6>
+                <h6 class="test"> <b>Email :</b>
+                    <%= mail %>
+                </h6>
+                <h6 class="test"> <b>Payment Status :</b>
+                    <!-- <%= paymentStatus==="true" ? "Done" : "Due" %> -->
+                    <% if (paymentStatus==="true" ) { %>
+                        <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
+                        <%} else { %>
+                            <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
+                            <% } %>
+                </h6>
 
+
+
+            </div>
         </div>
     </div>
 
@@ -772,7 +784,7 @@
         display: block;
     }
 
-    inputt {
+    input {
         font-size: 1em;
         height: 15px;
         margin: 0;

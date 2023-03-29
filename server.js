@@ -24,6 +24,10 @@ var cors = require('cors')
 var macaddress = require('macaddress');
 
 connect(); //db connection
+<<<<<<< HEAD
+=======
+const a = 0;
+>>>>>>> Prod
 
 
 // Define schema for uploaded files
@@ -135,17 +139,17 @@ app.get('/image/:id', async (req, res) => {
 app.delete('/image/:id', async (req, res) => {
   const imageId = req.params.id;
   nameUser = await Users.find({ email: req.user.email })
-  const mail = nameUser[0]?.email;
-  var currentdate = new Date().toLocaleDateString();
-  var currenttime = new Date().toLocaleTimeString();
-  const image = await Image.find({ email: req.user.email })
-  const id = image[0]?.id;
   Image.findByIdAndDelete(imageId)
     .then(image => {
       if (!image) {
         return res.status(404).send('Image not found');
       }
+<<<<<<< HEAD
       res.redirect("/profile");
+=======
+      // res.send("Done")
+      res.redirect("/profile")
+>>>>>>> Prod
       // res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
     })
     .catch(err => {
@@ -256,7 +260,7 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
   var currenttime = new Date().toLocaleTimeString();
   const image = await Image.find({ email: req.user.email })
   const id = image[0]?.id;
-  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `http://localhost:3000/image/${id}`
+  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/image/${id}`
   await macaddress.one(function (err, mac) {
     console.log("Mac address for this host: %s", mac);
     macAddress = mac;
