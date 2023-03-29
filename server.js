@@ -252,7 +252,7 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
   var currenttime = new Date().toLocaleTimeString();
   const image = await Image.find({ email: req.user.email })
   const id = image[0]?.id;
-  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `http://localhost:3000/image/${id}`
+  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/image/${id}`
   await macaddress.one(function (err, mac) {
     console.log("Mac address for this host: %s", mac);
     macAddress = mac;
