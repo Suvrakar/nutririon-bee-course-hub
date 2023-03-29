@@ -62,19 +62,13 @@
             <div>
                 <% if (proPicLink=="https://cdn-icons-png.flaticon.com/512/1946/1946429.png") { %>
                     <form action="/upload" method="POST" enctype="multipart/form-data">
-                        <input type="file" name="image" />
+                        <input class="bttn" type="file" name="image" />
                         <br /><br />
-                        <input type="submit" value="Upload" />
+                        <input class="bttn" type="submit" value="Upload" />
                     </form>
                     <%} else { %>
-                        <!-- <form method="POST" action="/edit?_method=PUT"></form> -->
                         <form method="POST" action="/image/<%= id %>?_method=DELETE">
-                            <button type="submit">Delete Image</button>
-                        </form>
-                        <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
-                            <input type="file" name="image" />
-                            <br /><br />
-                            <input type="submit" value="Upload" /> -->
+                            <button class="bttn" type="submit">Delete Image</button>
                         </form>
                         <% } %>
 
