@@ -24,11 +24,6 @@ var cors = require('cors')
 var macaddress = require('macaddress');
 
 connect(); //db connection
-<<<<<<< HEAD
-=======
-const a = 0;
->>>>>>> Prod
-
 
 // Define schema for uploaded files
 const imageSchema = new mongoose.Schema({
@@ -144,12 +139,7 @@ app.delete('/image/:id', async (req, res) => {
       if (!image) {
         return res.status(404).send('Image not found');
       }
-<<<<<<< HEAD
       res.redirect("/profile");
-=======
-      // res.send("Done")
-      res.redirect("/profile")
->>>>>>> Prod
       // res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
     })
     .catch(err => {
