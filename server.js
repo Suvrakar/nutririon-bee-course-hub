@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 const { connect } = require("./dbConnection")
 const express = require('express')
 const app = express()
-const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
@@ -15,13 +14,11 @@ const PORT = process.env.PORT || 3000;
 const { Users } = require("./models/Users")
 const { Comments } = require("./models/Comments")
 const { CertiNbee101 } = require("./models/CertiNbee101")
-const { DeviceLog } = require("./models/DeviceLog")
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const multer = require('multer');
 const mongoose = require("mongoose")
-var cors = require('cors')
-var macaddress = require('macaddress');
+const cors = require('cors')
+const passportOneSessionPerUser = require('passport-one-session-per-user')
 
 connect(); //db connection
 
@@ -59,7 +56,6 @@ const initialPass = async () => {
 }
 
 
-
 setInterval(() => { initialPass(); }, 2000)
 
 
@@ -78,12 +74,9 @@ app.use(session({
 app.use(cors())
 app.use(passport.initialize())
 app.use(passport.session())
-var passportOneSessionPerUser = require('passport-one-session-per-user')
 passport.use(new passportOneSessionPerUser())
 
 app.use(passport.authenticate('passport-one-session-per-user'))
-
-// require('./path/to/passport/config/file')(passport);
 app.use(express.static("public"));
 app.use(methodOverride('_method'))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -91,9 +84,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.use(express.json())
 
-let macAddress;
 let nameUser;
-
 
 // Define route to handle file upload
 app.post('/upload', upload.single('image'), async (req, res) => {
@@ -140,7 +131,6 @@ app.delete('/image/:id', async (req, res) => {
         return res.status(404).send('Image not found');
       }
       res.redirect("/profile");
-      // res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
     })
     .catch(err => {
       res.status(500).send(err);
@@ -251,21 +241,13 @@ app.get('/profile', checkAuthenticated, async (req, res) => {
   const image = await Image.find({ email: req.user.email })
   const id = image[0]?.id;
   const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/image/${id}`
-  await macaddress.one(function (err, mac) {
-    console.log("Mac address for this host: %s", mac);
-    macAddress = mac;
-  })
-  await macAdd()
   res.render('index.ejs', {id, proPicLink, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 
 // nbee classes 
 app.get('/mycourses', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
   res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
 })
 
@@ -280,8 +262,6 @@ app.get('/nbee101_2', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_2 = process.env.Nutritional_Assessment;
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
   res.render('nbee101_2.ejs', { nbee_101_2, QuizMarks, quiz2: req.user.quiz2, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
@@ -289,70 +269,56 @@ app.get('/nbee101_3', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_3 = process.env.Food_Caloric;
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
   res.render('nbee101_3.ejs', { nbee_101_3, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_4', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
   res.render('nbee101_5.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_5', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_5 = process.env.Caloric_Calculation;
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
   res.render('nbee101_5.ejs', { nbee_101_5, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
+
 app.get('/nbee101_6', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_6 = process.env.Diet_Plan;
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
   res.render('nbee101_6.ejs', { nbee_101_6, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
+
+
 app.get('/nbee101_7', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_7 = process.env.Practice_Class_1;
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
   res.render('nbee101_7.ejs', { nbee_101_7, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
+
+
 app.get('/nbee101_8', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_8 = process.env.Practice_Class_2;
-
   let QuizMarks = user[0] === [] ? user[0].quiz2 : "undefined"
-
   res.render('nbee101_8.ejs', { nbee_101_8, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
+
+
 app.get('/nbee101_9', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
   const nbee_101_9 = process.env.Counselling;
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
-
   res.render('nbee101_9.ejs', { nbee_101_9, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 app.get('/nbee101_quiz1', checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-
   let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-
-
   res.render('nbee_quiz1.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
 
@@ -360,9 +326,7 @@ app.get('/nbee101_quiz1', checkAuthenticated, async (req, res) => {
 
 app.post('/nbee101_quiz2', checkAuthenticated, async (req, res) => {
   let userName = await Users.find({ name: req.user.name });
-
   let quiz2 = await new CertiNbee101(req.body)
-
   let name = {
     name: userName[0].name,
     email: userName[0].email
@@ -371,6 +335,7 @@ app.post('/nbee101_quiz2', checkAuthenticated, async (req, res) => {
   await finalResult.save();
   res.render('nbee101_certificate.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
+
 
 app.get('/nbee101_quiz2', checkAuthenticated, (req, res) => {
   res.render('nbee_quiz2.ejs', { paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
@@ -405,8 +370,6 @@ app.get('/failedreg', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/nbee101', checkNotAuthenticated, (req, res) => {
-  // const user = await Users.find({ email: req.user.email })
-  // const mail = user[0].email;
   res.render('nbee101.ejs')
 })
 
@@ -424,7 +387,6 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   function (req, res) {
     res.redirect('/login');
   })
-
 
 
 app.get('/preresigter', checkNotAuthenticated, (req, res) => {
@@ -454,13 +416,12 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
       port: 465,
       auth: {
         user: "info@nutritionbee.net",
-        pass: "01770677688Suv"
+        pass: process.env.MAIL_PASS
       }
 
     });
 
     const sendRegMail = async () => {
-      //Default Mail
       const mailOptions = {
         from: '"Nutrition Bee" <info@nutritionbee.net>',
         to: `${regEmailConfrim}`,
@@ -504,11 +465,9 @@ app.put('/edit', checkAuthenticated, async (req, res) => {
 
 app.post('/quiz1', checkNotAuthenticated, async (req, res) => {
   let userName = await Users.find({ name: req.user.name });
-
   let name = {
     name: userName[0].name
   }
-  console.log(userName);
   res.send("kam hyse")
 })
 
@@ -532,86 +491,6 @@ function checkNotAuthenticated(req, res, next) {
     return res.redirect('/mycourses')
   }
   next()
-}
-
-
-const macAdd = async () => {
-  let mail = nameUser.map(x => x.email);
-
-  let Device = await DeviceLog.find({ email: mail });
-
-  let n = nameUser[0].name;
-
-
-  let device1 = Device[0] === undefined ? undefined : Device[0].device1;
-  let device2 = Device[0] === undefined ? undefined : Device[0].device2;
-
-
-
-  if (device1 === undefined && device2 === undefined) {
-    console.log("New Device 1 logged");
-    const new_user = await new DeviceLog({
-      name: nameUser[0].name,
-      email: nameUser[0].email,
-      device1: macAddress,
-      device2: "undefined",
-    })
-    await new_user.save(function (err, result) {
-      if (err) {
-        console.log(err);
-      }
-      else {
-        console.log(result)
-      }
-    })
-  }
-  else if (macAddress === device1) {
-    console.log("Device 1 Running");
-  }
-  else if (macAddress === device2) {
-    console.log("Device 2 Running");
-  }
-  else if (device1 !== null && device2 !== device1 && device2 === "undefined") {
-    console.log("New Device 2 logged");
-
-    var mailTransporter = nodemailer.createTransport({
-
-      host: "nutritionbee.net",
-      port: 465,
-      auth: {
-        user: "info@nutritionbee.net",
-        pass: "01770677688Suv"
-      }
-
-    });
-
-    const sendMail = async () => {
-      //Default Mail
-      const mailOptions = {
-        from: '"Nutrition Bee" <info@nutritionbee.net>',
-        to: `${mail}`,
-        subject: 'Nutrition Bee Course Hub - Warning',
-        html: `<p>Dear ${n}, <br> Your second device has been detected. From now, can not now log in from any third device otherwise your account can be suspended. You can only log in from your first and second device. </b> <br><br> Best Regards<br>Nutrition Bee</p>`
-      };
-      await mailTransporter.sendMail(mailOptions, function (err, data) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log('Email sent successfully');
-        }
-      });
-    }
-    await sendMail();
-
-    const Log = await DeviceLog.updateOne({ email: nameUser[0].email }, { device2: macAddress })
-    console.log(Log, "Log");
-  }
-  else if (macAddress !== device2 && macAddress !== device1 && device1 !== undefined && device2 !== undefined) {
-    console.log(device1, "device1");
-    console.log(device2, "device2");
-    console.log(macAddress, "macAddress");
-    console.log("You can not enter");
-  }
 }
 
 
