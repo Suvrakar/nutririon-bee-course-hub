@@ -1,9 +1,11 @@
-var mongoose = require('mongoose');
- 
-var imageSchema = mongoose.Schema({
-    img:{data:Buffer,contentType: String}
-});
- 
-//Image is a model which has a schema imageSchema
- 
-module.exports = new mongoose.model('Image', imageSchema);
+const { Schema, model } = require("mongoose");
+
+
+const ProfileImage = model('Image', Schema({
+    name: { type: String, required: false, unique: false },
+    data: { type: Buffer, required: false, unique: false },
+    contentType: { type: String, required: false, unique: false },
+    email: { type: String, required: false, unique: false },
+}));
+
+exports.ProfileImage = ProfileImage;

@@ -42,7 +42,6 @@
                     <li><a class="dropdown-item" href="/profile">My Profile</a></li>
                     <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
                     <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
-                    <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
                     <li>
                         <form action="/logout?_method=DELETE" method="POST">
                             <button class="bttn" type="submit">Log Out</button>
@@ -68,7 +67,7 @@
                             <img class="card-img-top" style="border-radius: 20px;" src="./poster.jpeg"
                                 alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title"><b>বেসিক ডায়েট প্লান</b></h5>
+                                <h5 class="card-title"><b>Basic Diet Plan</b></h5>
                                 <p class="card-text">
                                     <b>ইন্সট্রাক্টর :</b> উম্মে সালমা তামান্না, <br>
                                     ক্লিনিক্যাল ডায়েটিশিয়ান আ্যন্ড নিউট্রিশন কনসালট্যান্ট <br>
@@ -77,13 +76,12 @@
                                     <!-- টাকা</b></span> </span> -->
                                 </p>
                                 <div class="d-flex align-items-center justify-content-around">
-                                    <a href="/nbee101_1" class="btn btn-warning btnLogin"><i
+                                    <a href="/nbee101/nbee101_1" class="btn btn-warning btnLogin"><i
                                             class="fa-solid fa-play"></i>
                                         Start</a>
-                                    <a href="/givereview" class="btn btn-warning btnLogin"><i
+                                    <a href="/nbeecommon/givereview" class="btn btn-warning btnLogin"><i
                                             class="fas fa-comments"></i>
                                         Give Reviews</a>
-
                                 </div>
                                 <br>
                                 <% if(QuizMarks!=null && QuizMarks==="10" || QuizMarks==="9" || QuizMarks==="8" ){ %>
@@ -97,7 +95,32 @@
                         </div>
                     </div>
                     <div class="col-sm">
+                        <div class="card" style="width: 18rem; border-radius: 20px;">
+                            <img class="card-img-top" style="border-radius: 20px;" src="./DieteryGuideLines.png"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><b>Dietery Guidelines For Pregnancy</b></h5>
+                                <p class="card-text">
+                                    <b>Instructor :</b> Nishat Sharmin Nishi, <br>
+                                    Cheif Dietitian and Head of Dietitics Department <br>
+                                    <b>Course Language:</b> Bengali <br>
+                                    <b>Course Code:</b> NBEE102 <br>
+                                </p>
+                                <div class="d-flex align-items-center justify-content-around">
+                                    <a href="/nbee102/nbee102_1" class="btn btn-warning btnLogin"><i
+                                            class="fa-solid fa-play"></i>
+                                        Start</a>
+                                    <a href="/nbeecommon/givereview" class="btn btn-warning btnLogin"><i
+                                            class="fas fa-comments"></i>
+                                        Give Reviews</a>
+                                </div>
+                                <div class="mb-4">
 
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                     <div class="col-sm">
 

@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NBEE102 | Nutrition Bee Course Hub</title>
+</head>
+
+<body>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+    integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-colors.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-rtl.min.css">
+  <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-icons.min.css">
+
+  <title>Nbee102 | Nutrition Bee Course Hub</title>
+  <script>
+    var res;
+    const getNbeeUsers = async () => {
+      // const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
+      // const Nbee101Enrolled = usersArr.data;
+      // let nameData, addRatings, elementInt = 0;
+      // const ratingShow = document.getElementById("nbee101UsersNum");
+      // ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
+
+    }
+
+    getNbeeUsers()
+
+    const getComments = async () => {
+      // res = await axios.get(`https://course.nutritionbee.net/comment`)
+      // console.log(res.data)
+
+      // let nameData, addRatings, elementInt = 0;
+
+      // for (let i = 0; i < res.data.length; i++) {
+      //   elementInt = parseFloat(res.data[i].rating) + parseFloat(elementInt);
+      //   const ratingShow = document.getElementById("show");
+      //   const showRating = (elementInt / res.data.length);
+      //   ratingShow.innerHTML = (showRating).toFixed(2);
+      //   const p = document.getElementById("statshow").setAttribute("data-value", showRating);
+      // }
+      // const author = document.getElementById("author");
+      // author.innerHTML = res.data[0].name;
+
+      // const job = document.getElementById("job");
+      // job.innerHTML = res.data[0].rating;
+
+
+      // const info = document.getElementById("info");
+      // info.innerHTML = res.data[0].comment;
+    }
+
+
+    const getReviewLen = async () => {
+      // res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
+      // let nameData, addRatings, elementInt = 0;
+      // const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
+    }
+
+
+    getComments()
+
+    getReviewLen()
+
+  </script>
+
+  <script>
+
+  </script>
+
+
+  <!-- Navbar -->
+  <div class="nav">
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        <img src="/whiteLogo.png" width="100px">
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/nbee/login">Login</a>
+      <a href="/registration/preresigter">Registration</a>
+      <!-- <a href="/payments">Payments</a> -->
+      <a href="/support">Support</a>
+    </div>
+  </div>
+
+
+  <div class="container my-5">
+
+    <div class="text-center my-3">
+      <img src="/DieteryGuideLines.png" width="80%">
+    </div>
+
+    <div class="my-5 text-center">
+      <span>Rating : </span>
+      <h5 id="show" style="display: inline-block ;">No Ratings</h5>
+      <br>
+      <input id="statshow" data-message="(0)" data-stared-color="crimson" data-stared-color="crimson" data-role="rating"
+        data-round-func="round" data-static="true"><br>
+      <span><b>Total Students:</b></span><span id="nbee101UsersNum"> 0 </span>
+    </div>
+
+
+    <!-- <main class="main">
+      <section class="containerReview">
+
+        <div class="title">
+          <h2>reviews</h2>
+          <div class="underline"></div>
+        </div>
+
+        <article class="review">
+
+          <h4 id="author"></h4>
+          <p id="job"></p>
+          <p id="info"></p>
+
+          <script type="text/javascript">
+            setTimeout(function () {
+              document.getElementById('submitButton').disabled = null;
+            }, 10000);
+
+            var countdownNum = 30;
+            incTimer();
+
+            function incTimer() {
+              setTimeout(function () {
+                if (countdownNum != 0) {
+                  countdownNum--;
+                  document.getElementById('timeLeft').innerHTML = 'Time left: ' + countdownNum + ' seconds';
+                  incTimer();
+                } else {
+                  document.getElementById('timeLeft').innerHTML = 'Ready!';
+                }
+              }, 1000);
+            }
+          </script>
+
+          prev next buttons-->
+          <!-- <div class="button-containerReview">
+            <button id="submitButton" class="prev-btn btnReviews">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next-btn btnReviews">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+        </article>
+
+      </section>
+    </main>  -->
+
+
+
+
+
+    <div class="my-3">
+      <h5><b>কোর্সটি যাদের জন্য প্রযোজ্য - </b></h5>
+      <p>এই কোর্সটি পুষ্টিবিজ্ঞানে অধ্যয়নরত শিক্ষার্থীদের জন্য প্রযোজ্য যারা বিভিন্ন বয়সীদের ডায়েট চার্ট তৈরি নিয়ে
+        পড়াশোনা করে থাকে এবং যারা গর্ভাবস্থার বিভিন্ন পর্যায় ও খুঁটিনাটি সম্পর্কে জানতে আগ্রহী। ।</p>
+    </div>
+
+    <div>
+      <h5><b>কোর্স Code- </b></h5>
+      <p>Nbee102</p>
+    </div>
+
+    <div class="my-5">
+      <h5><b>কোর্স কন্টেন্ট -</b></h5>
+      <p><b>ক্লাস ০১-
+          প্রেগন্যান্সি বা গর্ভাবস্থা</b> <br> গর্ভধারণ পদ্ধতি থেকে শুরু করে গর্ভধারনের লক্ষণ, গর্ভধারণ জনিত সমস্যা এবং
+        গর্ভধারণ সম্পর্কিত আরও নানা দিক।
+      </p>
+      <p><b>ক্লাস ০২-
+          ফার্স্ট ট্রাইমেস্টার বা ১ম ত্রৈমাসিক </b><br> গর্ভধারণের প্রথম ৩ মাসে সপ্তাহ ভিত্তিক ভ্রূণের বিকাশ, গর্ভবতী
+        মায়ের জন্য আবশ্যক পুষ্টি উপাদান সম্পর্কিত তথ্য।</p>
+      <p><b>ক্লাস ০৩-
+          সেকেন্ট ট্রাইমেস্টার বা ২য় ত্রৈমাসিক </b> <br> গর্ভধারণের দ্বিতীয় ৩ মাসে সপ্তাহ ভিত্তিক ভ্রূণের বিকাশ, গর্ভবতী
+        মায়ের জন্য আবশ্যক পুষ্টি উপাদান, ২য় ত্রৈমাসিকের গর্ভকালীন জটিলতা সম্পর্কিত তথ্য। </p>
+      <p><b>ক্লাস ০৪-
+          থার্ড ট্রাইমেস্টার বা ৩য় ত্রৈমাসিক </b> <br>গর্ভধারণের দ্বিতীয় ৩ মাসে সপ্তাহ ভিত্তিক ভ্রূণের বিকাশ, গর্ভবতী
+        মায়ের জন্য আবশ্যক পুষ্টি উপাদান সম্পর্কিত তথ্য। </p>
+      <p><b>ক্লাস ০৫-
+          গর্ভাবস্থায় রক্তাল্পতা বা অ্যানিমিয়া
+          গর্ভাবস্থায় অ্যানিমিয়ার ধরন, লক্ষণ, ভয়াবহতা, এসময়ের পুষ্টি চাহিদা সম্পর্কিত তথ্য। </b><br>ডায়েট প্ল্যান তৈরির
+        ক্ষেত্রে শুধুমাত্র ক্যালরি ক্যালকুলেশন নয় বরং অন্যান্য আবশ্যিক যে
+        ব্যাপারগুলো
+        জানা দরকার সেগুলো নিয়ে বিস্তারিত। </p>
+      <p><b>ক্লাস ০৬ - এক্ল্যাম্পসিয়া ইন প্রেগন্যান্সি</b> <br>
+        গর্ভাবস্থায় এক্ল্যাম্পসিয়ার পরিচিতি, লক্ষণ, এর ফলে সৃষ্ট ঝুঁকি, কিভাবে এ থেকে মুক্তি পাওয়া যায়,খাদ্যাভ্যাস এবং
+        ডায়েটারি মডিফিকেশন সম্পর্কিত তথ্য। </p>
+      <p><b>ক্লাস ০৭-
+          GDM ইন প্রেগন্যান্সি </b> <br> গর্ভাবস্থায় ডায়বেটিস এর কারন, ডায়বেটিস টেস্ট, জটিলতা, জিডিএম থাকাকালীন
+        খাদ্যাভ্যাস এবং ডায়েটারি মডিফিকেশন সম্পর্কিত তথ্য। </p>
+      <p><b>ক্লাস ০৮-
+          গর্ভাবস্থায় মানসিকতার পরিবর্তন </b> <br>গর্ভাবস্থায় শারীরিক এবং মানসিক পরিবর্তন সম্পর্কে জানা, এ সময়ে
+        খাদ্যাভ্যাস এবং খাদ্যাভাসের পরিবর্তন সম্পর্কিত তথ্য। </p>
+    </div>
+
+
+    <div class="my-5">
+      <p><b>কোর্সটির সার্টিফিকেট প্রাপ্তির জন্যে প্রতি কুইজে ১৩ অর্থাৎ কুইজ ১ ও কুইজ ২ তে (১৩+১৩) মোট ২৬ পয়েন্ট পেতে
+          হবে। দুটি কুইজ মিলে ১৩+১৩ = ২৬ পয়েন্ট পাওয়ার পর " Apply for certificate " অপশনটি কার্যকর হবে।</p>
+    </div>
+
+    <div class="my-5">
+      <h5 style="color: red"><b>সতর্কীকরণ -</b></h5>
+      <p>নিউট্রিশন বি -এর অনুমতি ছাড়া কোর্স ক্রয়-বিক্রয় আইনত দণ্ডনীয়। </p>
+    </div>
+
+    <a href="/profile" class="btn btn-warning btnLogin text-decoration-none"><i
+        class="fas fa-shopping-cart p-1"></i>Enroll Now!</a>
+
+  </div>
+
+
+
+  <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+
+
+  <!-- Footer  -->
+  <footer id="site-footer">
+    <section class="horizontal-footer-section" id="footer-top-section">
+      <div id="footer-logo">
+        <picture>
+          <img src="/whiteLogo.png" alt="footer logo" role="presentation">
+        </picture>
+      </div>
+      <div id="footer-top-menu-container" role="menubar">
+
+      </div>
+      <div id="footer-buttons-container">
+        <a href="https://nutritionbee.net/" target="_blank" class="footer-button" role="button">View our Blogs</a>
+      </div>
+    </section>
+
+    <section class="horizontal-footer-section" id="footer-middle-section">
+      <div id="footer-about" class="footer-columns footer-columns-large">
+        <h1>Our Address</h1>
+        <address>
+          <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/marker.png">Mirpur, Dhaka
+          </p>
+          <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/phone.png">01521429803</p>
+          <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/mail.png">nutritionbee00@gmail.com</p>
+          <p><img src="https://img.icons8.com/ios-filled/14/eeeeee/clock.png">10:00 AM – 10:00 PM</p>
+        </address>
+      </div>
+      <div class="footer-columns">
+        <h1>Need Help?</h1>
+        <ul class="footer-column-menu" role="menu">
+          <p>If you face any problem feel free to contact with us over phone.</p>
+          <!-- <li class="footer-column-menu-item" role="menuitem">
+            <a href="#" class="footer-column-menu-item-link">Services </a>
+          </li>
+          <li class="footer-column-menu-item" role="menuitem">
+            <a href="#" class="footer-column-menu-item-link">Pricing</a>
+          </li>
+          <li class="footer-column-menu-item" role="menuitem">
+            <a href="#" class="footer-column-menu-item-link">Portfolio</a>
+          </li>
+          <li class="footer-column-menu-item" role="menuitem">
+            <a href="#" class="footer-column-menu-item-link">News</a>
+          </li> -->
+        </ul>
+      </div>
+      <!-- <div class="footer-columns">
+      <h1>Resources</h1>
+      <ul class="footer-column-menu" role="menu">
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">FAQ</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Media</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Guides</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Free Resources</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Testimonials</a>
+        </li>
+      </ul>
+    </div> -->
+      <!-- <div class="footer-columns">
+      <h1>Information</h1>
+      <ul class="footer-column-menu" role="menu">
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">About Us</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+        </li>
+        <li class="footer-column-menu-item">
+          <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Message Us</a>
+        </li>
+        <li class="footer-column-menu-item" role="menuitem">
+          <a href="#" class="footer-column-menu-item-link">Leave a Feedback</a>
+        </li>
+      </ul>
+    </div> -->
+    </section>
+
+    <section class="horizontal-footer-section" id="footer-bottom-section">
+      <div id="footer-copyright-info">
+        &copy; Nutrition Bee. 2022. All rights reserved.
+      </div>
+      <div id="footer-social-buttons">
+        <a target="_blank" href="https://www.facebook.com/nutritionbee"><img
+            src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png" /></a>
+        <!-- <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png" />
+      <img src="https://img.icons8.com/ios-filled/25/999999/pinterest--v1.png" /> -->
+        <a target="_blank"
+          href="https://www.instagram.com/nutritionbee00/?igshid=YmMyMTA2M2Y=&fbclid=IwAR3qfcUD9xFgCQ5oBdZJA-dp6H02_--nVXE2Ph4NDxFD6IA8xdDdws8LM9A"><img
+            src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png" /></a>
+      </div>
+    </section>
+
+  </footer>
+
+
+
+  <script>
+
+    // const img = document.getElementById("person-img");
+    const author = document.getElementById("author");
+    const job = document.getElementById("job");
+    const info = document.getElementById("info");
+
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    let currentItem = 0;
+
+    // load initial item
+
+
+    // show person based on item
+    async function showPerson(person) {
+      const item = await res.data[person];
+      // img.src = item.img;
+      author.textContent = item.name;
+      job.textContent = item.rating;
+      info.textContent = item.comment;
+    }
+
+    // show next person
+    nextBtn.addEventListener("click", () => {
+      currentItem++;
+      if (currentItem > res.data.length - 1) {
+        currentItem = 0;
+      }
+      showPerson(currentItem);
+    });
+
+    // show prev person
+    prevBtn.addEventListener("click", () => {
+      currentItem--;
+      if (currentItem < 0) {
+        currentItem = res.data.length - 1;
+      }
+      showPerson(currentItem);
+
+
+      window.addEventListener("DOMContentLoaded", async () => {
+        const item = await res.data[currentItem];
+        // img.src = item.img;
+        author.textContent = item.name;
+        job.textContent = item.rating;
+        info.textContent = item.comment;
+      });
+    });
+
+  </script>
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+
+    img {
+      max-width: 100%;
+    }
+
+    .main {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fafafa;
+    }
+
+    .containerReview {
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .title {
+      margin: 40px 0px;
+    }
+
+    .title h2 {
+      font-size: 50px;
+      text-transform: capitalize;
+      margin-bottom: 5px;
+    }
+
+    .title .underline {
+      width: 100px;
+      height: 4px;
+      background-color: #177a29;
+      margin: 0 auto;
+    }
+
+    .review {
+      width: 100%;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.05);
+      font-family: "Open Sans", sans-serif;
+    }
+
+    #person-img {
+      width: 150px;
+      height: 150px;
+      background-size: cover;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
+    }
+
+    #author {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: capitalize;
+      margin-top: 10px;
+    }
+
+    #job {
+      text-transform: uppercase;
+      line-height: 150%;
+      margin-bottom: 10px;
+      color: #177a29;
+    }
+
+    #info {
+      height: 100vh;
+      font-size: 18px;
+      color: #454545;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .btnReviews {
+      text-decoration: none;
+      border-style: none;
+      background-color: #fff;
+      font-size: 30px;
+      margin: 0 10px;
+      color: #177a29;
+      cursor: pointer;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+
+    .btnLogin {
+      padding: 0;
+      border: none;
+      background: none;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(238, 155, 0);
+      /* color: white; */
+    }
+
+
+    /* navigation  */
+    .nav {
+      width: 100%;
+      background: #1e3138 !important;
+      position: relative;
+    }
+
+    .nav>.nav-header {
+      display: inline;
+    }
+
+    .nav>.nav-header>.nav-title {
+      display: inline-block;
+      font-size: 22px;
+      color: #fff;
+      padding: 10px 10px 10px 10px;
+    }
+
+    .nav>.nav-btn {
+      display: none;
+    }
+
+    .nav>.nav-links {
+      position: absolute;
+      display: inline;
+      left: 55%;
+      font-size: 18px;
+      /* padding-left: 50%; */
+    }
+
+    .nav>.nav-links>a {
+      display: inline-block;
+      padding: 15px 10px 15px 10px;
+      text-decoration: none;
+      color: #efefef;
+      font-size: 14px;
+    }
+
+    .nav>.nav-links>a:hover {
+      color: #a8a8a8;
+    }
+
+    .nav>#nav-check {
+      display: none;
+    }
+
+    @media (max-width:835px) {
+      .nav>.nav-btn {
+        display: inline-block;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
+
+      .nav>.nav-btn>label {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        padding: 13px;
+      }
+
+      .nav>.nav-btn>label:hover,
+      .nav #nav-check:checked~.nav-btn>label {
+        background-color: grey;
+      }
+
+      .nav>.nav-btn>label>span {
+        display: block;
+        width: 25px;
+        height: 10px;
+        border-top: 2px solid #eee;
+        z-index: 10000;
+      }
+
+      .nav>.nav-links {
+        position: absolute;
+        display: block;
+        float: right;
+        width: 100%;
+        background-color: #151414;
+        height: 0px;
+        transition: all 0.3s ease-in;
+        overflow-y: hidden;
+        top: 50px;
+        left: 0px;
+        z-index: 10000;
+
+      }
+
+      .nav>.nav-links>a {
+        display: block;
+        width: 100%;
+        z-index: 10000;
+
+      }
+
+      .nav>#nav-check:not(:checked)~.nav-links {
+        height: 0px;
+      }
+
+      .nav>#nav-check:checked~.nav-links {
+        height: calc(100vh - 50px);
+        overflow-y: auto;
+      }
+    }
+
+    .btnLogin {
+      padding: 0;
+      border: none;
+      background: none;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: rgb(238, 155, 0);
+      /* color: white; */
+    }
+
+    .formContainer {
+      display: flex;
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    /* input form  */
+    div.input-block {
+      position: relative;
+    }
+
+    div.input-block input {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #495055;
+      width: 300px;
+      padding: 15px 15px;
+      border-radius: 1rem;
+      border: 2px solid #D9D9D9;
+      outline: none;
+    }
+
+    div.input-block span.placeholder {
+      position: absolute;
+      margin: 17px 0;
+      padding: 0 4px;
+      font-family: Roboto, sans-serif;
+
+      color: #6c757d;
+
+      display: flex;
+      align-items: center;
+
+      font-size: 1rem;
+
+      top: 0;
+      left: 17px;
+
+      transition: all 0.2s;
+      transform-origin: 0% 0%;
+      background: none;
+      pointer-events: none;
+    }
+
+    div.input-block input:valid+span.placeholder,
+    div.input-block input:focus+span.placeholder {
+      transform: scale(0.8) translateY(-30px);
+      background: #fff;
+    }
+
+    div.input-block input:focus {
+      color: #284B63;
+      border-color: #284B63;
+    }
+
+    div.input-block input:focus+span.placeholder {
+      color: #284B63;
+    }
+
+
+
+
+    /* Footer  */
+
+
+    footer#site-footer {
+      margin: 0 auto;
+      width: 100%;
+      background: #1e3138;
+      padding: 1rem;
+      color: #a8a8a8;
+    }
+
+    footer#site-footer a {
+      color: #a8a8a8;
+    }
+
+    footer#site-footer a:hover {
+      color: #00c3ce;
+    }
+
+    footer#site-footer h1 {
+      color: #cecece;
+    }
+
+    footer#site-footer section.horizontal-footer-section {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      padding: 2.38rem 2rem;
+    }
+
+    footer#site-footer section.horizontal-footer-section#footer-top-section {
+      justify-content: center;
+    }
+
+    footer#site-footer #footer-logo {
+      margin-right: auto;
+      flex-shrink: 0;
+    }
+
+    footer#site-footer #footer-logo img {
+      height: 2.28rem;
+    }
+
+    footer#site-footer ul#footer-top-menu {
+      padding: 0;
+      margin: 0;
+    }
+
+    footer#site-footer ul#footer-top-menu li {
+      display: inline;
+      list-style-type: none;
+      margin-right: 1.32rem;
+      font-weight: bold;
+    }
+
+    footer#site-footer ul#footer-top-menu li a {
+      text-decoration: none;
+    }
+
+    footer#site-footer .footer-top-menu-item-active {
+      position: relative;
+    }
+
+    footer#site-footer .footer-top-menu-item-active a {
+      color: #007ba6;
+    }
+
+    footer#site-footer .footer-top-menu-item-active a:hover {
+      color: #00c3ce;
+    }
+
+    footer#site-footer .footer-top-menu-item-active::before {
+      content: "";
+      background: #007ba6;
+      padding: 0.15rem 0;
+      width: 100%;
+      position: absolute;
+      top: 1.68em;
+    }
+
+    footer#site-footer .footer-top-menu-item-active:hover::before {
+      background: #00c3ce;
+      transition-duration: 0.6s;
+    }
+
+    footer#site-footer #footer-buttons-container {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    footer#site-footer a.footer-button {
+      background: transparent;
+      border: 0.15rem solid #a8a8a8;
+      border-radius: 1.38rem;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    footer#site-footer a.footer-button:hover {
+      border-color: #00c3ce;
+    }
+
+    footer#site-footer section.horizontal-footer-section#footer-middle-section {
+      align-items: flex-start;
+    }
+
+    footer#site-footer .footer-columns {
+      flex-basis: 18%;
+      padding-right: 1rem;
+    }
+
+    footer#site-footer .footer-columns-large {
+      flex-basis: 46%;
+      padding-right: 2rem;
+    }
+
+    footer#site-footer .footer-columns h1 {
+      font-size: 1rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    footer#site-footer .footer-columns.footer-columns-large h1 {
+      font-size: 1.28rem;
+      margin-top: 3rem;
+      margin-bottom: 1.32rem;
+    }
+
+    footer#site-footer .footer-columns.footer-columns-large h1:first-child {
+      margin-top: 0;
+    }
+
+    footer#site-footer ul.footer-column-menu {
+      margin: 0;
+      padding: 0;
+    }
+
+    footer#site-footer ul.footer-column-menu li {
+      list-style-type: none;
+      margin-bottom: 0.68rem;
+      font-size: 0.88rem;
+    }
+
+    footer#site-footer #footer-about address {
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    footer#site-footer #footer-about address p img {
+      margin-right: 0.68rem;
+    }
+
+    footer#site-footer #footer-about a.footer-button {
+      margin-top: 0.32rem;
+    }
+
+    footer#site-footer section.horizontal-footer-section#footer-bottom-section {
+      padding: 1.32rem 0;
+      margin: 2rem 2rem 1.32rem 2rem;
+      border-top: 0.05rem solid #666666;
+    }
+
+    footer#site-footer #footer-social-buttons {
+      justify-self: flex-end;
+      margin-left: auto;
+    }
+
+    footer#site-footer #footer-social-buttons img {
+      margin-left: 0.68rem;
+    }
+
+    footer#site-footer #footer-social-buttons img:hover {
+      cursor: pointer;
+    }
+
+
+
+
+
+
+    @media screen and (max-width: 959px) {
+
+      footer#site-footer {
+        width: 100%;
+      }
+
+      footer#site-footer section.horizontal-footer-section {
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+
+      footer#site-footer section.horizontal-footer-section div {
+        flex-basis: 100%;
+        width: 100%;
+      }
+
+      footer#site-footer ul li {
+        display: block !important;
+        padding: 1em !important;
+        border-top: 1px solid #555555;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        font-size: 1.15rem !important;
+      }
+
+      footer#site-footer ul li:first-child {
+        border-top: none;
+      }
+
+      footer#site-footer a.footer-button {
+        display: block;
+        text-align: center;
+        max-width: 350px;
+        margin: 0.32rem auto;
+      }
+
+      footer#site-footer section.horizontal-footer-section#footer-top-section div {
+        margin-top: 0;
+        margin-bottom: 1.68rem;
+      }
+
+      footer#site-footer #footer-logo {
+        margin-right: 0;
+      }
+
+      footer#site-footer #footer-buttons-container {
+        margin-left: 0;
+      }
+
+      footer#site-footer ul#footer-top-menu {
+        width: 100%;
+        margin: 2rem 0 0 0;
+      }
+
+      footer#site-footer .footer-top-menu-item-active::before {
+        display: none;
+      }
+
+      footer#site-footer #footer-about {
+        margin-bottom: 3rem;
+      }
+
+      footer#site-footer .footer-columns-large,
+      footer#site-footer .footer-columns {
+        padding-right: 0;
+      }
+
+      footer#site-footer .footer-columns {
+        margin-top: 0;
+        margin-bottom: 4rem;
+      }
+
+      footer#site-footer .footer-columns:last-child {
+        margin-bottom: 0;
+      }
+
+      footer#site-footer .footer-columns h1 {
+        text-align: center;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15rem;
+      }
+
+      footer#site-footer ul.footer-column-menu li {
+        margin-bottom: 0;
+        display: block;
+        text-align: center;
+      }
+
+      footer#site-footer section#footer-bottom-section div {
+        text-align: center;
+      }
+
+      footer#site-footer section.horizontal-footer-section#footer-bottom-section {
+        margin: 1.32rem 0;
+        padding: 0;
+        border-top: 0;
+      }
+
+      footer#site-footer section#footer-bottom-section #footer-social-buttons {
+        margin-top: 1.32rem;
+      }
+    }
+  </style>
+
+
+</body>
+
+</html>

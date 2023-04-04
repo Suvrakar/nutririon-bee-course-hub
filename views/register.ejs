@@ -19,7 +19,7 @@
   <input type="checkbox" id="nav-check">
   <div class="nav-header">
     <div class="nav-title">
-      <img src="./whiteLogo.png" width="100px" style="">
+      <img src="/whiteLogo.png" width="100px" style="">
     </div>
   </div>
   <div class="nav-btn">
@@ -32,10 +32,10 @@
 
   <div class="nav-links">
     <a href="/">Home</a>
-    <a href="/login">Login</a>
-    <a href="/preresigter">Registration</a>
+    <a href="/nbee/login">Login</a>
+    <a href="/registration/preresigter">Registration</a>
     <!-- <a href="/payments">Payments</a> -->
-    <a href="/support">Support</a>
+    <a href="/nbeecommon/support">Support</a>
   </div>
 </div>
 
@@ -45,14 +45,13 @@
 <!-- Register  -->
 <div class="container formContainer row">
   <div class="col-sm d-flex justify-content-center align-items-center">
-    <!-- <button class="btn-warning" onclick="myFunction()">Testing</button> -->
     <div class="d-flex justify-content-center align-items-center">
-      <img src="mainlogo.png" alt="Nutrition bee" width="100%">
+      <img src="/mainlogo.png" alt="Nutrition bee" width="100%">
     </div>
 
   </div>
   <div class="col-sm d-flex justify-content-center">
-    <form action="/register" method="POST">
+    <form action="/registration/register" method="POST">
       <div class="input-block">
         <input type="text" name="name" id="name" required>
         <span class="placeholder">
@@ -88,13 +87,8 @@
         </span>
       </div>
       <br>
-      <!-- <div>
-        <label for="image">Upload Image</label>
-        <input type="file" id="image" name="image" value="" required>
-      </div> -->
-
-
-      <button type="submit" class="btnLogin" onclick="myFunction()">Register</button>
+   
+      <button type="submit" class="btnLogin">Register</button>
       <br>
       <br>
       <p>Already have an account? <a href="/login">Login</a></p>
@@ -115,7 +109,7 @@
   <section class="horizontal-footer-section" id="footer-top-section">
     <div id="footer-logo">
       <picture>
-        <img src="./whiteLogo.png" alt="footer logo" role="presentation">
+        <img src="/whiteLogo.png" alt="footer logo" role="presentation">
       </picture>
     </div>
     <div id="footer-top-menu-container" role="menubar">
@@ -214,21 +208,6 @@
 
 </footer>
 
-
-<script>
-  function myFunction() {
-    // Get the snackbar DIV
-    // var x = document.getElementById("snackbar")
-
-
-    // // Add the "show" class to DIV
-    // x.className = "show";
-
-
-    // // After 3 seconds, remove the show class from DIV
-    // setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-  }
-</script>
 
 
 <style>

@@ -16,7 +16,7 @@
     <input type="checkbox" id="nava-check">
     <div class="nava-header">
         <div class="nava-title">
-            <img src="./whiteLogo.png" width="100px">
+            <img src="/whiteLogo.png" width="100px">
         </div>
     </div>
     <div class="nava-btn">
@@ -38,7 +38,6 @@
                 <li><a class="dropdown-item" href="/profile">My Profile</a></li>
                 <li><a class="dropdown-item" href="/edit">Edit Profile</a></li>
                 <li><a class="dropdown-item" href="/mycourses">My Courses</a></li>
-                <!-- <li><a class="dropdown-item" href="/payments">Payments</a></li> -->
                 <li>
                     <form action="/logout?_method=DELETE" method="POST">
                         <button class="bttn" type="submit">Log Out</button>
@@ -61,8 +60,7 @@
 
     <% if(paymentStatus==="true" ){ %>
         <div style="padding-top:56.25%;position:relative;">
-            <iframe
-                src=<%= nbee_101_7; %>
+            <iframe src=<%=nbee_101_7; %>
                 style="border:0;max-width:100%;position:absolute;top:0;left:0;height:100%;width:100%;"
                 allowFullScreen="true" allow="encrypted-media"></iframe>
         </div>
@@ -100,7 +98,7 @@
                 <div class="list-item">
                     <div class="rank"><span>4</span></div>
                     <div class="name">
-                        <h4><a href="/nbee101_quiz1">Quiz 1</a></h4>
+                        <h4><a href="nbee101_quiz1">Quiz 1</a></h4>
                         <!-- <p>UI/UX Designer</p> -->
                     </div>
                 </div>
@@ -190,7 +188,7 @@
     <section class="horizontal-footer-section" id="footer-top-section">
         <div id="footer-logo">
             <picture>
-                <img src="./whiteLogo.png" alt="footer logo" role="presentation">
+                <img src="/whiteLogo.png" alt="footer logo" role="presentation">
             </picture>
         </div>
         <div id="footer-top-menu-container" role="menubar">
