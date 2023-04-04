@@ -87,6 +87,9 @@ app.get('/', commonFunc.checkNotAuthenticated, (req, res) => {
 const commentRoute = require('./routes/comment')
 app.use("/comment", commentRoute)
 
+//Courses API
+const coursesRoute = require('./routes/courses')
+app.use("/courses", coursesRoute)
 
 // ProPic API
 const proPicRoute = require('./routes/proPic')
