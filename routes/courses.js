@@ -1,31 +1,36 @@
-const express = require('express')
-const router = express.Router()
-const commonFunc = require("../commonFunctions")
-const { Users } = require("../models/Users")
-const { ProfileImage } = require("../models/ProfileImage")
-const { Courses } = require("../models/Courses")
+const express = require("express");
+const router = express.Router();
+const commonFunc = require("../commonFunctions");
+const { Users } = require("../models/Users");
+const { ProfileImage } = require("../models/ProfileImage");
+const { Courses } = require("../models/Courses");
 
-
-const mongoose = require("mongoose")
-const multer = require('multer');
+const mongoose = require("mongoose");
+const multer = require("multer");
 
 // Define storage for uploaded files
 const storage = multer.memoryStorage();
 
 // Create multer instance with specified storage
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage });
 
+// router.post("/", async (req, res) => {
+//   let course = await new Courses(req.body);
+//   // const finalResult = await Object.assign(comment, name);
+//   await comment.save();
+//   res.send(course);
+// });
 
-router.post('/', async (req, res) => {
-    let course = await new Courses(req.body);
-    // const finalResult = await Object.assign(comment, name);
-    // await comment.save();
-    res.send(course)
-})
-
-router.get('/', async (req, res) => {
-    res.send("comment")
-})
+router.get("/", async (req, res) => {
+//   const all_course = await Courses.find({});
+  try {
+    const all_course = await Courses.find({});
+    res.json(all_course);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
 
 // Define route to handle file upload
 // router.post('/', upload.single('image'), async (req, res) => {
@@ -77,6 +82,5 @@ router.get('/', async (req, res) => {
 //             res.status(500).send(err);
 //         });
 // });
-
 
 module.exports = router;

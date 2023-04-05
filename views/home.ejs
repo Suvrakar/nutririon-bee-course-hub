@@ -60,10 +60,25 @@
     const p = document.getElementById("statshow").setAttribute("data-message", "(" + res.data + ")");
   }
 
+  const getCourseDetails = async () => {
+    const courses = await axios.get(`http://localhost:3000/courses`);
+
+    console.log(courses.data[0].course_fee);
+    
+    const p = document.getElementById("courseFeeNbee101");
+    p.innerHTML = courses.data[0].course_fee;
+
+    const q = document.getElementById("courseFeeNbee102");
+    q.innerHTML = courses.data[1].course_fee;
+    // console.log(p, "ndjfdsnjndfskjsfns")
+  }
+
 
   getComments()
 
   getReviewLen()
+
+  getCourseDetails()
 
 </script>
 <!-- Navbar -->
@@ -105,6 +120,8 @@
   <div class="py-5">
     <h5>Available Courses: </h5>
     <div class="row">
+
+      <!-- Nbee101 -->
       <div class="col-sm">
         <div class="card" style="width: 18rem; border-radius: 20px;">
           <img class="card-img-top" style="border-radius: 20px;" src="./poster.jpeg" alt="Card image cap">
@@ -115,7 +132,7 @@
               ক্লিনিক্যাল ডায়েটিশিয়ান আ্যন্ড নিউট্রিশন কনসালট্যান্ট <br>
               <b>কোর্স কোড :</b> NBEE101 <br>
               <!-- <span><b>কোর্স ফী:</b> ১৫০০ টাকা  </span> -->
-              <span><b>কোর্স ফী:</b> <s>১৫০০ টাকা</s> <span style="color: red ;"><b>৭৫০ টাকা</b></span> </span>
+              <span><b>কোর্স ফী:</b> <s>১৫০০ টাকা</s> <span style="color: red ;"><b id="courseFeeNbee101"></b></span> </span>
             </p>
             <div class="mb-4">
               <span>Rating : </span>
@@ -133,6 +150,8 @@
           </div>
         </div>
       </div>
+
+<!-- Nbee101 -->
       <div class="col-sm">
         <div class="card" style="width: 18rem; border-radius: 20px;">
           <img class="card-img-top" style="border-radius: 20px;" src="./DieteryGuideLines.png" alt="Card image cap">
@@ -144,7 +163,7 @@
               <b>Course Language:</b> Bengali <br>
               <b>Course Code:</b> NBEE102 <br>
               <!-- <span><b>কোর্স ফী:</b> ১৫০০ টাকা  </span> -->
-              <span><b>Course Fee:</b> <s>1500 Taka</s> <span style="color: red ;"><b>500 Taka</b></span> </span>
+              <span><b>Course Fee:</b> <s>1500 Taka</s> <span style="color: red ;"><b id="courseFeeNbee102"></b></span> </span>
             </p>
             <div class="mb-4">
               <span>Rating : </span>
@@ -163,6 +182,8 @@
           </div>
         </div>
       </div>
+
+
       <div class="col-sm">
 
       </div>
