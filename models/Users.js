@@ -10,22 +10,7 @@ const Users = model('Users', Schema({
     password: { type: String, required: true },
     quiz1_1: { type: Number, required: false },
     quiz1_2: { type: Number, required: false },
-    
-
-    // img:
-    // {
-    //     data: Buffer,
-    //     contentType: String
-    // }
 }));
 
 exports.Users = Users;
 
-
-// id: Date.now().toString(),
-// name: req.body.name,
-// email: req.body.email,
-// phone: req.body.phone,
-// unvname: req.body.unvname,
-// password: req.body.password,
-// paymentStatus: true

@@ -209,7 +209,7 @@
             correct: "a",
         },
         {
-            question: "2. Which food provides (3-12)mg of iro?",
+            question: "2. Which food provides (3-12)mg of iron?",
             a: "½ cup cooked spinach ",
             b: "kidney beans",
             c: "Raisins ½ cup",
@@ -386,27 +386,25 @@
             if (currentQuiz < quizData.length) {
                 loadQuiz()
             } else {
-                if (score < 8) {
+                if (score < 12) {
                     quiz.innerHTML = `
-                <h2 style="color:red">You Scored Below 80%, you need Retake!</h2>
+                <h2 style="color:red">You Scored Below 13, you need Retake!</h2>
                 <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
                 <div class="d-flex justify-content-center">
                     <button class="bttn text-center" onclick="location.reload()">Reload</button>
                 <br>
-                <button class="bttn text-center p"><a href="./nbee101_3">Previous Class</a></button> 
+                <button class="bttn text-center p"><a href="/nbee102/nbee102_9">Previous Class</a></button> 
                     </div>`
 
                 }
-                // <a style="text-decoration:none" href="./nbee101_5"> <button class="bttn text-center" onclick="addNum()">Submit & Next</button></a></div>
-                // <a style="text-decoration:none" href="./nbee101_5"> <button class="bttn text-center" onclick="addNum()">Submit & Next</button></a></div>
+               
 
                 else {
                     quiz.innerHTML = `<h2 style = "color:green" > Congratulations you have passed!</h2 >
                     <h4 class="text-center">You answered ${score}/${quizData.length} questions correctly</h4>
                     <div class="text-center">
-                    <form action="/nbee101_quiz2" method="POST">
-
-                        <input id="quiz2" name="quiz2" value=${score} >
+                    <form action="/nbee102/nbee102_quiz2" method="POST">
+                        <input id="quiz2_nbee102" name="quiz2_nbee102" value=${score} >
                         <br>
                         <br>
                         <button type="submit" class="bttn">Submit</button>

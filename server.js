@@ -13,12 +13,14 @@ const PORT = process.env.PORT || 3000;
 const { Users } = require("./models/Users")
 const { ProfileImage } = require("./models/ProfileImage")
 const { CertiNbee101 } = require("./models/CertiNbee101")
+const { Payment } = require("./models/Payment")
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const passportOneSessionPerUser = require('passport-one-session-per-user')
 const commonFunc = require("./commonFunctions")
 const initializePassport = require('./passport-config')
 const multer = require('multer');
+const nodemailer = require('nodemailer');
 
 
 connect(); //db connection
@@ -127,6 +129,8 @@ app.use("/edit", editProfileRoute)
 
 //Common API
 const commonRoute = require('./routes/nbeeCommon')
+const { log } = require('console')
+const { Users_Nbee102 } = require('./models/Users_Nbee102')
 app.use("/nbeecommon", commonRoute)
 
 
@@ -144,14 +148,58 @@ app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
 // nbee courses 
 app.get('/mycourses', commonFunc.checkAuthenticated, async (req, res) => {
   const user = await CertiNbee101.find({ name: req.user.name })
-  let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-  res.render('mycourses.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  const nbee102 = await Users_Nbee102.find({ email: req.user.email })
+  const nbee102_paymentStatus = nbee102[0].nbee102_paymentStatus
+  let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+  let Nbee102_QuizMarks = user[0] === undefined ? null : nbee102[0].quiz2_nbee102;
+
+  res.render('mycourses.ejs', { nbee102_paymentStatus,Nbee102_QuizMarks, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+})
+
+app.post('/payment', commonFunc.checkAuthenticated, async (req, res) => {
+  console.log("Payment 1")
+  const { email, name } = req.user;
+  try {
+    const user_payment = await new Payment(req.body);
+    await user_payment.save();
+    console.log("Payment 2")
+    var mailTransporter = nodemailer.createTransport({
+      host: "nutritionbee.net",
+      port: 465,
+      auth: {
+        user: "info@nutritionbee.net",
+        pass: process.env.MAIL_PASS
+      }
+
+    });
+
+    const sendPaymentMail = async () => {
+      const mailOptions = {
+        from: '"Nutrition Bee" <info@nutritionbee.net>',
+        to: `${email}`,
+        subject: 'We recieved your payment request',
+        html: `<p>Dear ${name}</p><p>We recieved your payment request. Very soon, after verifying we will add you to your desired course.</p><p>Best regards</p><p>Nutrition Bee</p>`,
+      };
+      await mailTransporter.sendMail(mailOptions, function (err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Email sent successfully');
+        }
+      });
+    }
+    await sendPaymentMail()
+  }
+  catch (err) {
+    console.log(err)
+  }
+  res.redirect('/profile');
 })
 
 
 app.delete('/logout', (req, res) => {
   req.logOut()
-  res.redirect('nbee/login')
+  res.redirect('/nbee/login')
 })
 
 

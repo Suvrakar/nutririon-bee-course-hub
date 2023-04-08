@@ -8,72 +8,72 @@ const { CertiNbee101 } = require("../models/CertiNbee101")
 router.get('/nbee101_1', commonFunc.checkAuthenticated, async (req, res) => {
     const nbee_101_1 = process.env.Balance_Diet;
     const user = await CertiNbee101.find({ name: req.user.name })
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_1.ejs', { nbee_101_1, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_1.ejs', { nbee_101_1, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 router.get('/nbee101_2', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_2 = process.env.Nutritional_Assessment;
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_2.ejs', { nbee_101_2, QuizMarks, quiz2: req.user.quiz2, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_2.ejs', { nbee_101_2, Nbee101_QuizMarks, quiz2: req.user.quiz2, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 router.get('/nbee101_3', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_3 = process.env.Food_Caloric;
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_3.ejs', { nbee_101_3, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_3.ejs', { nbee_101_3, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 router.get('/nbee101_4', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_5.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_5.ejs', { Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 router.get('/nbee101_5', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_5 = process.env.Caloric_Calculation;
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_5.ejs', { nbee_101_5, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_5.ejs', { nbee_101_5, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 router.get('/nbee101_6', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_6 = process.env.Diet_Plan;
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_6.ejs', { nbee_101_6, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_6.ejs', { nbee_101_6, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 
 router.get('/nbee101_7', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_7 = process.env.Practice_Class_1;
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_7.ejs', { nbee_101_7, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_7.ejs', { nbee_101_7, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 
 router.get('/nbee101_8', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_8 = process.env.Practice_Class_2;
-    let QuizMarks = user[0] === [] ? user[0].quiz2 : "undefined"
-    res.render('nbee101_8.ejs', { nbee_101_8, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === [] ? user[0].quiz2 : "undefined"
+    res.render('nbee101_8.ejs', { nbee_101_8, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 
 router.get('/nbee101_9', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
     const nbee_101_9 = process.env.Counselling;
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee101_9.ejs', { nbee_101_9, QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee101_9.ejs', { nbee_101_9, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, quiz1_1: req.user.quiz1_1 })
 })
 
 router.get('/nbee101_quiz1', commonFunc.checkAuthenticated, async (req, res) => {
     const user = await CertiNbee101.find({ name: req.user.name })
-    let QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-    res.render('nbee_quiz1.ejs', { QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
+    let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
+    res.render('nbee_quiz1.ejs', { Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone, password: req.body.password, email: req.body.email, quiz1_1: req.user.quiz1_1 })
 })
 
 

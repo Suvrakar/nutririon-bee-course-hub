@@ -43,11 +43,11 @@
   <script>
     var res;
     const getNbeeUsers = async () => {
-      // const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
-      // const Nbee101Enrolled = usersArr.data;
-      // let nameData, addRatings, elementInt = 0;
-      // const ratingShow = document.getElementById("nbee101UsersNum");
-      // ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
+      const usersArr = await axios.get(`https://course.nutritionbee.net/nbee102enrolled`)
+      const Nbee101Enrolled = usersArr.data;
+      let nameData, addRatings, elementInt = 0;
+      const ratingShow = document.getElementById("nbee101UsersNum");
+      ratingShow.innerHTML = " " + Nbee101Enrolled + " ";
 
     }
 
