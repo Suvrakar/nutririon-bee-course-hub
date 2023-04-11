@@ -42,18 +42,7 @@
   <title>Nbee101 | Nutrition Bee Course Hub</title>
   <script>
     var res;
-    // const postComment = async () => {
-
-    //   const data = {
-    //     "name": "Leo kukur",
-    //     "comment": "test comment2",
-    //     "rating": "5"
-    //   }
-    //   let res = await axios.post(`http://localhost:3000/comment`, data)
-    //   console.log(res, "fodfshjsdfhkjdsfndsndsfk");
-    // }
     const getNbeeUsers = async () => {
-      // const usersArr = await axios.get(`http://localhost:3000/nbee101enrolled` || `https://course.nutritionbee.net/nbee101enrolled` )
       const usersArr = await axios.get(`https://course.nutritionbee.net/nbee101enrolled`)
       const Nbee101Enrolled = usersArr.data;
       // console.log(Nbee101Enrolled)
@@ -67,7 +56,6 @@
     getNbeeUsers()
 
     const getComments = async () => {
-      // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
       res = await axios.get(`https://course.nutritionbee.net/comment`)
       console.log(res.data)
 

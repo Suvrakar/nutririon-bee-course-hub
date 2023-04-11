@@ -552,7 +552,7 @@
 
         if (SubFormClick === 0) {
             if (selectedValue == "NBee102") {
-                axios.post('http://localhost:3000/nbee102/nbee102users', info)
+                axios.post(process.env.BASE_URL + '/nbee102/nbee102users', info)
             }
             let err = '';
             $.ajax({

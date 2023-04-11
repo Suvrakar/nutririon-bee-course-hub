@@ -319,13 +319,6 @@
         return answer
     }
 
-    // const addNum = async () => {
-    //     const a = {
-    //         "quiz1_1": score
-    //     }
-    //     console.log(a);
-    //     await axios.post('http://localhost:3000/nbee101_quiz2', a)
-    // }
 
     async function addNum() {
         const a = {
@@ -333,7 +326,7 @@
         }
 
         console.log(a)
-        let res = await axios.post('http://localhost:3000/nbee101_quiz2', a);
+        let res = await axios.post(process.env.BASE_URL + '/nbee101_quiz2', a);
 
         console.log(res);
 
