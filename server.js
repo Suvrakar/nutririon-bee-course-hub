@@ -147,13 +147,20 @@ app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
 
 // nbee courses 
 app.get('/mycourses', commonFunc.checkAuthenticated, async (req, res) => {
-  const user = await CertiNbee101.find({ name: req.user.name })
-  const nbee102 = await Users_Nbee102.find({ email: req.user.email })
-  const nbee102_paymentStatus = nbee102[0].nbee102_paymentStatus
-  let Nbee101_QuizMarks = user[0] === undefined ? null : user[0].quiz2;
-  let Nbee102_QuizMarks = user[0] === undefined ? null : nbee102[0].quiz2_nbee102;
-
-  res.render('mycourses.ejs', { nbee102_paymentStatus,Nbee102_QuizMarks, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  try {
+    const user = await CertiNbee101.find({ email: req.user.email })
+    console.log(user)
+    const nbee102 = await Users_Nbee102.find({ email: req.user.email })
+    const Nbee101_QuizMarks = user[0] === undefined ? null : user[0]?.quiz2;
+    const Nbee102_QuizMarks = user[0] === undefined ? null : nbee102[0]?.quiz2_nbee102;
+    const nbee102_paymentStatus = nbee102[0]?.nbee102_paymentStatus
+    console.log(Nbee101_QuizMarks)
+    res.render('mycourses.ejs', { nbee102_paymentStatus, Nbee102_QuizMarks, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
+  }
+  catch (err) {
+    res.redirect("/profile")
+    console.log(err)
+  }
 })
 
 app.post('/payment', commonFunc.checkAuthenticated, async (req, res) => {
