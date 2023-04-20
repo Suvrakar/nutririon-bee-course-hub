@@ -78,17 +78,7 @@
 
             </div>
 
-            <!-- <form action="/upload" method="POST" enctype="multipart/form-data">
-                <div>
-                    <label for="image">Upload Image</label>
-                    <input type="file" id="image" name="image" value="" required>
-                </div>
-                <div>
-                    <button type="submit">Submit</button>
-                </div>
-            </form> -->
         </div>
-
         <div class="col-sm">
             <div class="">
                 <h5>User Information</h5><br>
@@ -174,7 +164,8 @@
 
                 <div class="my-5">
                     <!-- bkash  -->
-                    <form action="/payment" method="POST" id="myForm">
+                    <!-- <form action="/payment" method="POST" id="myForm"> -->
+                    <from>
                         <div class="input-block">
                             <input type="text" name="name" id="name" value="<%=name%>" required>
                             <span class="placeholder">
@@ -233,7 +224,7 @@
                         </div>
                         <br>
                         <button type="submit" onclick="SubForm()" class="btnLogin">Submit</button>
-                    </form>
+                        </form>
                 </div>
 
             </div>
@@ -549,10 +540,13 @@
         const selectElement = document.getElementById("course_code");
         const selectedValue = selectElement.value;
         console.log(selectedValue, "selectedValue 1")
+        console.log(SubFormClick)
 
         if (SubFormClick === 0) {
+            console.log(SubFormClick)
+
             if (selectedValue == "NBee102") {
-                axios.post(process.env.BASE_URL + '/nbee102/nbee102users', info)
+                axios.post('https://test.nutritionbee.net/nbee102/nbee102users', info)
             }
             let err = '';
             $.ajax({

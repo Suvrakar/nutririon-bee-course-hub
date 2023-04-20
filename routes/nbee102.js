@@ -141,7 +141,7 @@ router.get('/nbee102users', async (req, res) => {
     res.send("ok")
 })
 
-router.post('/nbee102users', commonFunc.checkAuthenticated, async (req, res) => {
+router.post('/nbee102users', async (req, res) => {
     try {
         const getUser = await Users.findOne({ name: req.user.name });
         console.log(getUser);

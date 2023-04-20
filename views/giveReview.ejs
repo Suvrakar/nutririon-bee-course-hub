@@ -44,10 +44,8 @@
 <div class="container my-5 text-center">
     <script>
         const getComments = async () => {
-            // res = await axios.get(`http://localhost:3000/comment` || `https://course.nutritionbee.net/comment`)
             res = await axios.get(`https://course.nutritionbee.net/comment`)
             console.log(res.data[0].name)
-            // const nameData = res.data.map(x=> x.rating);
             let nameData, addRatings, elementInt = 0;
 
             for (let i = 0; i < res.data.length; i++) {
