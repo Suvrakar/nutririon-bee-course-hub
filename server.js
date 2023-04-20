@@ -149,12 +149,11 @@ app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
 app.get('/mycourses', commonFunc.checkAuthenticated, async (req, res) => {
   try {
     const user = await CertiNbee101.find({ email: req.user.email })
-    console.log(user)
-    const nbee102 = await Users_Nbee102.find({ email: req.user.email })
+    console.log(  req.user.email )
+    const nbee102 = await Users_Nbee102.findOne({ user_email: req.user.email  })
     const Nbee101_QuizMarks = user[0] === undefined ? null : user[0]?.quiz2;
     const Nbee102_QuizMarks = user[0] === undefined ? null : nbee102[0]?.quiz2_nbee102;
-    const nbee102_paymentStatus = nbee102[0]?.nbee102_paymentStatus
-    console.log(Nbee101_QuizMarks)
+    const nbee102_paymentStatus = nbee102?.nbee102_paymentStatus
     res.render('mycourses.ejs', { nbee102_paymentStatus, Nbee102_QuizMarks, Nbee101_QuizMarks, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname })
   }
   catch (err) {
