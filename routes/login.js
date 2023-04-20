@@ -14,7 +14,7 @@ router.get('/login', commonFunc.checkNotAuthenticated, (req, res) => {
 
 router.post('/login', commonFunc.checkNotAuthenticated, passport.authenticate('local', {
     successRedirect: '/profile',
-    failureRedirect: '/login',
+    failureRedirect: '/nbee/login',
     failureFlash: true
 }),
     function (req, res) {
