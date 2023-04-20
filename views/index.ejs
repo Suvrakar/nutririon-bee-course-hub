@@ -164,8 +164,7 @@
 
                 <div class="my-5">
                     <!-- bkash  -->
-                    <!-- <form action="/payment" method="POST" id="myForm"> -->
-                    <from>
+                    <form action="/payment" method="POST" id="myForm">
                         <div class="input-block">
                             <input type="text" name="name" id="name" value="<%=name%>" required>
                             <span class="placeholder">
@@ -224,7 +223,7 @@
                         </div>
                         <br>
                         <button type="submit" onclick="SubForm()" class="btnLogin">Submit</button>
-                        </form>
+                    </form>
                 </div>
 
             </div>
@@ -533,9 +532,9 @@
 
     let SubFormClick = 0;
     const SubForm = () => {
-        const info  = {
-            quiz1_nbee102:0,
-            quiz2_nbee102:0,
+        const info = {
+            quiz1_nbee102: 0,
+            quiz2_nbee102: 0,
         }
         const selectElement = document.getElementById("course_code");
         const selectedValue = selectElement.value;
@@ -548,10 +547,21 @@
             if (selectedValue == "NBee102") {
                 axios.post('https://test.nutritionbee.net/nbee102/nbee102users', info)
             }
-            let err = '';
+            // $.ajax({
+            //     url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
+            //     type: "post",
+            //     data: $("#myForm").serializeArray(),
+            //     success: function () {
+            //         alert("Form Data Submitted :)")
+            //     },
+            //     error: function (err) {
+            //         console.log(err)
+            //         alert(err)
+            //     }
+            // });
             $.ajax({
-                // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                url: err === "err" ? "https://api.apispreadsheets.com/data/5VXB19Uq9J06zVkU/" : "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
+                url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
+                // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
                 type: "post",
                 data: $("#myForm").serializeArray(),
                 success: function () {
