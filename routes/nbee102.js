@@ -242,18 +242,6 @@ router.get(
       (x) => x.nbee102_paymentStatus === "true"
     );
     res.send("" + EnrolledNbee102.length);
-<<<<<<< HEAD
-})
-
-
-router.get('/nbee102users', async (req, res) => {
-    const getUserInfo = await Users_Nbee102.find({});
-    console.log(getUserInfo);
-    res.send("ok")
-})
-
-router.post('/nbee102users', async (req, res) => {
-=======
   }
 );
 
@@ -267,7 +255,6 @@ router.post(
   "/nbee102users",
   commonFunc.checkAuthenticated,
   async (req, res) => {
->>>>>>> d6ede6f0d3cce971e3cad6e3c044794cd5f171cd
     try {
       const getUser = await Users.findOne({ name: req.user.name });
       console.log(getUser, "getiiinggggggggggg users");
