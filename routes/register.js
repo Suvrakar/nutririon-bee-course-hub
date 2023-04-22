@@ -27,14 +27,12 @@ router.post('/register', commonFunc.checkNotAuthenticated, async (req, res) => {
         let paymentStatus = {
             paymentStatus: false,
             quiz1: 0
-
         }
+
         let userData = new Users(req.body);
         const finalResult = Object.assign(userData, paymentStatus);
         await finalResult.save();
-        var email = req.body.email;
-        var name = req.body.name;
-        var regEmailConfrim = email;
+        const { email, name, } = req.body;
 
         var mailTransporter = nodemailer.createTransport({
 
@@ -50,7 +48,7 @@ router.post('/register', commonFunc.checkNotAuthenticated, async (req, res) => {
         const sendRegMail = async () => {
             const mailOptions = {
                 from: '"Nutrition Bee" <info@nutritionbee.net>',
-                to: `${regEmailConfrim}`,
+                to: `${email}`,
                 subject: 'Thanks for registering into Nutrition Bee course hub',
                 html: `<p>Dear ${name}</p><p>Thanks for registering into Nutrition Bee course hub. You can choose your desired courses. For more info visit: https://www.facebook.com/nutritionbee</p><p>Best regards</p><p>Nutrition Bee</p>`,
             };
@@ -62,11 +60,13 @@ router.post('/register', commonFunc.checkNotAuthenticated, async (req, res) => {
                 }
             });
         }
-        res.redirect('/registration/successreg')
-        await sendRegMail()
+        await sendRegMail();
+        // res.redirect('/registration/successreg');
+        res.render('successReg.ejs');
     } catch (error) {
-        console.log(err)
-        res.redirect('/registration/failedreg')
+        console.log(error)
+        // res.redirect('/registration/failedreg');
+        res.render('failReg.ejs');
     }
 })
 
