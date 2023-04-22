@@ -129,21 +129,35 @@ app.use("/edit", editProfileRoute)
 
 //Common API
 const commonRoute = require('./routes/nbeeCommon')
-const { log } = require('console')
 const { Users_Nbee102 } = require('./models/Users_Nbee102')
 app.use("/nbeecommon", commonRoute)
 
 
 app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
-  nameUser = await Users.find({ email: req.user.email })
-  const mail = nameUser[0]?.email;
-  var currentdate = new Date().toLocaleDateString();
-  var currenttime = new Date().toLocaleTimeString();
-  const image = await ProfileImage.find({ email: req.user.email })
-  const id = image[0]?.id;
-  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/image/${id}`
-  res.render('index.ejs', { proPicLink, id, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
-})
+  const [user, image] = await Promise.all([
+    Users.findOne({ email: req.user.email }, { email: 1, name: 1, unvname: 1, phone: 1, paymentStatus: 1 }),
+    ProfileImage.findOne({ email: req.user.email }, { id: 1 })
+  ]);
+
+  const mail = user.email;
+  const currentdate = new Date().toLocaleDateString();
+  const currenttime = new Date().toLocaleTimeString();
+  const id = image?.id;
+  const proPicLink = id == null ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/image/${id}`;
+
+  res.render('index.ejs', { 
+    proPicLink, 
+    id, 
+    currenttime, 
+    currentdate, 
+    mail, 
+    paymentStatus: user.paymentStatus, 
+    name: user.name, 
+    unvname: user.unvname, 
+    phone: user.phone 
+  });
+});
+
 
 // nbee courses 
 app.get('/mycourses', commonFunc.checkAuthenticated, async (req, res) => {
