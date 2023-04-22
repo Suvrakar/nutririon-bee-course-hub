@@ -65,8 +65,9 @@ router.post('/register', commonFunc.checkNotAuthenticated, async (req, res) => {
         res.render('successReg.ejs');
     } catch (error) {
         console.log(error)
+        res.send(error)
         // res.redirect('/registration/failedreg');
-        res.render('failReg.ejs');
+        // res.render('failReg.ejs');
     }
 })
 
