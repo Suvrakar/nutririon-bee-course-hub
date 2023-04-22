@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "sharp": "npm install sharp --ignore-scripts"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
