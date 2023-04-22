@@ -139,7 +139,7 @@ app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
     ProfileImage.findOne({ email: req.user.email }, { id: 1 })
   ]);
 
-  const mail = user.email;
+  const mail = user?.email;
   const currentdate = new Date().toLocaleDateString();
   const currenttime = new Date().toLocaleTimeString();
   const id = image?.id;
