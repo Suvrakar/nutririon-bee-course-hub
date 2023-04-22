@@ -26,7 +26,6 @@ router.post('/register', commonFunc.checkNotAuthenticated, async (req, res) => {
     try {
         let paymentStatus = {
             paymentStatus: false,
-            quiz1: 0
         }
 
         let userData = new Users(req.body);
