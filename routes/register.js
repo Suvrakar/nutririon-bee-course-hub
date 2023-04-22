@@ -52,7 +52,7 @@ router.post('/register', commonFunc.checkNotAuthenticated, async (req, res) => {
                 subject: 'Thanks for registering into Nutrition Bee course hub',
                 html: `<p>Dear ${name}</p><p>Thanks for registering into Nutrition Bee course hub. You can choose your desired courses. For more info visit: https://www.facebook.com/nutritionbee</p><p>Best regards</p><p>Nutrition Bee</p>`,
             };
-            await mailTransporter.sendMail(mailOptions, function (err, data) {
+            mailTransporter.sendMail(mailOptions, function (err, data) {
                 if (err) {
                     console.log(err);
                 } else {
