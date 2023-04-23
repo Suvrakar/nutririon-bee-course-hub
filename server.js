@@ -133,8 +133,8 @@ const { Users_Nbee102 } = require('./models/Users_Nbee102')
 app.use("/nbeecommon", commonRoute)
 
 app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
-  nameUser = await Users.findOne({ email: req.user.email })
-  const mail = nameUser?.email;
+  nameUser = await Users.find({ email: req.user.email })
+  const mail = nameUser[0]?.email;
   var currentdate = new Date().toLocaleDateString();
   var currenttime = new Date().toLocaleTimeString();
   const image = await ProfileImage.find({ email: req.user.email })
