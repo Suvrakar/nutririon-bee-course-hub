@@ -139,7 +139,7 @@ app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
   var currenttime = new Date().toLocaleTimeString();
   const image = await ProfileImage.find({ email: req.user.email })
   const id = image[0]?.id;
-  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/image/${id}`
+  const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/propic/${id}`
   res.render('index.ejs', { proPicLink, id, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 // app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
