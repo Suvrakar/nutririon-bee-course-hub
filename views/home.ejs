@@ -54,7 +54,7 @@
 
 
   const getReviewLen = async () => {
-    res = await axios.get(`https://course.nutritionbee.net/reviewsnumber`)
+    res = await axios.get(`https://course.nutritionbee.net/nbeecommon/reviewsnumber`)
     let nameData, addRatings, elementInt = 0;
 
     const p = document.getElementById("statshow101").setAttribute("data-message", "(" + res.data + ")");

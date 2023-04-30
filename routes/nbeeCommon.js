@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const commonFunc = require("../commonFunctions")
 const { CertiNbee101 } = require("../models/CertiNbee101")
+const { Comments } = require("../models/Comments")
 
 
 router.get('/payments', commonFunc.checkNotAuthenticated, (req, res) => {
