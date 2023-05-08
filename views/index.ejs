@@ -543,22 +543,9 @@
 
         if (SubFormClick === 0) {
             console.log(SubFormClick)
-
             if (selectedValue == "NBee102") {
                 axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             }
-            // $.ajax({
-            //     url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
-            //     type: "post",
-            //     data: $("#myForm").serializeArray(),
-            //     success: function () {
-            //         alert("Form Data Submitted :)")
-            //     },
-            //     error: function (err) {
-            //         console.log(err)
-            //         alert(err)
-            //     }
-            // });
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
                 // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
@@ -590,29 +577,39 @@
 
     }
 
-    let SubFormClick1 = 0;
 
-    function SubForm1() {
-        let err = '';
+   let SubFormClick1 = 0;
+    const SubForm1 = () => {
+        const info = {
+            quiz1_nbee102: 0,
+            quiz2_nbee102: 0,
+        }
+        const selectElement = document.getElementById("course_code");
+        const selectedValue = selectElement.value;
+        console.log(selectedValue, "selectedValue 1")
+        console.log(SubFormClick)
 
-        if (SubFormClick1 === 0) {
+        if (SubFormClick === 0) {
+            console.log(SubFormClick)
+            if (selectedValue == "NBee102") {
+                axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
+            }
             $.ajax({
-                // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                url: err === "err" ? "https://api.apispreadsheets.com/data/5VXB19Uq9J06zVkU/" : "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
+                url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
+                // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
                 type: "post",
                 data: $("#myForm1").serializeArray(),
                 success: function () {
                     $("#myForm1").serializeArray()
-                    alert("Form Data Submitted")
+                    alert("Thanks For Submitting")
                 },
                 error: function () {
                     alert("Could not Submit");
                     err = "err"
-                    console.log(err)
-                }
 
+                }
             });
-            SubFormClick1 = SubFormClick1 + 1;
+            SubFormClick = SubFormClick + 1;
         }
         else {
             $("#submitbutton").click(function () {
@@ -624,33 +621,43 @@
                     // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
                 );
             });
-            console.log("2 bar click porse")
         }
+
     }
 
+
     let SubFormClick2 = 0;
+    const SubForm2 = () => {
+        const info = {
+            quiz1_nbee102: 0,
+            quiz2_nbee102: 0,
+        }
+        const selectElement = document.getElementById("course_code");
+        const selectedValue = selectElement.value;
+        console.log(selectedValue, "selectedValue 1")
+        console.log(SubFormClick)
 
-    function SubForm2() {
-        let err = '';
-
-        if (SubFormClick2 === 0) {
+        if (SubFormClick === 0) {
+            console.log(SubFormClick)
+            if (selectedValue == "NBee102") {
+                axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
+            }
             $.ajax({
-                // url: "https://api.apispreadsheets.com/data/eKx54ZQe5rz6vTsj/" || "https://api.apispreadsheets.com/data/Y38XXM6zgHx72ohF/",
-                url: err === "err" ? "https://api.apispreadsheets.com/data/5VXB19Uq9J06zVkU/" : "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
+                url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
+                // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
                 type: "post",
                 data: $("#myForm3").serializeArray(),
                 success: function () {
                     $("#myForm3").serializeArray()
-                    alert("Form Data Submitted")
+                    alert("Thanks For Submitting")
                 },
                 error: function () {
                     alert("Could not Submit");
                     err = "err"
-                    console.log(err)
 
                 }
             });
-            SubFormClick2 = SubFormClick2 + 1;
+            SubFormClick = SubFormClick + 1;
         }
         else {
             $("#submitbutton").click(function () {
@@ -662,8 +669,8 @@
                     // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
                 );
             });
-            console.log("2 bar click porse")
         }
+
     }
 
 
