@@ -61,7 +61,7 @@
   }
 
   const getCourseDetails = async () => {
-    const courses = await axios.get("https://test.nutritionbee.net/courses");
+    const courses = await axios.get("https://course.nutritionbee.net/courses");
 
     console.log(courses.data[0].course_fee);
 
