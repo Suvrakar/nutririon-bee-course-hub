@@ -134,13 +134,15 @@ app.use("/nbeecommon", commonRoute)
 
 app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
   nameUser = await Users.find({ email: req.user.email })
+  const nbee102_user = await Users_Nbee102.findOne({ user_email: req.user.email })
   const mail = nameUser[0]?.email;
   var currentdate = new Date().toLocaleDateString();
   var currenttime = new Date().toLocaleTimeString();
   const image = await ProfileImage.find({ email: req.user.email })
   const id = image[0]?.id;
+  const nbee102_paymentStatus = nbee102_user?.nbee102_paymentStatus
   const proPicLink = id == undefined ? "https://cdn-icons-png.flaticon.com/512/1946/1946429.png" : `https://course.nutritionbee.net/propic/${id}`
-  res.render('index.ejs', { proPicLink, id, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
+  res.render('index.ejs', {nbee102_paymentStatus, proPicLink, id, currenttime, currentdate, mail, paymentStatus: req.user.paymentStatus, name: req.user.name, unvname: req.user.unvname, phone: req.user.phone })
 })
 // app.get('/profile', commonFunc.checkAuthenticated, async (req, res) => {
 //   const [user, image] = await Promise.all([

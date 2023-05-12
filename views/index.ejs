@@ -99,12 +99,25 @@
                     <%= mail %>
                 </h6>
                 <h6 class="test"> <b>Payment Status :</b>
-                    <!-- <%= paymentStatus==="true" ? "Done" : "Due" %> -->
-                    <% if (paymentStatus==="true" ) { %>
-                        <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
-                        <%} else { %>
-                            <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
+                    <% if (paymentStatus==="false" && nbee102_paymentStatus==="false" || "undefined"  ) { %>
+                        <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
+                        <% } else { %>
+                            <div>
+                                <% if (paymentStatus==="true" ) { %>
+                                    <span>Nbee101 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
+                                    <% } else { %>
+                                        <!-- <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span> -->
+                                        <% } %>
+                            </div>
+                            <div>
+                                <% if (nbee102_paymentStatus==="true" ) { %>
+                                    <span>Nbee102 <i style="color: green;" class="fas fa-check-circle p-1"></i></span>
+                                    <% } else { %>
+                                        <!-- <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span> -->
+                                        <% } %>
+                            </div>
                             <% } %>
+
                 </h6>
 
 
@@ -222,7 +235,7 @@
                             </span>
                         </div>
                         <br>
-                        <button type="button" onclick="SubForm()" class="btnLogin">Submit</button>
+                        <button type="submit" onclick="SubForm()" class="btnLogin">Submit</button>
                     </form>
                 </div>
 
@@ -310,7 +323,7 @@
                         </span>
                     </div>
                     <br>
-                    <button type="button" onclick="SubForm1()" class="btnLogin">Submit</button>
+                    <button type="submit" onclick="SubForm1()" class="btnLogin">Submit</button>
                 </form>
                 <br>
 
@@ -407,7 +420,7 @@
                         </span>
                     </div>
                     <br>
-                    <button type="button" onclick="SubForm2()" class="btnLogin">Submit</button>
+                    <button type="submit" onclick="SubForm2()" class="btnLogin">Submit</button>
                 </form>
 
 
@@ -531,20 +544,20 @@
     });
 
     let SubFormClick = 0;
-    const SubForm = () => {
+    const SubForm = async () => {
         const info = {
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
-        const selectElement = document.getElementById("course_code");
-        const selectedValue = selectElement.value;
+        const selectElement = await document.getElementById("course_code");
+        const selectedValue = await selectElement.value;
         console.log(selectedValue, "selectedValue 1")
         console.log(SubFormClick)
 
         if (SubFormClick === 0) {
             console.log(SubFormClick)
             if (selectedValue == "NBee102") {
-                axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
+                await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             }
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
@@ -579,20 +592,20 @@
 
 
     let SubFormClick1 = 0;
-    const SubForm1 = () => {
+    const SubForm1 = async () => {
         const info = {
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
-        const selectElement = document.getElementById("course_code_nagad");
-        const selectedValue = selectElement.value;
+        const selectElement = await document.getElementById("course_code_nagad");
+        const selectedValue = await selectElement.value;
         console.log(selectedValue, "selectedValue 1")
         console.log(SubFormClick)
 
         if (SubFormClick1 === 0) {
             console.log(SubFormClick)
             if (selectedValue == "NBee102") {
-                axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
+                await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             }
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
@@ -627,20 +640,20 @@
 
 
     let SubFormClick2 = 0;
-    const SubForm2 = () => {
+    const SubForm2 = async () => {
         const info = {
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
-        const selectElement = document.getElementById("course_code_rocket");
-        const selectedValue = selectElement.value;
+        const selectElement = await document.getElementById("course_code_rocket");
+        const selectedValue = await selectElement.value;
         console.log(selectedValue, "selectedValue 1")
         console.log(SubFormClick)
 
         if (SubFormClick2 === 0) {
             console.log(SubFormClick)
             if (selectedValue == "NBee102") {
-                axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
+                await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             }
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
