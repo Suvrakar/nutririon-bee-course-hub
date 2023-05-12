@@ -99,7 +99,7 @@
                     <%= mail %>
                 </h6>
                 <h6 class="test"> <b>Payment Status :</b>
-                    <% if (paymentStatus==="false" && nbee102_paymentStatus==="false" || "undefined"  ) { %>
+                    <% if (paymentStatus==="false" && nbee102_paymentStatus==="false" || "undefined" ) { %>
                         <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
                         <% } else { %>
                             <div>
@@ -549,16 +549,8 @@
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
-        const selectElement = await document.getElementById("course_code");
-        const selectedValue = await selectElement.value;
-        console.log(selectedValue, "selectedValue 1")
-        console.log(SubFormClick)
-
         if (SubFormClick === 0) {
-            console.log(SubFormClick)
-            if (selectedValue == "NBee102") {
-                await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
-            }
+            await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
                 // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
@@ -597,16 +589,9 @@
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
-        const selectElement = await document.getElementById("course_code_nagad");
-        const selectedValue = await selectElement.value;
-        console.log(selectedValue, "selectedValue 1")
-        console.log(SubFormClick)
-
         if (SubFormClick1 === 0) {
             console.log(SubFormClick)
-            if (selectedValue == "NBee102") {
-                await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
-            }
+            await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
                 // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
@@ -645,16 +630,8 @@
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
-        const selectElement = await document.getElementById("course_code_rocket");
-        const selectedValue = await selectElement.value;
-        console.log(selectedValue, "selectedValue 1")
-        console.log(SubFormClick)
-
         if (SubFormClick2 === 0) {
-            console.log(SubFormClick)
-            if (selectedValue == "NBee102") {
-                await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
-            }
+            await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
             $.ajax({
                 url: "https://api.apispreadsheets.com/data/OCZ4LQsymdrOD5No/",
                 // url: "https://api.apispreadsheets.com/data/BwqYInYp9pWzf1Xo/",
