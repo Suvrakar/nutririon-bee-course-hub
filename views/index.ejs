@@ -180,7 +180,7 @@
                         </div>
                         <br>
                         <div class="input-block">
-                            <input type="number" name="bkash" id="bkash" required>
+                            <input type="number" name="bkash" id="bkash">
                             <span class="placeholder">
                                 যেই নম্বর থেকে Bkash করেছেন
                             </span>
@@ -189,20 +189,20 @@
                         <br>
                         <label style="color:#6c757d;">কোর্স কোড : </label>
                         <select id="course_code" name="course_code" class="dropdowna" required>
-                            <option value="NBee101">Basic Diet Plan - NBEE101</option>
                             <option value="NBee102">Dietery Guidelines For Pregnancy - NBEE102</option>
+                            <option value="NBee101">Basic Diet Plan - NBEE101</option>
                         </select>
                         <br>
                         <br>
                         <div class="input-block">
-                            <input type="number" name="amount" id="amount" required>
+                            <input type="number" name="amount" id="amount">
                             <span class="placeholder">
                                 টাকার পরিমান
                             </span>
                         </div>
                         <br>
                         <div class="input-block">
-                            <input type="text" name="transid" id="transid" required>
+                            <input type="text" name="transid" id="transid">
                             <span class="placeholder">
                                 ট্রানসাকশান Id
                             </span>
@@ -222,7 +222,7 @@
                             </span>
                         </div>
                         <br>
-                        <button type="submit" onclick="SubForm()" class="btnLogin">Submit</button>
+                        <button type="button" onclick="SubForm()" class="btnLogin">Submit</button>
                     </form>
                 </div>
 
@@ -277,40 +277,40 @@
                     <br>
                     <label style="color:#6c757d;">কোর্স কোড : </label>
                     <select id="course_code_nagad" name="course_code_nagad" class="dropdowna" required>
-                        <option value="NBee101">Basic Diet Plan - NBEE101</option>
                         <option value="NBee102">Dietery Guidelines For Pregnancy -NBEE102</option>
+                        <option value="NBee101">Basic Diet Plan - NBEE101</option>
                     </select>
                     <br>
                     <br>
                     <div class="input-block">
-                        <input type="number" name="amount" id="amount" required>
+                        <input type="number" name="amount" id="amount">
                         <span class="placeholder">
                             টাকার পরিমান
                         </span>
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="text" name="transid" id="transid" required>
+                        <input type="text" name="transid" id="transid">
                         <span class="placeholder">
                             ট্রানসাকশান Id
                         </span>
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="text" name="date" id="date" value=<%=currentdate%> required>
+                        <input type="text" name="date" id="date" value=<%=currentdate%> >
                         <span class="placeholder">
                             তারিখ
                         </span>
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="text" name="time" id="time" value=<%=currenttime%> required>
+                        <input type="text" name="time" id="time" value=<%=currenttime%> >
                         <span class="placeholder">
                             সময়
                         </span>
                     </div>
                     <br>
-                    <button type="submit" onclick="SubForm1()" class="btnLogin">Submit</button>
+                    <button type="button" onclick="SubForm1()" class="btnLogin">Submit</button>
                 </form>
                 <br>
 
@@ -358,7 +358,7 @@
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="number" name="rocket" id="rocket" required>
+                        <input type="number" name="rocket" id="rocket">
                         <span class="placeholder">
                             যেই নম্বর থেকে রকেট করেছেন
                         </span>
@@ -366,8 +366,8 @@
                     <br>
                     <label style="color:#6c757d;">কোর্স কোড : </label>
                     <select id="course_code_rocket" name="course_code_rocket" class="dropdowna" required>
-                        <option value="NBee101">Basic Diet Plan - NBEE101</option>
                         <option value="NBee102">Dietery Guidelines For Pregnancy - NBEE102</option>
+                        <option value="NBee101">Basic Diet Plan - NBEE101</option>
 
                     </select>
                     <br>
@@ -380,14 +380,14 @@
                     </div> -->
                     <br>
                     <div class="input-block">
-                        <input type="number" name="amount" id="amount" required>
+                        <input type="number" name="amount" id="amount">
                         <span class="placeholder">
                             টাকার পরিমান
                         </span>
                     </div>
                     <br>
                     <div class="input-block">
-                        <input type="text" name="transid" id="transid" required>
+                        <input type="text" name="transid" id="transid">
                         <span class="placeholder">
                             ট্রানসাকশান Id
                         </span>
@@ -407,7 +407,7 @@
                         </span>
                     </div>
                     <br>
-                    <button type="submit" onclick="SubForm2()" class="btnLogin">Submit</button>
+                    <button type="button" onclick="SubForm2()" class="btnLogin">Submit</button>
                 </form>
 
 
@@ -578,7 +578,7 @@
     }
 
 
-   let SubFormClick1 = 0;
+    let SubFormClick1 = 0;
     const SubForm1 = () => {
         const info = {
             quiz1_nbee102: 0,
