@@ -99,7 +99,7 @@
                     <%= mail %>
                 </h6>
                 <h6 class="test"> <b>Payment Status :</b>
-                    <% if (paymentStatus==="false" && nbee102_paymentStatus==="false" || "undefined"  ) { %>
+                    <% if (paymentStatus==="false" && nbee102_paymentStatus==="false"  ) { %>
                         <span> Not Done<i style="color: red;" class="fa-solid fa-circle-xmark p-1"></i></span>
                         <% } else { %>
                             <div>
@@ -235,6 +235,13 @@
                             </span>
                         </div>
                         <br>
+                        <div class="input-block">
+                            <input type="text" name="reference" id="reference">
+                            <span class="placeholder">
+                                Reference (If have)
+                            </span>
+                        </div>
+                        <br/>
                         <button type="button" onclick="SubForm()" class="btnLogin">Submit</button>
                     </form>
                 </div>
@@ -323,6 +330,13 @@
                         </span>
                     </div>
                     <br>
+                    <div class="input-block">
+                        <input type="text" name="reference" id="reference">
+                        <span class="placeholder">
+                            Reference (If have)
+                        </span>
+                    </div>
+                    <br/>
                     <button type="button" onclick="SubForm1()" class="btnLogin">Submit</button>
                 </form>
                 <br>
@@ -420,6 +434,13 @@
                         </span>
                     </div>
                     <br>
+                    <div class="input-block">
+                        <input type="text" name="reference" id="reference">
+                        <span class="placeholder">
+                            Reference (If have)
+                        </span>
+                    </div>
+                    <br/>
                     <button type="button" onclick="SubForm2()" class="btnLogin">Submit</button>
                 </form>
 
