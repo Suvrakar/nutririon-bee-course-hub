@@ -570,12 +570,15 @@
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
+
         const selectElement = await document.getElementById("course_code");
         const selectedValue = await selectElement.value;
         console.log(selectedValue, "selectedValue 1")
         console.log(SubFormClick)
 
         if (SubFormClick === 0) {
+            SubFormClick = SubFormClick + 1;
+
             console.log(SubFormClick)
             if (selectedValue == "NBee102") {
                 await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
@@ -595,19 +598,15 @@
 
                 }
             });
-            SubFormClick = SubFormClick + 1;
         }
         else {
-            $("#submitbutton").click(function () {
-                // disable button
-                $(this).prop("disabled", true);
-                // add spinner to button
-                $(this).html(
-                    // 'Please Wait'
-                    // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
-                );
-            });
-        }
+        $("#submitbutton").click(function () {
+        // disable button
+        $(this).prop("disabled", true);
+        alert("You have already submitted");
+    });
+}
+
 
     }
 
@@ -618,12 +617,15 @@
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
+
         const selectElement = await document.getElementById("course_code_nagad");
         const selectedValue = await selectElement.value;
         console.log(selectedValue, "selectedValue 1")
         console.log(SubFormClick)
 
         if (SubFormClick1 === 0) {
+        SubFormClick1 = SubFormClick1 + 1;
+
             console.log(SubFormClick)
             if (selectedValue == "NBee102") {
                 await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
@@ -643,7 +645,6 @@
 
                 }
             });
-            SubFormClick = SubFormClick + 1;
         }
         else {
             $("#submitbutton").click(function () {
@@ -666,12 +667,14 @@
             quiz1_nbee102: 0,
             quiz2_nbee102: 0,
         }
+
         const selectElement = await document.getElementById("course_code_rocket");
         const selectedValue = await selectElement.value;
         console.log(selectedValue, "selectedValue 1")
         console.log(SubFormClick)
 
         if (SubFormClick2 === 0) {
+        SubFormClick2 = SubFormClick2 + 1;
             console.log(SubFormClick)
             if (selectedValue == "NBee102") {
                 await axios.post('https://course.nutritionbee.net/nbee102/nbee102users', info)
@@ -691,19 +694,18 @@
 
                 }
             });
-            SubFormClick = SubFormClick + 1;
         }
         else {
-            $("#submitbutton").click(function () {
-                // disable button
-                $(this).prop("disabled", true);
-                // add spinner to button
-                $(this).html(
-                    // 'Please Wait'
-                    // '<i class="fa fa-circle-o-notch fa-spin"></i> loading...'
-                );
-            });
-        }
+    $("#submitbutton").click(function () {
+        // disable button
+        $(this).prop("disabled", true);
+        // add overlay to freeze the screen
+        $("body").append('<div class="overlay"></div>');
+        // show "Please Wait" message and spinner
+        $(this).html('<i class="fa fa-circle-o-notch fa-spin"></i> Please Wait...');
+    });
+}
+
 
     }
 
