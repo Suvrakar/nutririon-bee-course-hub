@@ -1,4 +1,4 @@
-# nbeefull
+# Nutrition Bee Course Hub
 
 Nutrition bee is mainly targeted the students and professionals who are studying Nutrition science. 
 I have used monolithic, MVC 3-tier architecture for it. We have around active 200+ users and almost 30-50 logins daily. Some of the core features are beta-tested successfully and integrated. And the app is in production. Let's discuss some of the core features:
